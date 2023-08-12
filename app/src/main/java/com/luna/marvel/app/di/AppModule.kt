@@ -7,6 +7,9 @@ import com.luna.marvel.app.data.remote.services.CreatorsService
 import com.luna.marvel.app.data.remote.services.EventsService
 import com.luna.marvel.app.data.remote.services.SeriesService
 import com.luna.marvel.app.data.remote.services.StoriesService
+import com.luna.marvel.app.di.qualifiers.BaseUrl
+import com.luna.marvel.app.di.qualifiers.PrivateKey
+import com.luna.marvel.app.di.qualifiers.PublicKey
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
