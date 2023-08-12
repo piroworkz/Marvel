@@ -1,0 +1,37 @@
+package com.luna.marvel.app.ui.theme
+
+import androidx.compose.ui.graphics.Color
+
+val primary = Color(0xFFC00014)
+val onPrimary = Color(0xFFFFFFFF)
+val primaryContainer = Color(0xFFFFDAD6)
+val onPrimaryContainer = Color(0xFF410002)
+val secondary = Color(0xFF6D5E00)
+val onSecondary = Color(0xFFFFFFFF)
+val secondaryContainer = Color(0xFFFEE255)
+val onSecondaryContainer = Color(0xFF211B00)
+val tertiary = Color(0xFFAA3430)
+val onTertiary = Color(0xFFFFFFFF)
+val tertiaryContainer = Color(0xFFFFDAD6)
+val onTertiaryContainer = Color(0xFF410003)
+val error = Color(0xFFBA1A1A)
+val errorContainer = Color(0xFFFFDAD6)
+val onError = Color(0xFFFFFFFF)
+val onErrorContainer = Color(0xFF410002)
+val background = Color(0xFF000000)
+val onBackground = Color(0xFFFDE265)
+val surface =Color(0xFF000000)
+val onSurface = Color(0xFFFDE265)
+val surfaceVariant = Color(0xFF534341)
+val onSurfaceVariant = Color(0xFFD8C2BF)
+val outline = Color(0xFFA08C8A)
+val inverseOnSurface =Color(0xFF000000)
+val inverseSurface = Color(0xFFFDE265)
+val inversePrimary = Color(0xFFC00014)
+val shadow = Color(0xFF000000)
+val surfaceTint = Color(0xFFFFB4AB)
+val outlineVariant = Color(0xFF534341)
+val scrim = Color(0xFF000000)
+
+
+val seed = Color(0xFFED1D24)
