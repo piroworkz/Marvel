@@ -1,13 +1,16 @@
-package com.luna.marvel.app.data.remote.client
+package com.luna.marvel.app.data.remote.utils
 
+import com.luna.marvel.app.di.PrivateKey
+import com.luna.marvel.app.di.PublicKey
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.math.BigInteger
 import java.security.MessageDigest
+import javax.inject.Inject
 
-class MarvelInterceptor(
-    private val publicKey: String,
-    private val privateKey: String,
+class MarvelInterceptor @Inject constructor(
+    @PublicKey private val publicKey: String,
+    @PrivateKey private val privateKey: String,
 ) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -15,9 +18,9 @@ class MarvelInterceptor(
         val originalHttpUrl = original.url
         return try {
             val url = originalHttpUrl.newBuilder()
-                .addQueryParameter("apikey", publicKey)
-                .addQueryParameter("ts", System.currentTimeMillis().toString())
-                .addQueryParameter("hash", getHash())
+                .addQueryParameter(API_KEY, publicKey)
+                .addQueryParameter(TS, System.currentTimeMillis().toString())
+                .addQueryParameter(HASH, getHash())
                 .build()
             val request = original.newBuilder()
                 .url(url)
@@ -34,6 +37,12 @@ class MarvelInterceptor(
             .digest("${System.currentTimeMillis()}$privateKey$publicKey".toByteArray()).apply {
                 BigInteger(1, this).toString(16).padStart(32, '0')
             }.toString()
+    }
+
+    companion object {
+        private const val API_KEY = "apikey"
+        private const val TS = "ts"
+        private const val HASH = "hash"
     }
 
 }

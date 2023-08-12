@@ -68,6 +68,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.okhttp.logging.interceptor)
     implementation(libs.okhttp.client)
+    implementation(libs.arrow.core)
 
 //    Room
     implementation(libs.room.runtime)

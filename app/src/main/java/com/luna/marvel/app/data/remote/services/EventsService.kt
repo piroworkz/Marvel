@@ -11,7 +11,7 @@ interface EventsService {
     suspend fun getEvents(): MarvelNetworkResponse<RemoteEvent>
 
     @POST("events/{eventId}")
-    suspend fun getEventById(): MarvelNetworkResponse<RemoteEvent>
+    suspend fun getEventById(@Path("eventId") eventId: Int): MarvelNetworkResponse<RemoteEvent>
 
     @POST("events/{eventId}/characters")
     suspend fun getCharactersByEventId(@Path("eventId") eventId: Int): MarvelNetworkResponse<RemoteEvent>

@@ -1,5 +1,6 @@
 package com.luna.marvel.app.di
 
+import com.luna.marvel.app.data.remote.utils.MarvelInterceptor
 import com.luna.marvel.app.data.remote.services.CharactersService
 import com.luna.marvel.app.data.remote.services.ComicsService
 import com.luna.marvel.app.data.remote.services.CreatorsService
@@ -10,6 +11,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -26,6 +29,10 @@ object AppModule {
     private external fun getPrivateKey(): String
 
     @Provides
+    @BaseUrl
+    fun provideBaseUrl(): String = getBaseUrl()
+
+    @Provides
     @PublicKey
     fun providePublicKey(): String = getPublicKey()
 
@@ -35,8 +42,25 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideRetrofitClient(): Retrofit = Retrofit.Builder()
-        .baseUrl(getBaseUrl())
+    fun provideOkHttp3Client(
+        interceptor: MarvelInterceptor,
+    ): OkHttpClient =
+        HttpLoggingInterceptor().run {
+            level = HttpLoggingInterceptor.Level.BODY
+            OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .addInterceptor(this)
+                .build()
+        }
+
+    @Singleton
+    @Provides
+    fun provideRetrofitClient(
+        @BaseUrl baseUrl: String,
+        okHttpClient: OkHttpClient,
+    ): Retrofit = Retrofit.Builder()
+        .baseUrl(baseUrl)
+        .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
