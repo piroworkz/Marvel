@@ -1,6 +1,6 @@
 package com.luna.marvel.app.data.remote.model.common
 
-data class RemoteResponse<T>(
+data class MarvelNetworkResponse<T>(
     val attributionHTML: String,
     val attributionText: String,
     val code: String,

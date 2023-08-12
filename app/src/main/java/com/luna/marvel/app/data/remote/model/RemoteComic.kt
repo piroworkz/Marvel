@@ -8,7 +8,7 @@ import com.luna.marvel.app.data.remote.model.common.RemotePrice
 import com.luna.marvel.app.data.remote.model.common.RemoteTextObject
 import com.luna.marvel.app.data.remote.model.common.RemoteUrl
 
-data class RemoteComicsResults(
+data class RemoteComic(
     val characters: RemoteItems,
     val collectedIssues: List<RemoteItem>,
     val collections: List<RemoteItem>,
