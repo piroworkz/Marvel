@@ -13,19 +13,19 @@ import com.luna.marvel.app.data.remote.model.common.RemoteItems
 import com.luna.marvel.app.data.remote.model.common.RemotePrice
 import com.luna.marvel.app.data.remote.model.common.RemoteTextObject
 import com.luna.marvel.app.data.remote.model.common.RemoteUrl
-import com.luna.marvel.domain.Character
-import com.luna.marvel.domain.Comic
-import com.luna.marvel.domain.Creators
-import com.luna.marvel.domain.Event
-import com.luna.marvel.domain.Series
-import com.luna.marvel.domain.Stories
-import com.luna.marvel.domain.common.Date
-import com.luna.marvel.domain.common.Image
-import com.luna.marvel.domain.common.Item
-import com.luna.marvel.domain.common.Items
-import com.luna.marvel.domain.common.Price
-import com.luna.marvel.domain.common.TextObject
-import com.luna.marvel.domain.common.Url
+import com.luna.domain.Character
+import com.luna.domain.Comic
+import com.luna.domain.Creators
+import com.luna.domain.Event
+import com.luna.domain.Series
+import com.luna.domain.Stories
+import com.luna.domain.common.Date
+import com.luna.domain.common.Image
+import com.luna.domain.common.Item
+import com.luna.domain.common.Items
+import com.luna.domain.common.Price
+import com.luna.domain.common.TextObject
+import com.luna.domain.common.Url
 
 fun RemoteCharacter.toDomain(): Character =
     Character(

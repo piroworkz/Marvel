@@ -3,7 +3,7 @@ package com.luna.marvel.app.data
 import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
-import com.luna.marvel.domain.AppError
+import com.luna.domain.AppError
 import retrofit2.HttpException
 import java.io.IOException
 import java.net.ConnectException

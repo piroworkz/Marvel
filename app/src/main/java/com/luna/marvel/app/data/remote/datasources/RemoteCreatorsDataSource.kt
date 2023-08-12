@@ -2,7 +2,7 @@ package com.luna.marvel.app.data.remote.datasources
 
 import com.luna.marvel.app.data.remote.services.CreatorsService
 import com.luna.marvel.app.data.tryCatch
-import com.luna.marvel.data.sources.CreatorsDataSource
+import com.luna.data.sources.CreatorsDataSource
 import javax.inject.Inject
 
 class RemoteCreatorsDataSource @Inject constructor(private val service: CreatorsService) :

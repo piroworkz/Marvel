@@ -15,3 +15,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Marvel"
 include(":app")
+include(":domain")
+include(":data")
+include(":usecases")
