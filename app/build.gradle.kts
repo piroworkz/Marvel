@@ -1,7 +1,9 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.com.android.application)
-    alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.plugin)
+    alias(libs.plugins.hilt.gradle)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
@@ -11,6 +13,7 @@ android {
     defaultConfig {
         applicationId = "com.luna.myapplication"
         minSdk = 26
+        //noinspection OldTargetApi
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -31,11 +34,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
     buildFeatures {
         compose = true
@@ -65,6 +68,16 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.okhttp.logging.interceptor)
     implementation(libs.okhttp.client)
+
+//    Room
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    //noinspection KaptUsageInsteadOfKsp
+    kapt(libs.room.compiler)
+
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.nav.compose)
+    kapt(libs.hilt.compiler)
 
 //    Testing
     testImplementation(libs.junit)
