@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 pluginManagement {
     repositories {
         google()
@@ -18,3 +20,4 @@ include(":app")
 include(":domain")
 include(":data")
 include(":usecases")
+include(":testShared")

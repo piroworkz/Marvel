@@ -2,13 +2,13 @@ package com.luna.domain
 
 import com.luna.domain.common.Image
 import com.luna.domain.common.Item
-import com.luna.domain.common.Items
+import com.luna.domain.common.Object
 import com.luna.domain.common.Url
 
 data class Event(
-    val characters: Items,
-    val comics: Items,
-    val creators: Items,
+    val characters: Object,
+    val comics: Object,
+    val creators: Object,
     val description: String,
     val end: String,
     val id: String,
@@ -16,9 +16,9 @@ data class Event(
     val next: Item,
     val previous: Item,
     val resourceURI: String,
-    val series: Items,
+    val series: Object,
     val start: String,
-    val stories: Items,
+    val stories: Object,
     val thumbnail: Image,
     val title: String,
     val urls: List<Url>,
