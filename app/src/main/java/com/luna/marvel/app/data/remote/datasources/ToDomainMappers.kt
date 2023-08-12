@@ -22,7 +22,7 @@ import com.luna.domain.Stories
 import com.luna.domain.common.Date
 import com.luna.domain.common.Image
 import com.luna.domain.common.Item
-import com.luna.domain.common.Items
+import com.luna.domain.common.Object
 import com.luna.domain.common.Price
 import com.luna.domain.common.TextObject
 import com.luna.domain.common.Url
@@ -54,8 +54,8 @@ fun RemoteImage.toDomain(): Image =
         path = path
     )
 
-fun RemoteItems.toDomain(): Items =
-    Items(
+fun RemoteItems.toDomain(): Object =
+    Object(
         available = available,
         collectionURI = collectionURI,
         items = items.map(RemoteItem::toDomain),

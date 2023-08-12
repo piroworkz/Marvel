@@ -16,6 +16,7 @@ dependencies {
     implementation(libs.kotlin.coroutines.core)
     implementation(libs.arrow.core)
 
+    testImplementation(project(":testShared"))
     testImplementation(libs.junit)
     testImplementation(libs.mockito.kotlin)
     testImplementation(libs.mockito.inline)

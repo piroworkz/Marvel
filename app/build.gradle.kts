@@ -87,6 +87,7 @@ dependencies {
     kapt(libs.hilt.compiler)
 
     //    TESTING
+    testImplementation(project(":testShared"))
     testImplementation(libs.junit)
     testImplementation(libs.mockito.kotlin)
     testImplementation(libs.mockito.inline)
