@@ -1,7 +1,7 @@
 package com.luna.marvel.app.data.remote.utils
 
-import com.luna.marvel.app.di.PrivateKey
-import com.luna.marvel.app.di.PublicKey
+import com.luna.marvel.app.di.qualifiers.PrivateKey
+import com.luna.marvel.app.di.qualifiers.PublicKey
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.math.BigInteger
