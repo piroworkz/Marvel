@@ -3,9 +3,9 @@ package com.luna.marvel.app.data.remote.datasources
 import arrow.core.Either
 import com.luna.marvel.app.data.remote.services.CharactersService
 import com.luna.marvel.app.data.tryCatch
-import com.luna.marvel.data.sources.CharactersDataSource
-import com.luna.marvel.domain.AppError
-import com.luna.marvel.domain.Character
+import com.luna.data.sources.CharactersDataSource
+import com.luna.domain.AppError
+import com.luna.domain.Character
 import javax.inject.Inject
 
 class RemoteCharactersDataSource @Inject constructor(private val service: CharactersService) :

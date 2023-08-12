@@ -2,7 +2,7 @@ package com.luna.marvel.app.data.remote.datasources
 
 import com.luna.marvel.app.data.remote.services.StoriesService
 import com.luna.marvel.app.data.tryCatch
-import com.luna.marvel.data.sources.StoriesDataSource
+import com.luna.data.sources.StoriesDataSource
 
 class RemoteStoriesDataSource(private val service: StoriesService) : StoriesDataSource {
 
