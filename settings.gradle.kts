@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 pluginManagement {
     repositories {
         google()
@@ -15,3 +17,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "Marvel"
 include(":app")
+include(":domain")
+include(":data")
+include(":usecases")
+include(":testShared")
