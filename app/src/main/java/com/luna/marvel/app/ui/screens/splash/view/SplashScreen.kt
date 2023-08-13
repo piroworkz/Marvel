@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.splash
+package com.luna.marvel.app.ui.screens.splash.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
