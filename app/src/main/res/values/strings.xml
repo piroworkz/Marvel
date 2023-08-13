@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Marvel</string>
+    <string name="top_bar_title_menu">MARVEL®</string>
+    <string name="top_bar_title_characters">CHARACTERS</string>
+    <string name="top_bar_title_comics">COMICS</string>
+    <string name="top_bar_title_creators">CREATORS</string>
+    <string name="top_bar_title_events">EVENTS</string>
+    <string name="top_bar_title_series">SERIES</string>
+    <string name="top_bar_title_stories">STORIES</string>
 </resources>

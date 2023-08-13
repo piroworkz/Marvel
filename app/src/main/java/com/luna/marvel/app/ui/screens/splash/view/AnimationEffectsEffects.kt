@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.splash
+package com.luna.marvel.app.ui.screens.splash.view
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector1D
