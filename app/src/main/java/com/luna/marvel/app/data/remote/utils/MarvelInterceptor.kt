@@ -33,10 +33,12 @@ class MarvelInterceptor @Inject constructor(
     }
 
     private fun getHash(): String {
-        return MessageDigest.getInstance("MD5")
-            .digest("${System.currentTimeMillis()}$privateKey$publicKey".toByteArray()).apply {
-                BigInteger(1, this).toString(16).padStart(32, '0')
-            }.toString()
+        val ts = System.currentTimeMillis()
+        val input = "$ts$privateKey$publicKey"
+        val md = MessageDigest.getInstance("MD5")
+        return BigInteger(1, md.digest(input.toByteArray()))
+            .toString(16)
+            .padStart(32, '0')
     }
 
     companion object {
