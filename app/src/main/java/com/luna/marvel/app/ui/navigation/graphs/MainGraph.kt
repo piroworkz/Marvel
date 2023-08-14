@@ -6,6 +6,8 @@ import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.luna.marvel.app.ui.navigation.utils.Args
 
+
+
 sealed class MainGraph(
     route: String,
     title: Int? = null,

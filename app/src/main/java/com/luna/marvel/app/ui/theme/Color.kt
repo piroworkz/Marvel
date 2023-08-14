@@ -33,5 +33,8 @@ val surfaceTint = Color(0xFFFFB4AB)
 val outlineVariant = Color(0xFF534341)
 val scrim = Color(0xFF000000)
 
-
 val seed = Color(0xFFED1D24)
+
+val grayLt = Color(0xFF8A8A8A)
+val grayMd = Color(0xFF585858)
+val grayDrk = Color(0xFF333333)

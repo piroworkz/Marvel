@@ -3,7 +3,6 @@
 package com.luna.marvel.app.ui.theme
 
 import androidx.compose.foundation.shape.CutCornerShape
-import androidx.compose.foundation.shape.ZeroCornerSize
 import androidx.compose.ui.unit.dp
 
 sealed interface Dimens {
@@ -20,7 +19,7 @@ sealed interface Dimens {
             topStart = 0.dp,
             topEnd = 0.dp,
             bottomStart = 0.dp,
-            bottomEnd = Size.xxLarge
+            bottomEnd = Size.xLarge
         )
     }
 }

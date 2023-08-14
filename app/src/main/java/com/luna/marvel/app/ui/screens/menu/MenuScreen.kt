@@ -1,105 +1,152 @@
 package com.luna.marvel.app.ui.screens.menu
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material3.Divider
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
 import com.luna.marvel.R
-import com.luna.marvel.app.ui.navigation.graphs.Destination
-import com.luna.marvel.app.ui.navigation.graphs.MainGraph
-import com.luna.marvel.app.ui.navigation.views.AppScaffoldView
-import com.luna.marvel.app.ui.theme.Dimens
-import com.luna.marvel.app.ui.theme.background
-import com.luna.marvel.app.ui.theme.onBackground
-import com.luna.marvel.app.ui.theme.primary
-
-private val menuItems = listOf(
-    MainGraph.Characters to R.drawable.btn_bkg_a,
-    MainGraph.Comics to R.drawable.btn_bkg_b,
-    MainGraph.Creators to R.drawable.btn_bkg_c,
-    MainGraph.Events to R.drawable.btn_bkg_d,
-    MainGraph.Series to R.drawable.btn_bkg_a,
-    MainGraph.Stories to R.drawable.btn_bkg_b
-)
+import com.luna.marvel.app.ui.log
+import com.luna.marvel.app.ui.screens.utils.AnimState.START
+import com.luna.marvel.app.ui.screens.utils.rememberAnimationState
+import com.luna.marvel.app.ui.screens.utils.shimmer
+import kotlinx.coroutines.delay
 
 @Composable
 fun MenuScreen() {
 
-    AppScaffoldView(
-        destination = MainGraph.Menu,
-        onNavIconClicked = { }
+    val menuAnimation = rememberAnimationState()
+    var showShimmer by remember { mutableStateOf(true) }
+
+    LaunchedEffect(key1 = menuAnimation.animStateState.value) {
+        menuAnimation.animateScale(1000)
+    }
+
+    LaunchedEffect(key1 = menuAnimation.animStateState.value) {
+        menuAnimation.animateRotation(1000)
+    }
+
+    LaunchedEffect(key1 = Unit, block = {
+        delay(2000)
+        showShimmer = false
+    })
+
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
     ) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2)
+
+        Image(
+            painter = painterResource(id = R.drawable.bkg_comics),
+            contentDescription = null,
+            contentScale = ContentScale.Crop
+        )
+
+        ConstraintLayout(
+            modifier = Modifier
+                .fillMaxSize()
+                .scale(menuAnimation.scale.value)
+                .rotate(menuAnimation.rotate.value)
         ) {
-            items(menuItems.size) { index ->
-                val (destination, image) = menuItems[index]
-                MenuItem(
-                    destination = destination,
-                    image = image
-                )
+            val (character, comic, creator, event, series, story) = createRefs()
+            val guideline25 = createGuidelineFromTop(0.25F)
+            val guideline50 = createGuidelineFromTop(0.32F)
+            val guideline64 = createGuidelineFromTop(0.68F)
+            val guideline75 = createGuidelineFromTop(0.75F)
+            val verticalCenter = createGuidelineFromStart(0.5F)
+
+            CircleButtonView(
+                modifier = Modifier
+                    .constrainAs(character) { characterConstraints(guideline50, comic) },
+                image = R.drawable.btn_characters,
+                onClick = "CHARACTERS BUTTON CLOCKED"::log
+            )
+
+            CircleButtonView(
+                modifier = Modifier
+                    .constrainAs(comic) { comicsConstraints(guideline25, verticalCenter) },
+                image = R.drawable.btn_comics,
+                onClick = {}
+            )
+
+            CircleButtonView(
+                modifier = Modifier
+                    .constrainAs(creator) { creatorsConstraints(guideline50, comic) },
+                image = R.drawable.btn_creators,
+                onClick = {}
+            )
+
+            CircleButtonView(
+                modifier = Modifier
+                    .constrainAs(event) { eventConstraints(guideline64, series) },
+                image = R.drawable.btn_events,
+                onClick = {}
+            )
+
+            CircleButtonView(
+                modifier = Modifier
+                    .constrainAs(series) { seriesConstraints(guideline75, verticalCenter) },
+                image = R.drawable.btn_series,
+                onClick = {}
+            )
+
+            CircleButtonView(
+                modifier = Modifier
+                    .constrainAs(story) { storiesConstraints(guideline64, series) },
+                image = R.drawable.btn_stories,
+                onClick = {}
+            )
+
+        }
+
+        CircleButtonView(
+            image = R.drawable.ic_button
+        ) {
+            if (menuAnimation.animStateState.value == START) {
+                menuAnimation.finish()
+            } else {
+                menuAnimation.start()
+            }
+        }
+
+        if (showShimmer) {
+            Card(
+                modifier = Modifier
+                    .alpha(0.3F)
+                    .size(180.dp)
+                    .clip(CircleShape)
+                    .blur(48.dp)
+                    .shimmer(loading = true),
+                shape = CircleShape
+            ) {
             }
         }
 
     }
 }
 
-@Composable
-fun MenuItem(destination: Destination, image: Int) {
-
-    Column(
-        modifier = Modifier
-            .padding(Dimens.Size.medium)
-            .clip(Dimens.Shape.menuCard)
-            .border(Dimens.Size.small / 4, primary, Dimens.Shape.menuCard),
-    ) {
-        destination.title?.let {
-            Text(
-                text = stringResource(id = it),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(background)
-                    .padding(Dimens.Size.medium),
-                color = onBackground,
-                textAlign = TextAlign.Center,
-                overflow = TextOverflow.Ellipsis,
-                style = MaterialTheme.typography.labelLarge,
-            )
-        }
-        Divider(
-            thickness = 2.dp,
-            color = primary
-        )
-        Image(
-            painter = painterResource(id = image),
-            contentDescription = destination.route,
-            Modifier.aspectRatio(.75F),
-            contentScale = ContentScale.Crop
-        )
-    }
-
-}
 
 @Preview(
-    showBackground = true,
     showSystemUi = true,
 )
 @Composable

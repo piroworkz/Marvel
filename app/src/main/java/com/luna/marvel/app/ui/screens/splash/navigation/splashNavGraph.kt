@@ -17,10 +17,10 @@ fun NavGraphBuilder.splashGraph(navigate: () -> Unit) {
         navComposable(
             destination = SplashGraph.Splash,
             enterTransition = { EnterTransition.None },
-            exitTransition = { ExitTransition.None },
-            popEnterTransition = { EnterTransition.None },
-            popExitTransition = { ExitTransition.None }
-        ) { SplashScreen(navigate = navigate) }
+            exitTransition = { ExitTransition.None }
+        ) {
+            SplashScreen(navigate = navigate)
+        }
     }
 
 }

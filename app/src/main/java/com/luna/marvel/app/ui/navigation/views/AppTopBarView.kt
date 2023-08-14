@@ -19,6 +19,7 @@ import com.luna.marvel.app.ui.navigation.graphs.MainGraph
 import com.luna.marvel.app.ui.theme.Dimens
 import com.luna.marvel.app.ui.theme.MarvelTheme
 import com.luna.marvel.app.ui.theme.primary
+import com.luna.marvel.app.ui.theme.title
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -37,7 +38,8 @@ fun AppTopBarView(
                     .fillMaxWidth()
                     .padding(horizontal = Dimens.Size.medium),
                 overflow = TextOverflow.Ellipsis,
-                maxLines = 1
+                maxLines = 1,
+                style = title
             )
         },
         modifier = Modifier
