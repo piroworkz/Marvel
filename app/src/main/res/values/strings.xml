@@ -7,4 +7,5 @@
     <string name="top_bar_title_events">EVENTS</string>
     <string name="top_bar_title_series">SERIES</string>
     <string name="top_bar_title_stories">STORIES</string>
+    <string name="btn_start">START</string>
 </resources>
