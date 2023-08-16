@@ -60,6 +60,7 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
+    implementation(project(":usecases"))
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
@@ -71,6 +72,7 @@ dependencies {
     implementation(libs.material3)
     implementation(libs.compose.navigation)
     implementation(libs.constraint.layout)
+    implementation(libs.coil.compose)
 
     implementation(libs.retrofit.gson)
     implementation(libs.retrofit)

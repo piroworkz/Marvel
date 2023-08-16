@@ -3,9 +3,11 @@ package com.luna.marvel.app.ui.screens.utils
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import kotlinx.coroutines.delay
 
 @Composable
 fun rememberAnimationState(
@@ -27,3 +29,22 @@ fun rememberOffsetAnimation(
     animationState: MutableState<AnimState> = remember { mutableStateOf(initialState) },
     heightOffset: Animatable<Float, AnimationVector1D> = remember { Animatable(0F) }
 ): OffsetAnimation = remember { OffsetAnimation(animationState, heightOffset) }
+
+@Composable
+fun AnimationEffects(
+    menuAnimation: AnimationState,
+    showShimmer: (Boolean) -> Unit
+) {
+    LaunchedEffect(key1 = menuAnimation.animStateState.value) {
+        menuAnimation.animateScale(1000)
+    }
+
+    LaunchedEffect(key1 = menuAnimation.animStateState.value) {
+        menuAnimation.animateRotation(1000)
+    }
+
+    LaunchedEffect(key1 = Unit, block = {
+        delay(1000)
+        showShimmer(false)
+    })
+}

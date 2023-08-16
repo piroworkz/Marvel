@@ -8,4 +8,11 @@
     <string name="top_bar_title_series">SERIES</string>
     <string name="top_bar_title_stories">STORIES</string>
     <string name="btn_start">START</string>
+    <string name="btn_details">SEE DETAILS</string>
+    <string name="btn_comics">SEE COMICS</string>
+    <string name="btn_events">SEE EVENTS</string>
+    <string name="btn_series">SEE SERIES</string>
+    <string name="btn_stories">SEE STORIES</string>
+    <string name="btn_characters">SEE CHARACTERS</string>
+    <string name="btn_creators">SEE CREATORS</string>
 </resources>

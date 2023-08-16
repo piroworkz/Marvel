@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui
+package com.luna.marvel.app.ui.application
 import android.app.Activity
 import android.os.Build
 import android.view.View

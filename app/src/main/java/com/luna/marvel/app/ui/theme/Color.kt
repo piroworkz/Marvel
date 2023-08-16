@@ -28,12 +28,10 @@ val outline = Color(0xFFA08C8A)
 val inverseOnSurface =Color(0xFF000000)
 val inverseSurface = Color(0xFFFDE265)
 val inversePrimary = Color(0xFFC00014)
-val shadow = Color(0xFF000000)
 val surfaceTint = Color(0xFFFFB4AB)
 val outlineVariant = Color(0xFF534341)
 val scrim = Color(0xFF000000)
 
-val seed = Color(0xFFED1D24)
 
 val grayLt = Color(0xFF8A8A8A)
 val grayMd = Color(0xFF585858)

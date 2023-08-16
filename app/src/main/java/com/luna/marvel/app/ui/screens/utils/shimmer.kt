@@ -20,10 +20,8 @@ import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.IntSize
 import com.luna.marvel.app.ui.theme.background
-import com.luna.marvel.app.ui.theme.grayDrk
 import com.luna.marvel.app.ui.theme.grayLt
 import com.luna.marvel.app.ui.theme.grayMd
-import com.luna.marvel.app.ui.theme.secondary
 
 fun Modifier.shimmer(loading: Boolean, duration: Int = 1000): Modifier = composed {
     var intSize by remember { mutableStateOf(IntSize.Zero) }

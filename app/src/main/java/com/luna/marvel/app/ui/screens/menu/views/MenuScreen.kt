@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.menu
+package com.luna.marvel.app.ui.screens.menu.views
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -26,30 +26,24 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.luna.marvel.R
-import com.luna.marvel.app.ui.log
+import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
+import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.screens.utils.AnimState.START
+import com.luna.marvel.app.ui.screens.utils.AnimationEffects
+import com.luna.marvel.app.ui.screens.utils.AnimationState
 import com.luna.marvel.app.ui.screens.utils.rememberAnimationState
 import com.luna.marvel.app.ui.screens.utils.shimmer
 import kotlinx.coroutines.delay
 
 @Composable
-fun MenuScreen() {
+fun MenuScreen(
+    navigate: (Destination) -> Unit
+) {
 
     val menuAnimation = rememberAnimationState()
     var showShimmer by remember { mutableStateOf(true) }
 
-    LaunchedEffect(key1 = menuAnimation.animStateState.value) {
-        menuAnimation.animateScale(1000)
-    }
-
-    LaunchedEffect(key1 = menuAnimation.animStateState.value) {
-        menuAnimation.animateRotation(1000)
-    }
-
-    LaunchedEffect(key1 = Unit, block = {
-        delay(2000)
-        showShimmer = false
-    })
+    AnimationEffects(menuAnimation) { showShimmer = it }
 
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -79,42 +73,42 @@ fun MenuScreen() {
                 modifier = Modifier
                     .constrainAs(character) { characterConstraints(guideline50, comic) },
                 image = R.drawable.btn_characters,
-                onClick = "CHARACTERS BUTTON CLOCKED"::log
+                onClick = { navigate(CharsGraph.Characters) }
             )
 
             CircleButtonView(
                 modifier = Modifier
                     .constrainAs(comic) { comicsConstraints(guideline25, verticalCenter) },
                 image = R.drawable.btn_comics,
-                onClick = {}
+                onClick = { navigate(CharsGraph.Characters) }
             )
 
             CircleButtonView(
                 modifier = Modifier
                     .constrainAs(creator) { creatorsConstraints(guideline50, comic) },
                 image = R.drawable.btn_creators,
-                onClick = {}
+                onClick = { navigate(CharsGraph.Characters) }
             )
 
             CircleButtonView(
                 modifier = Modifier
                     .constrainAs(event) { eventConstraints(guideline64, series) },
                 image = R.drawable.btn_events,
-                onClick = {}
+                onClick = { navigate(CharsGraph.Characters) }
             )
 
             CircleButtonView(
                 modifier = Modifier
                     .constrainAs(series) { seriesConstraints(guideline75, verticalCenter) },
                 image = R.drawable.btn_series,
-                onClick = {}
+                onClick = { navigate(CharsGraph.Characters) }
             )
 
             CircleButtonView(
                 modifier = Modifier
                     .constrainAs(story) { storiesConstraints(guideline64, series) },
                 image = R.drawable.btn_stories,
-                onClick = {}
+                onClick = { navigate(CharsGraph.Characters) }
             )
 
         }
@@ -136,7 +130,7 @@ fun MenuScreen() {
                     .size(180.dp)
                     .clip(CircleShape)
                     .blur(48.dp)
-                    .shimmer(loading = true),
+                    .shimmer(loading = true, duration = 500),
                 shape = CircleShape
             ) {
             }
@@ -146,12 +140,13 @@ fun MenuScreen() {
 }
 
 
+
 @Preview(
     showSystemUi = true,
 )
 @Composable
 fun MenuPreview() {
     MaterialTheme {
-        MenuScreen()
+        MenuScreen {}
     }
 }

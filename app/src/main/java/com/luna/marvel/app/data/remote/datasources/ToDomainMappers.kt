@@ -51,7 +51,7 @@ fun RemoteUrl.toDomain(): Url =
 fun RemoteImage.toDomain(): Image =
     Image(
         extension = extension,
-        path = path
+        path = path.replace("p:", "ps:").plus(".$extension")
     )
 
 fun RemoteItems.toDomain(): Object =

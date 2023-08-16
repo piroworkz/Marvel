@@ -14,12 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
 import com.luna.marvel.app.ui.navigation.graphs.Destination
-import com.luna.marvel.app.ui.navigation.graphs.MainGraph
 import com.luna.marvel.app.ui.theme.Dimens
 import com.luna.marvel.app.ui.theme.MarvelTheme
 import com.luna.marvel.app.ui.theme.primary
-import com.luna.marvel.app.ui.theme.title
+import com.luna.marvel.app.ui.theme.titleMarvel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -39,7 +39,7 @@ fun AppTopBarView(
                     .padding(horizontal = Dimens.Size.medium),
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 1,
-                style = title
+                style = titleMarvel
             )
         },
         modifier = Modifier
@@ -63,6 +63,6 @@ fun AppTopBarView(
 @Composable
 fun AppTopBarPreview() {
     MarvelTheme {
-        AppTopBarView(MainGraph.Characters) {}
+        AppTopBarView(CharsGraph.Characters) {}
     }
 }

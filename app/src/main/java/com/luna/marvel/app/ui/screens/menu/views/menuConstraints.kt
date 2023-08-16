@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.menu
+package com.luna.marvel.app.ui.screens.menu.views
 
 import androidx.constraintlayout.compose.ConstrainScope
 import androidx.constraintlayout.compose.ConstrainedLayoutReference

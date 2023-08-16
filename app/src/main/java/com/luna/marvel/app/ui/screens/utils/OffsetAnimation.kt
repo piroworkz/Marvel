@@ -12,6 +12,11 @@ class OffsetAnimation(
     val animStateState: MutableState<AnimState>,
     val heightOffset: Animatable<Float, AnimationVector1D>,
 ) {
+
+    init {
+        finish()
+    }
+
     fun finish() {
         animStateState.value = FINISH
     }
