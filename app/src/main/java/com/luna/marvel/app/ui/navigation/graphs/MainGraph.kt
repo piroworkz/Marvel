@@ -7,7 +7,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import com.luna.marvel.app.ui.navigation.utils.Args
 
 
-
 sealed class MainGraph(
     route: String,
     title: Int? = null,
@@ -23,12 +22,6 @@ sealed class MainGraph(
         route = MENU,
         title = com.luna.marvel.R.string.top_bar_title_menu,
         icon = Icons.Rounded.Menu
-    )
-
-    data object Characters : MainGraph(
-        route = CHARACTERS,
-        title = com.luna.marvel.R.string.top_bar_title_characters,
-        icon = Icons.Outlined.ArrowBack
     )
 
     data object Comics : MainGraph(
@@ -64,7 +57,6 @@ sealed class MainGraph(
     companion object {
         private const val INIT = "INIT"
         private const val MENU = "MENU"
-        private const val CHARACTERS = "CHARACTERS"
         private const val COMICS = "COMICS"
         private const val CREATORS = "CREATORS"
         private const val EVENTS = "EVENTS"

@@ -19,7 +19,7 @@ sealed class SplashGraph(
     )
 
     companion object {
-        private const val INIT = "INIT"
+        private const val INIT = "SplashGraph"
         private const val SPLASH = "SPLASH"
     }
 }

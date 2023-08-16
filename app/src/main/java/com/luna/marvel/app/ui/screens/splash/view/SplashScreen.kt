@@ -14,6 +14,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.luna.marvel.R
+import com.luna.marvel.app.ui.application.log
 import com.luna.marvel.app.ui.screens.utils.AnimState
 import com.luna.marvel.app.ui.screens.utils.rememberOffsetAnimation
 import com.luna.marvel.app.ui.theme.MarvelTheme
@@ -24,7 +25,6 @@ fun SplashScreen(navigate: () -> Unit) {
     val screenHeight = LocalConfiguration.current.screenHeightDp
     val logoAnimation = rememberOffsetAnimation()
 
-    logoAnimation.finish()
 
     LaunchedEffect(key1 = logoAnimation.animStateState.value, block = {
         logoAnimation.animateHeight(

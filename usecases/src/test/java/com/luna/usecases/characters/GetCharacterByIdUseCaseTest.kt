@@ -2,6 +2,7 @@ package com.luna.usecases.characters
 
 import arrow.core.Either
 import com.google.common.truth.Truth
+import com.google.common.truth.Truth.*
 import com.luna.data.repositories.CharactersRepository
 import com.luna.testshared.fakeCharacters
 import com.luna.testshared.fakeError
@@ -14,7 +15,7 @@ import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.whenever
 
 @RunWith(MockitoJUnitRunner::class)
-class GetCharacterByIdUseCaseTest() {
+class GetCharacterByIdUseCaseTest {
 
     @Mock
     lateinit var repository: CharactersRepository
@@ -29,7 +30,7 @@ class GetCharacterByIdUseCaseTest() {
 
             val actual = getCharacterByIdUseCase(1)
 
-            Truth.assertThat(actual).isEqualTo(expected)
+            assertThat(actual).isEqualTo(expected)
         }
 
     @Test
@@ -40,7 +41,7 @@ class GetCharacterByIdUseCaseTest() {
 
             val actual = getCharacterByIdUseCase(1)
 
-            Truth.assertThat(actual).isEqualTo(expected)
+            assertThat(actual).isEqualTo(expected)
         }
 
 }

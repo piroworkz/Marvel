@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.menu
+package com.luna.marvel.app.ui.screens.menu.views
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

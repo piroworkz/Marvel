@@ -13,7 +13,7 @@ class RemoteCharactersDataSource @Inject constructor(private val service: Charac
 
     override suspend fun getCharacters(): Either<AppError, List<Character>> =
         tryCatch {
-            service.getCharacters().data.results.map { it.toDomain() }
+            service.getCharacters().data.results.map { it.toDomain() }.filter { !it.thumbnail.path.contains("image_not_available") }
         }
 
     override suspend fun getCharacterById(characterId: Int): Either<AppError, List<Character>> =
@@ -33,12 +33,12 @@ class RemoteCharactersDataSource @Inject constructor(private val service: Charac
 
     override suspend fun getCharacterSeriesById(characterId: Int): Either<AppError, List<Character>> =
         tryCatch {
-            service.getCharacterEventsById(characterId).data.results.map { it.toDomain() }
+            service.getCharacterSeriesById(characterId).data.results.map { it.toDomain() }
         }
 
     override suspend fun getCharacterStoriesById(characterId: Int): Either<AppError, List<Character>> =
         tryCatch {
-            service.getCharacterEventsById(characterId).data.results.map { it.toDomain() }
+            service.getCharacterStoriesById(characterId).data.results.map { it.toDomain() }
         }
 
 }

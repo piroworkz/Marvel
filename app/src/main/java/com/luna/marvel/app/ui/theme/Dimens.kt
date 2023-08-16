@@ -12,14 +12,15 @@ sealed interface Dimens {
         val large = 24.dp
         val xLarge = 32.dp
         val xxLarge = 48.dp
+        val loading = 128.dp
     }
 
     data object Shape : Dimens {
         val menuCard = CutCornerShape(
-            topStart = 0.dp,
+            topStart = Size.xxLarge,
             topEnd = 0.dp,
             bottomStart = 0.dp,
-            bottomEnd = Size.xLarge
+            bottomEnd = 0.dp
         )
     }
 }

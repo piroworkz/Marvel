@@ -2,10 +2,8 @@ package com.luna.marvel.app.ui.screens.utils
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector1D
-import androidx.compose.animation.core.AnimationVector2D
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.MutableState
-import androidx.compose.ui.geometry.Offset
 import com.luna.marvel.app.ui.screens.utils.AnimState.FINISH
 import com.luna.marvel.app.ui.screens.utils.AnimState.IDLE
 import com.luna.marvel.app.ui.screens.utils.AnimState.START
