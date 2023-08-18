@@ -12,7 +12,7 @@ data class Series(
     val description: String,
     val endYear: String,
     val events: Object,
-    val id: String,
+    val id: Int,
     val modified: String,
     val next: Item,
     val previous: Item,

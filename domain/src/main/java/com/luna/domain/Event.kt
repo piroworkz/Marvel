@@ -11,7 +11,7 @@ data class Event(
     val creators: Object,
     val description: String,
     val end: String,
-    val id: String,
+    val id: Int,
     val modified: String,
     val next: Item,
     val previous: Item,

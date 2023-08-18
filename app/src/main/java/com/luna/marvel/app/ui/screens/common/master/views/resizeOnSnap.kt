@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.characters.master.views
+package com.luna.marvel.app.ui.screens.common.master.views
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.pager.PagerState

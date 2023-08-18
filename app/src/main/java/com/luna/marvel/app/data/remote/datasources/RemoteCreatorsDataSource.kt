@@ -9,7 +9,7 @@ class RemoteCreatorsDataSource @Inject constructor(private val service: Creators
     CreatorsDataSource {
 
     override suspend fun getCreators() = tryCatch {
-        service.getCreators().data.results.map { it.toDomain() }
+        service.getCreators().data.results.map { it.toDomainMarvelItem() }
     }
 
     override suspend fun getCreatorById(creatorId: Int) = tryCatch {

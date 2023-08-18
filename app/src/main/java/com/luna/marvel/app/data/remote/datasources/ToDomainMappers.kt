@@ -1,5 +1,19 @@
 package com.luna.marvel.app.data.remote.datasources
 
+import com.luna.domain.Comic
+import com.luna.domain.Character
+import com.luna.domain.Creators
+import com.luna.domain.Event
+import com.luna.domain.MarvelItem
+import com.luna.domain.Series
+import com.luna.domain.Stories
+import com.luna.domain.common.Date
+import com.luna.domain.common.Image
+import com.luna.domain.common.Item
+import com.luna.domain.common.Object
+import com.luna.domain.common.Price
+import com.luna.domain.common.TextObject
+import com.luna.domain.common.Url
 import com.luna.marvel.app.data.remote.model.RemoteCharacter
 import com.luna.marvel.app.data.remote.model.RemoteComic
 import com.luna.marvel.app.data.remote.model.RemoteCreators
@@ -13,19 +27,51 @@ import com.luna.marvel.app.data.remote.model.common.RemoteItems
 import com.luna.marvel.app.data.remote.model.common.RemotePrice
 import com.luna.marvel.app.data.remote.model.common.RemoteTextObject
 import com.luna.marvel.app.data.remote.model.common.RemoteUrl
-import com.luna.domain.Character
-import com.luna.domain.Comic
-import com.luna.domain.Creators
-import com.luna.domain.Event
-import com.luna.domain.Series
-import com.luna.domain.Stories
-import com.luna.domain.common.Date
-import com.luna.domain.common.Image
-import com.luna.domain.common.Item
-import com.luna.domain.common.Object
-import com.luna.domain.common.Price
-import com.luna.domain.common.TextObject
-import com.luna.domain.common.Url
+
+fun RemoteCharacter.toDomainMarvelItem(): MarvelItem =
+    MarvelItem(
+        id = id,
+        name = name,
+        thumbnail = thumbnail.toDomain(),
+    )
+
+fun RemoteComic.toDomainMarvelItem(): MarvelItem =
+    MarvelItem(
+        id = id,
+        name = title,
+        thumbnail = thumbnail.toDomain(),
+    )
+
+fun RemoteCreators.toDomainMarvelItem(): MarvelItem =
+    MarvelItem(
+        id = id,
+        name = fullName,
+        thumbnail = thumbnail.toDomain(),
+    )
+
+fun RemoteEvent.toDomainMarvelItem(): MarvelItem =
+    MarvelItem(
+        id = id,
+        name = title,
+        thumbnail = thumbnail.toDomain(),
+    )
+
+
+fun RemoteSeries.toDomainMarvelItem(): MarvelItem =
+    MarvelItem(
+        id = id,
+        name = title,
+        thumbnail = thumbnail.toDomain(),
+    )
+
+
+fun RemoteStories.toDomainMarvelItem(): MarvelItem =
+    MarvelItem(
+        id = id,
+        name = title,
+        thumbnail = thumbnail.toDomain(),
+    )
+
 
 fun RemoteCharacter.toDomain(): Character =
     Character(

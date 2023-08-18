@@ -4,7 +4,7 @@ import arrow.core.Either
 import com.google.common.truth.Truth
 import com.luna.data.repositories.SeriesRepository
 import com.luna.testshared.fakeError
-import com.luna.testshared.fakeSeries
+import com.luna.testshared.fakeMarvelItem
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 import org.junit.Test
@@ -24,7 +24,7 @@ class GetSeriesUseCaseTest {
     @Test
     fun `on success getSeriesUseCase() should return a list of series on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeSeries)
+            val expected = Either.Right(fakeMarvelItem)
             whenever(repository.getSeries()).thenReturn(expected)
 
             val actual = getSeriesUseCase()

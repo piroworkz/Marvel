@@ -5,6 +5,7 @@ import com.google.common.truth.Truth
 import com.luna.data.sources.EventsDataSource
 import com.luna.testshared.fakeError
 import com.luna.testshared.fakeEvents
+import com.luna.testshared.fakeMarvelItem
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
@@ -29,7 +30,7 @@ class EventsRepositoryTest {
     @Test
     fun `getEvents should return a list of events on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeEvents)
+            val expected = Either.Right(fakeMarvelItem)
             whenever(remote.getEvents()).thenReturn(expected)
 
             val result = repository.getEvents()

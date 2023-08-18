@@ -69,10 +69,11 @@ dependencies {
     implementation(libs.ui.graphics)
     debugImplementation(libs.ui.tooling)
     implementation(libs.ui.tooling.preview)
-    implementation(libs.material3)
     implementation(libs.compose.navigation)
     implementation(libs.constraint.layout)
     implementation(libs.coil.compose)
+
+    implementation(libs.material3)
 
     implementation(libs.retrofit.gson)
     implementation(libs.retrofit)

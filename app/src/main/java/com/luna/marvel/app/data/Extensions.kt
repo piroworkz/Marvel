@@ -15,9 +15,12 @@ suspend fun <T> tryCatch(action: suspend () -> T): Either<AppError, T> = try {
     e.toAppError().left()
 }
 
-private fun Throwable.toAppError(): AppError {
+fun Throwable.toAppError(): AppError {
     return when (this) {
-        is HttpException -> AppError.NetworkError(message ?: "Hubo un error de comunicación, por favor intente más tarde.")
+        is HttpException -> AppError.NetworkError(
+            message ?: "Hubo un error de comunicación, por favor intente más tarde."
+        )
+
         is ConnectException -> AppError.NetworkError(message.toString())
         is SocketTimeoutException -> AppError.NetworkError("Hubo un error de comunicación, por favor intente más tarde.")
         is IOException -> AppError.NetworkError("Hubo un error de comunicación, por favor intente más tarde.")

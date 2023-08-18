@@ -5,6 +5,7 @@ import com.google.common.truth.Truth
 import com.luna.data.sources.CreatorsDataSource
 import com.luna.testshared.fakeCreators
 import com.luna.testshared.fakeError
+import com.luna.testshared.fakeMarvelItem
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
@@ -29,7 +30,7 @@ class CreatorsRepositoryTest {
     @Test
     fun `getCreators should return a list of creators on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeCreators)
+            val expected = Either.Right(fakeMarvelItem)
             whenever(remote.getCreators()).thenReturn(expected)
 
             val result = repository.getCreators()

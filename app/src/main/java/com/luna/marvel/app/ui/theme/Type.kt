@@ -24,18 +24,21 @@ val titleMarvel = TextStyle(
     fontFamily = marvelFamily,
     fontWeight = FontWeight.Black,
     fontSize = 32.sp,
+    color = secondary
 )
 
 val subTitleMarvel = TextStyle(
     fontFamily = marvelFamily,
     fontWeight = FontWeight.Bold,
     fontSize = 28.sp,
+    color = secondary
 )
 
 val bodyMarvel = TextStyle(
     fontFamily = marvelFamily,
     fontWeight = FontWeight.Normal,
     fontSize = 20.sp,
+    color = secondary
 )
 
 

@@ -9,7 +9,7 @@ class RemoteSeriesDataSource @Inject constructor(private val service: SeriesServ
     SeriesDataSource {
 
     override suspend fun getSeries() = tryCatch {
-        service.getSeries().data.results.map { it.toDomain() }
+        service.getSeries().data.results.map { it.toDomainMarvelItem() }
     }
 
     override suspend fun getSeriesById(seriesId: Int) = tryCatch {

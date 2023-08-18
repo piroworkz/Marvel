@@ -3,7 +3,6 @@ package com.luna.marvel.app.ui.navigation.utils
 import androidx.navigation.NavHostController
 import androidx.navigation.NavOptionsBuilder
 import com.luna.marvel.app.ui.navigation.graphs.Destination
-import com.luna.marvel.app.ui.navigation.graphs.SplashGraph
 
 fun NavHostController.navigateTo(
     destination: Destination,
