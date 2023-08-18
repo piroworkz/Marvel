@@ -10,7 +10,7 @@ data class RemoteStories(
     val creators: RemoteItems,
     val description: String,
     val events: RemoteItems,
-    val id: String,
+    val id: Int,
     val modified: String,
     val originalissue: RemoteItem,
     val resourceURI: String,

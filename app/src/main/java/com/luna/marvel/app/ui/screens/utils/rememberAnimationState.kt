@@ -33,7 +33,6 @@ fun rememberOffsetAnimation(
 @Composable
 fun AnimationEffects(
     menuAnimation: AnimationState,
-    showShimmer: (Boolean) -> Unit
 ) {
     LaunchedEffect(key1 = menuAnimation.animStateState.value) {
         menuAnimation.animateScale(1000)
@@ -42,9 +41,4 @@ fun AnimationEffects(
     LaunchedEffect(key1 = menuAnimation.animStateState.value) {
         menuAnimation.animateRotation(1000)
     }
-
-    LaunchedEffect(key1 = Unit, block = {
-        delay(1000)
-        showShimmer(false)
-    })
 }

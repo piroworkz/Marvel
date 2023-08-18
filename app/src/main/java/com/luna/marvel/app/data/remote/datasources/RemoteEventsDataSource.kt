@@ -9,7 +9,7 @@ class RemoteEventsDataSource @Inject constructor(private val service: EventsServ
     EventsDataSource {
 
     override suspend fun getEvents() = tryCatch {
-        service.getEvents().data.results.map { it.toDomain() }
+        service.getEvents().data.results.map { it.toDomainMarvelItem() }
     }
 
     override suspend fun getEventById(eventId: Int) = tryCatch {

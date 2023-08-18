@@ -12,7 +12,7 @@ data class RemoteSeries(
     val description: String,
     val endYear: String,
     val events: RemoteItems,
-    val id: String,
+    val id: Int,
     val modified: String,
     val next: RemoteItem,
     val previous: RemoteItem,

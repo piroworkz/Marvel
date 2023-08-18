@@ -20,7 +20,7 @@ data class RemoteComic(
     val ean: String,
     val events: RemoteItems,
     val format: String,
-    val id: String,
+    val id: Int,
     val images: List<RemoteImage>,
     val isbn: String,
     val issn: String,

@@ -8,7 +8,7 @@ data class Character(
     val comics: Object,
     val description: String,
     val events: Object,
-    val id: String,
+    val id: Int,
     val modified: String,
     val name: String,
     val resourceURI: String,

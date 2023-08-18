@@ -5,6 +5,7 @@ import com.google.common.truth.Truth
 import com.luna.data.repositories.CharactersRepository
 import com.luna.testshared.fakeCharacters
 import com.luna.testshared.fakeError
+import com.luna.testshared.fakeMarvelItem
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 import org.junit.Test
@@ -27,7 +28,7 @@ class GetCharactersUseCaseTest {
     @Test
     fun `on success getCharactersUseCase() should return a list of characters on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeCharacters)
+            val expected = Either.Right(fakeMarvelItem)
             whenever(repository.getCharacters()).thenReturn(expected)
 
             val actual = getCharactersUseCase()

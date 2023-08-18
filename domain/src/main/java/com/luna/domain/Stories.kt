@@ -10,7 +10,7 @@ data class Stories(
     val creators: Object,
     val description: String,
     val events: Object,
-    val id: String,
+    val id: Int,
     val modified: String,
     val originalissue: Item,
     val resourceURI: String,

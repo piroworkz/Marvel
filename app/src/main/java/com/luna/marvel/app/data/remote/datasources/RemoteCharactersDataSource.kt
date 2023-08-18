@@ -1,19 +1,21 @@
 package com.luna.marvel.app.data.remote.datasources
 
 import arrow.core.Either
-import com.luna.marvel.app.data.remote.services.CharactersService
-import com.luna.marvel.app.data.tryCatch
 import com.luna.data.sources.CharactersDataSource
 import com.luna.domain.AppError
 import com.luna.domain.Character
+import com.luna.domain.MarvelItem
+import com.luna.marvel.app.data.remote.services.CharactersService
+import com.luna.marvel.app.data.tryCatch
 import javax.inject.Inject
 
 class RemoteCharactersDataSource @Inject constructor(private val service: CharactersService) :
     CharactersDataSource {
 
-    override suspend fun getCharacters(): Either<AppError, List<Character>> =
+    override suspend fun getCharacters(): Either<AppError, List<MarvelItem>> =
         tryCatch {
-            service.getCharacters().data.results.map { it.toDomain() }.filter { !it.thumbnail.path.contains("image_not_available") }
+            service.getCharacters().data.results.map { it.toDomainMarvelItem() }
+                .filter { !it.thumbnail.path.contains("image_not_available") }
         }
 
     override suspend fun getCharacterById(characterId: Int): Either<AppError, List<Character>> =

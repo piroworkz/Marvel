@@ -5,6 +5,7 @@ import com.google.common.truth.Truth
 import com.luna.data.sources.ComicsDataSource
 import com.luna.testshared.fakeComics
 import com.luna.testshared.fakeError
+import com.luna.testshared.fakeMarvelItem
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 
@@ -31,7 +32,7 @@ class ComicsRepositoryTest {
     @Test
     fun `getComics should return a list of comics on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeComics)
+            val expected = Either.Right(fakeMarvelItem)
             whenever(remote.getComics()).thenReturn(expected)
 
             val result = repository.getComics()

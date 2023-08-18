@@ -20,7 +20,7 @@ data class Comic(
     val ean: String,
     val events: Object,
     val format: String,
-    val id: String,
+    val id: Int,
     val images: List<Image>,
     val isbn: String,
     val issn: String,

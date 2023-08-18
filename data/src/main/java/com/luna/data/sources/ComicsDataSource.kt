@@ -3,9 +3,10 @@ package com.luna.data.sources
 import arrow.core.Either
 import com.luna.domain.AppError
 import com.luna.domain.Comic
+import com.luna.domain.MarvelItem
 
 interface ComicsDataSource {
-    suspend fun getComics(): Either<AppError, List<Comic>>
+    suspend fun getComics(): Either<AppError, List<MarvelItem>>
 
     suspend fun getComicById(id: Int): Either<AppError, List<Comic>>
 

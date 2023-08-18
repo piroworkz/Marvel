@@ -1,7 +1,6 @@
 package com.luna.usecases.characters
 
 import arrow.core.Either
-import com.google.common.truth.Truth
 import com.google.common.truth.Truth.*
 import com.luna.data.repositories.CharactersRepository
 import com.luna.testshared.fakeCharacters

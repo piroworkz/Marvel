@@ -30,8 +30,8 @@ fun Navigator() {
         menuNavGraph(navController::navigateTo)
 
         charactersNavGraph(
-            navigate = { _, _ -> },
-            navigateUp = {}
+            navigate = navController::navigateTo,
+            navigateUp = { navController.popBackStack() }
         )
     }
 

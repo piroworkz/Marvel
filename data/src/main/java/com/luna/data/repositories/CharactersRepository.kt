@@ -4,11 +4,12 @@ import arrow.core.Either
 import com.luna.data.sources.CharactersDataSource
 import com.luna.domain.AppError
 import com.luna.domain.Character
+import com.luna.domain.MarvelItem
 import javax.inject.Inject
 
 class CharactersRepository @Inject constructor(private val remote: CharactersDataSource) {
 
-    suspend fun getCharacters(): Either<AppError, List<Character>> =
+    suspend fun getCharacters(): Either<AppError, List<MarvelItem>> =
         remote.getCharacters()
 
     suspend fun getCharacterById(characterId: Int): Either<AppError, List<Character>> =
