@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.comics.creators
+package com.luna.marvel.app.ui.screens.series.creators
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -7,7 +7,7 @@ import com.luna.domain.AppError
 import com.luna.domain.Creator
 import com.luna.marvel.app.data.toAppError
 import com.luna.marvel.app.ui.navigation.utils.Args
-import com.luna.usecases.comics.GetComicCreatorsByIdUseCase
+import com.luna.usecases.series.GetCreatorsBySeriesIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,11 +16,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ComicCreatorsViewModel @Inject constructor(
+class SeriesCreatorsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    private val getComicCreatorsByIdUseCase: GetComicCreatorsByIdUseCase
+    private val getCreatorsBySeriesIdUseCase: GetCreatorsBySeriesIdUseCase
 ) : ViewModel() {
-    private val comicId: Int = savedStateHandle.get<Int>(Args.ItemId.args.first) ?: 0
+
+    private val itemId: Int = savedStateHandle.get<Int>(Args.ItemId.args.first) ?: 0
 
     private val _state = MutableStateFlow(State())
     val state = _state.asStateFlow()
@@ -42,9 +43,16 @@ class ComicCreatorsViewModel @Inject constructor(
 
     private fun getComics() {
         dataDownload {
-            getComicCreatorsByIdUseCase(comicId).fold(
+            getCreatorsBySeriesIdUseCase(itemId).fold(
                 ifLeft = { _state.update { s -> s.copy(appError = it) } },
-                ifRight = { _state.update { s -> s.copy(characters = it, navigateUp = it.isEmpty()) } }
+                ifRight = {
+                    _state.update { s ->
+                        s.copy(
+                            characters = it,
+                            navigateUp = it.isEmpty()
+                        )
+                    }
+                }
             )
         }
     }
