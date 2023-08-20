@@ -18,7 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CharactersComicsViewModel @Inject constructor(
     private val getCharacterComicsByIdUseCase: GetCharacterComicsByIdUseCase,
-    private val savedStateHandle: SavedStateHandle
+    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     private val characterId: Int = savedStateHandle.get<Int>(Args.ItemId.args.first) ?: 0
 
@@ -26,20 +26,27 @@ class CharactersComicsViewModel @Inject constructor(
     val state = _state.asStateFlow()
 
     init {
-        getCharacters()
+        getComics()
     }
 
     data class State(
         val loading: Boolean = false,
         val appError: AppError? = null,
-        val comics: List<Comic> = emptyList()
+        val comics: List<Comic> = emptyList(),
+        val navigateUp: Boolean = false
     )
 
-    private fun getCharacters() {
+    fun toggleNavigateUp() {
+        _state.update { s -> s.copy(navigateUp = !s.navigateUp) }
+    }
+
+    private fun getComics() {
         dataDownload {
             getCharacterComicsByIdUseCase(characterId = characterId).fold(
                 ifLeft = { _state.update { s -> s.copy(appError = it) } },
-                ifRight = { _state.update { s -> s.copy(comics = it) } }
+                ifRight = {
+                    _state.update { s -> s.copy(comics = it, navigateUp = it.isEmpty()) }
+                }
             )
         }
     }

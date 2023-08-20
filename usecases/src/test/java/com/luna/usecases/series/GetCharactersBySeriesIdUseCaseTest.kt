@@ -1,7 +1,6 @@
 package com.luna.usecases.series
 
 import arrow.core.Either
-import com.google.common.truth.Truth
 import com.google.common.truth.Truth.assertThat
 import com.luna.data.repositories.SeriesRepository
 import com.luna.testshared.fakeCharacters

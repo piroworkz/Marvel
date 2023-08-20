@@ -14,41 +14,41 @@ sealed class CharsGraph(
 
     data object Characters : CharsGraph(
         route = CHARACTERS,
-        title = R.string.top_bar_title_characters,
+        title = R.string.title_characters,
         icon = Icons.Outlined.ArrowBack
     )
 
     data object CharacterDetail : CharsGraph(
         route = CHARACTER_DETAIL,
-        title = R.string.top_bar_title_characters,
+        title = R.string.title_characters,
         icon = Icons.Outlined.ArrowBack,
         args = listOf(Args.ItemId)
     )
 
     data object CharacterComics : CharsGraph(
         route = CHARACTER_COMICS,
-        title = R.string.top_bar_title_comics,
+        title = R.string.title_comics,
         icon = Icons.Outlined.ArrowBack,
         args = listOf(Args.ItemId)
     )
 
     data object CharacterEvents : CharsGraph(
         route = CHARACTER_EVENTS,
-        title = R.string.top_bar_title_events,
+        title = R.string.title_events,
         icon = Icons.Outlined.ArrowBack,
         args = listOf(Args.ItemId)
     )
 
     data object CharacterSeries : CharsGraph(
         route = CHARACTER_SERIES,
-        title = R.string.top_bar_title_series,
+        title = R.string.title_series,
         icon = Icons.Outlined.ArrowBack,
         args = listOf(Args.ItemId)
     )
 
     data object CharacterStories : CharsGraph(
         route = CHARACTER_STORIES,
-        title = R.string.top_bar_title_stories,
+        title = R.string.title_stories,
         icon = Icons.Outlined.ArrowBack,
         args = listOf(Args.ItemId)
     )

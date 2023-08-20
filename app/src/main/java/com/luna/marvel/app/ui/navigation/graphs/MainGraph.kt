@@ -26,31 +26,31 @@ sealed class MainGraph(
 
     data object Comics : MainGraph(
         route = COMICS,
-        title = com.luna.marvel.R.string.top_bar_title_comics,
+        title = com.luna.marvel.R.string.title_comics,
         icon = Icons.Outlined.ArrowBack
     )
 
     data object Creators : MainGraph(
         route = CREATORS,
-        title = com.luna.marvel.R.string.top_bar_title_creators,
+        title = com.luna.marvel.R.string.title_creators,
         icon = Icons.Outlined.ArrowBack
     )
 
     data object Events : MainGraph(
         route = EVENTS,
-        title = com.luna.marvel.R.string.top_bar_title_events,
+        title = com.luna.marvel.R.string.title_events,
         icon = Icons.Outlined.ArrowBack
     )
 
     data object Series : MainGraph(
         route = SERIES,
-        title = com.luna.marvel.R.string.top_bar_title_series,
+        title = com.luna.marvel.R.string.title_series,
         icon = Icons.Outlined.ArrowBack
     )
 
     data object Stories : MainGraph(
         route = STORIES,
-        title = com.luna.marvel.R.string.top_bar_title_stories,
+        title = com.luna.marvel.R.string.title_stories,
         icon = Icons.Outlined.ArrowBack
     )
 

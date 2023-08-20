@@ -7,7 +7,7 @@ import com.luna.domain.Creators
 import com.luna.domain.Event
 import com.luna.domain.MarvelItem
 import com.luna.domain.Series
-import com.luna.domain.Stories
+import com.luna.domain.Story
 import com.luna.domain.common.Date
 import com.luna.domain.common.Image
 import com.luna.domain.common.Item
@@ -142,7 +142,7 @@ val fakeSeries = (0..2).map {
 }
 
 val fakeStories = (0..2).map {
-    Stories(
+    Story(
         characters = fakeObject,
         comics = fakeObject,
         creators = fakeObject,

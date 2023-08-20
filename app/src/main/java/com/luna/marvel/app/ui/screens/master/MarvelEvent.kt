@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.common.master
+package com.luna.marvel.app.ui.screens.master
 
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 

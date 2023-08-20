@@ -7,7 +7,7 @@ import com.luna.domain.Comic
 import com.luna.domain.Event
 import com.luna.domain.MarvelItem
 import com.luna.domain.Series
-import com.luna.domain.Stories
+import com.luna.domain.Story
 
 interface CharactersDataSource {
     suspend fun getCharacters(): Either<AppError, List<MarvelItem>>
@@ -20,5 +20,5 @@ interface CharactersDataSource {
 
     suspend fun getCharacterSeriesById(characterId: Int): Either<AppError, List<Series>>
 
-    suspend fun getCharacterStoriesById(characterId: Int): Either<AppError, List<Stories>>
+    suspend fun getCharacterStoriesById(characterId: Int): Either<AppError, List<Story>>
 }

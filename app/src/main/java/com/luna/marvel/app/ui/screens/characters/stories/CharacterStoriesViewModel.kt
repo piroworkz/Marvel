@@ -1,13 +1,13 @@
-package com.luna.marvel.app.ui.screens.characters.detail
+package com.luna.marvel.app.ui.screens.characters.stories
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.luna.domain.AppError
-import com.luna.domain.Character
+import com.luna.domain.Story
 import com.luna.marvel.app.data.toAppError
 import com.luna.marvel.app.ui.navigation.utils.Args
-import com.luna.usecases.characters.GetCharacterByIdUseCase
+import com.luna.usecases.characters.GetCharacterStoriesByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,9 +16,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CharactersDetailViewModel @Inject constructor(
+class CharacterStoriesViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    private val getCharacterByIdUseCase: GetCharacterByIdUseCase
+    private val getCharacterStoriesByIdUseCase: GetCharacterStoriesByIdUseCase
 ) : ViewModel() {
 
     private val characterId: Int = savedStateHandle.get<Int>(Args.ItemId.args.first) ?: 0
@@ -27,27 +27,25 @@ class CharactersDetailViewModel @Inject constructor(
     val state = _state.asStateFlow()
 
     init {
-        getCharacterById()
+        getEvents()
     }
 
     data class State(
         val loading: Boolean = false,
         val appError: AppError? = null,
-        val character: Character? = null,
-        val navigateUp: Boolean = false,
+        val events: List<Story> = emptyList(),
+        val navigateUp: Boolean = false
     )
 
     fun toggleNavigateUp() {
         _state.update { s -> s.copy(navigateUp = !s.navigateUp) }
     }
 
-    private fun getCharacterById() {
+    private fun getEvents() {
         dataDownload {
-            getCharacterByIdUseCase(characterId).fold(
+            getCharacterStoriesByIdUseCase(characterId = characterId).fold(
                 ifLeft = { _state.update { s -> s.copy(appError = it) } },
-                ifRight = {
-                    _state.update { s -> s.copy(character = it.first(), navigateUp = it.isEmpty()) }
-                }
+                ifRight = { _state.update { s -> s.copy(events = it, navigateUp = it.isEmpty()) } }
             )
         }
     }

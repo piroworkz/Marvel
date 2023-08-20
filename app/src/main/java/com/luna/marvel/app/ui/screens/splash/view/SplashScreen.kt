@@ -46,7 +46,7 @@ fun SplashScreen(navigate: () -> Unit) {
 
         if (logoAnimation.animStateState.value == AnimState.IDLE) {
             showShimmer = true
-            delay(1000)
+            delay(500)
             showShimmer = false
             navigate()
         }

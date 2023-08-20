@@ -8,7 +8,7 @@ import com.luna.domain.Comic
 import com.luna.domain.Creators
 import com.luna.domain.Event
 import com.luna.domain.MarvelItem
-import com.luna.domain.Stories
+import com.luna.domain.Story
 import javax.inject.Inject
 
 class ComicsRepository @Inject constructor(private val remote: ComicsDataSource) {
@@ -28,7 +28,7 @@ class ComicsRepository @Inject constructor(private val remote: ComicsDataSource)
     suspend fun getComicEventsById(id: Int): Either<AppError, List<Event>> =
         remote.getComicEventsById(id)
 
-    suspend fun getComicStoriesById(id: Int): Either<AppError, List<Stories>> =
+    suspend fun getComicStoriesById(id: Int): Either<AppError, List<Story>> =
         remote.getComicStoriesById(id)
 
 }

@@ -29,3 +29,11 @@ fun Throwable.toAppError(): AppError {
         else -> AppError.UnknownError("Hubo un error de comunicación, por favor intente más tarde.")
     }
 }
+
+fun <E> List<E>?.ifNotEmpty(block: (List<E>) -> Unit) {
+    if (!this.isNullOrEmpty()) {
+        block(this)
+    } else {
+        return
+    }
+}

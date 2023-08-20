@@ -8,7 +8,7 @@ import com.luna.domain.Comic
 import com.luna.domain.Event
 import com.luna.domain.MarvelItem
 import com.luna.domain.Series
-import com.luna.domain.Stories
+import com.luna.domain.Story
 import com.luna.marvel.app.data.remote.services.CharactersService
 import com.luna.marvel.app.data.tryCatch
 import javax.inject.Inject
@@ -42,7 +42,7 @@ class RemoteCharactersDataSource @Inject constructor(private val service: Charac
             service.getCharacterSeriesById(characterId).data.results.map { it.toDomain() }
         }
 
-    override suspend fun getCharacterStoriesById(characterId: Int): Either<AppError, List<Stories>> =
+    override suspend fun getCharacterStoriesById(characterId: Int): Either<AppError, List<Story>> =
         tryCatch {
             service.getCharacterStoriesById(characterId).data.results.map { it.toDomain() }
         }

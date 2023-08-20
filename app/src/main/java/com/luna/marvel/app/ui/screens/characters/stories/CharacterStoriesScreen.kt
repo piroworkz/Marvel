@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.characters.comics
+package com.luna.marvel.app.ui.screens.characters.stories
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,13 +10,14 @@ import androidx.compose.material3.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.luna.domain.Comic
+import com.luna.domain.Story
 import com.luna.marvel.R
+import com.luna.marvel.app.data.ifNotEmpty
 import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
 import com.luna.marvel.app.ui.navigation.views.AppScaffoldView
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categoryListView
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categorySubTitle
-import com.luna.marvel.app.ui.screens.composables.lazy_views.images
+import com.luna.marvel.app.ui.screens.composables.lazy_views.descriptionJustifiedText
 import com.luna.marvel.app.ui.screens.composables.lazy_views.title
 import com.luna.marvel.app.ui.screens.composables.loading.LoadingView
 import com.luna.marvel.app.ui.theme.Dimens
@@ -24,13 +25,12 @@ import com.luna.marvel.app.ui.theme.MarvelTheme
 import com.luna.marvel.app.ui.theme.background
 
 @Composable
-fun CharactersComicsScreen(
-    state: CharactersComicsViewModel.State,
+fun CharacterStoriesScreen(
+    state: CharacterStoriesViewModel.State,
     navigateUp: () -> Unit
 ) {
-
     AppScaffoldView(
-        destination = CharsGraph.CharacterComics,
+        destination = CharsGraph.CharacterStories,
         onNavIconClicked = navigateUp
     ) {
         LazyVerticalGrid(
@@ -39,30 +39,35 @@ fun CharactersComicsScreen(
                 .fillMaxSize()
                 .padding(Dimens.Size.medium)
         ) {
-            if (state.comics.isNotEmpty()) {
-                state.comics.forEach { comic: Comic ->
+            if (state.events.isNotEmpty()) {
+                state.events.forEach { story: Story ->
 
-                    images(comic.images)
-                    title(comic.title)
+                    title(story.title)
+                    descriptionJustifiedText(story.description)
 
-                    if (comic.characters.items.isNotEmpty()) {
+                    story.characters.items.ifNotEmpty {
                         categorySubTitle(R.string.title_characters)
-                        categoryListView(comic.characters.items)
+                        categoryListView(it)
                     }
 
-                    if (comic.creators.items.isNotEmpty()) {
+                    story.comics.items.ifNotEmpty {
+                        categorySubTitle(R.string.title_comics)
+                        categoryListView(it)
+                    }
+
+                    story.creators.items.ifNotEmpty {
                         categorySubTitle(R.string.title_creators)
-                        categoryListView(comic.creators.items)
+                        categoryListView(it)
                     }
 
-                    if (comic.events.items.isNotEmpty()) {
-                        categorySubTitle(R.string.title_events)
-                        categoryListView(comic.events.items)
-                    }
-
-                    if (comic.stories.items.isNotEmpty()) {
+                    story.events.items.ifNotEmpty {
                         categorySubTitle(R.string.title_stories)
-                        categoryListView(comic.stories.items)
+                        categoryListView(it)
+                    }
+
+                    story.series.items.ifNotEmpty {
+                        categorySubTitle(R.string.title_stories)
+                        categoryListView(it)
                     }
 
                     item(span = { GridItemSpan(2) }) {
@@ -81,14 +86,13 @@ fun CharactersComicsScreen(
     }
 }
 
-
 @Preview
 @Composable
-fun CharactersComicsPreview() {
+fun CharacterStoriesPreview() {
     MarvelTheme {
-        CharactersComicsScreen(
-            state = CharactersComicsViewModel.State(),
-            navigateUp = { }
+        CharacterStoriesScreen(
+            state = CharacterStoriesViewModel.State(),
+            navigateUp = {}
         )
     }
 }
