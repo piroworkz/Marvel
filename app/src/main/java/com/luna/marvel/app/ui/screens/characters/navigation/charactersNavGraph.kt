@@ -33,7 +33,7 @@ fun NavGraphBuilder.charactersNavGraph(
         navComposable(CharsGraph.Characters) {
             val viewModel: CharactersViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            NavigateFromMasterChars(state, navigateUp, viewModel, navigate)
+            navigateFromMasterChars(state, navigateUp, viewModel, navigate)
             CharactersScreen(state = state, sendEvent = viewModel::sendEvent)
         }
 

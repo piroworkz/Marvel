@@ -10,6 +10,7 @@ class RemoteCreatorsDataSource @Inject constructor(private val service: Creators
 
     override suspend fun getCreators() = tryCatch {
         service.getCreators().data.results.map { it.toDomainMarvelItem() }
+            .filter { !it.thumbnail.path.contains("image_not_available") }
     }
 
     override suspend fun getCreatorById(creatorId: Int) = tryCatch {

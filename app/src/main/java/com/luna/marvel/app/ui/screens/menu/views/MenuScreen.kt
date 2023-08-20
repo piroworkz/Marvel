@@ -18,6 +18,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import com.luna.marvel.R
 import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
 import com.luna.marvel.app.ui.navigation.graphs.ComicsGraph
+import com.luna.marvel.app.ui.navigation.graphs.CreatorsGraph
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.screens.composables.ComicStripeBackgroundView
 import com.luna.marvel.app.ui.screens.utils.AnimState.START
@@ -71,7 +72,7 @@ fun MenuScreen(
                 modifier = Modifier
                     .constrainAs(creator) { creatorsConstraints(guideline50, comic) },
                 image = R.drawable.btn_creators,
-                onClick = { }
+                onClick = { navigate(CreatorsGraph.Creators) }
             )
 
             CircleButtonView(

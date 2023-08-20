@@ -1,12 +1,10 @@
 package com.luna.marvel.app.ui.screens.comics.navigation
 
-import androidx.compose.runtime.Composable
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.screens.comics.master.ComicsViewModel
 import com.luna.marvel.app.ui.screens.master.MarvelEvent
 
-@Composable
-fun NavigateFromMasterComics(
+fun navigateFromMasterComics(
     state: ComicsViewModel.State,
     navigateUp: () -> Unit,
     viewModel: ComicsViewModel,

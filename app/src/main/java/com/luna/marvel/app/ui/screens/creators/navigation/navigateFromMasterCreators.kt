@@ -1,13 +1,13 @@
-package com.luna.marvel.app.ui.screens.characters.navigation
+package com.luna.marvel.app.ui.screens.creators.navigation
 
 import com.luna.marvel.app.ui.navigation.graphs.Destination
-import com.luna.marvel.app.ui.screens.characters.master.CharactersViewModel
+import com.luna.marvel.app.ui.screens.creators.master.CreatorsViewModel
 import com.luna.marvel.app.ui.screens.master.MarvelEvent
 
-fun navigateFromMasterChars(
-    state: CharactersViewModel.State,
+fun navigateFromMasterCreators(
+    state: CreatorsViewModel.State,
     navigateUp: () -> Unit,
-    viewModel: CharactersViewModel,
+    viewModel: CreatorsViewModel,
     navigate: (Destination, List<Any>) -> Unit
 ) {
     if (state.navigateUp) {
