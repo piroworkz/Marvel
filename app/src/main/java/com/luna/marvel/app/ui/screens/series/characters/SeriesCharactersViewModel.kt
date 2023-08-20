@@ -1,13 +1,13 @@
-package com.luna.marvel.app.ui.screens.comics.creators
+package com.luna.marvel.app.ui.screens.series.characters
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.luna.domain.AppError
-import com.luna.domain.Creator
+import com.luna.domain.Character
 import com.luna.marvel.app.data.toAppError
 import com.luna.marvel.app.ui.navigation.utils.Args
-import com.luna.usecases.comics.GetComicCreatorsByIdUseCase
+import com.luna.usecases.series.GetCharactersBySeriesIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,11 +16,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ComicCreatorsViewModel @Inject constructor(
+class SeriesCharactersViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    private val getComicCreatorsByIdUseCase: GetComicCreatorsByIdUseCase
+    private val getCharactersBySeriesIdUseCase: GetCharactersBySeriesIdUseCase
 ) : ViewModel() {
-    private val comicId: Int = savedStateHandle.get<Int>(Args.ItemId.args.first) ?: 0
+
+    private val itemId: Int = savedStateHandle.get<Int>(Args.ItemId.args.first) ?: 0
 
     private val _state = MutableStateFlow(State())
     val state = _state.asStateFlow()
@@ -32,7 +33,7 @@ class ComicCreatorsViewModel @Inject constructor(
     data class State(
         val loading: Boolean = false,
         val appError: AppError? = null,
-        val characters: List<Creator> = emptyList(),
+        val characters: List<Character> = emptyList(),
         val navigateUp: Boolean = false
     )
 
@@ -42,9 +43,11 @@ class ComicCreatorsViewModel @Inject constructor(
 
     private fun getComics() {
         dataDownload {
-            getComicCreatorsByIdUseCase(comicId).fold(
+            getCharactersBySeriesIdUseCase(itemId).fold(
                 ifLeft = { _state.update { s -> s.copy(appError = it) } },
-                ifRight = { _state.update { s -> s.copy(characters = it, navigateUp = it.isEmpty()) } }
+                ifRight = {
+                    _state.update { s -> s.copy(characters = it, navigateUp = it.isEmpty()) }
+                }
             )
         }
     }
