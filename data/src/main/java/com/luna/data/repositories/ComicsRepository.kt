@@ -5,7 +5,7 @@ import com.luna.data.sources.ComicsDataSource
 import com.luna.domain.AppError
 import com.luna.domain.Character
 import com.luna.domain.Comic
-import com.luna.domain.Creators
+import com.luna.domain.Creator
 import com.luna.domain.Event
 import com.luna.domain.MarvelItem
 import com.luna.domain.Story
@@ -22,7 +22,7 @@ class ComicsRepository @Inject constructor(private val remote: ComicsDataSource)
     suspend fun getComicCharactersById(id: Int): Either<AppError, List<Character>> =
         remote.getComicCharactersById(id)
 
-    suspend fun getComicCreatorsById(id: Int): Either<AppError, List<Creators>> =
+    suspend fun getComicCreatorsById(id: Int): Either<AppError, List<Creator>> =
         remote.getComicCreatorsById(id)
 
     suspend fun getComicEventsById(id: Int): Either<AppError, List<Event>> =

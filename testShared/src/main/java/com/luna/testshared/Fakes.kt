@@ -3,7 +3,7 @@ package com.luna.testshared
 import com.luna.domain.AppError
 import com.luna.domain.Character
 import com.luna.domain.Comic
-import com.luna.domain.Creators
+import com.luna.domain.Creator
 import com.luna.domain.Event
 import com.luna.domain.MarvelItem
 import com.luna.domain.Series
@@ -195,7 +195,7 @@ val fakeComics = (0..2).map {
 }
 
 val fakeCreators = (0..2).map {
-    Creators(
+    Creator(
         comics = fakeObject,
         events = fakeObject,
         firstName = "Wilbur Graham",

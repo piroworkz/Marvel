@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.characters.events
+package com.luna.marvel.app.ui.screens.comics.events
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -10,25 +10,25 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.luna.domain.Event
 import com.luna.marvel.R
 import com.luna.marvel.app.data.ifNotEmpty
-import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
+import com.luna.marvel.app.ui.navigation.graphs.ComicsGraph
 import com.luna.marvel.app.ui.navigation.views.AppScaffoldView
-import com.luna.marvel.app.ui.screens.composables.lazy_views.whiteDivider
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categoryListView
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categorySubTitle
-import com.luna.marvel.app.ui.screens.composables.lazy_views.descriptionJustifiedText
 import com.luna.marvel.app.ui.screens.composables.lazy_views.image
 import com.luna.marvel.app.ui.screens.composables.lazy_views.title
+import com.luna.marvel.app.ui.screens.composables.lazy_views.whiteDivider
 import com.luna.marvel.app.ui.screens.composables.loading.LoadingView
 import com.luna.marvel.app.ui.theme.Dimens
 import com.luna.marvel.app.ui.theme.MarvelTheme
 
 @Composable
-fun CharacterEventsScreen(
-    state: CharacterEventsViewModel.State,
+fun ComicEventsScreen(
+    state: ComicEventsViewModel.State,
     navigateUp: () -> Unit
 ) {
+
     AppScaffoldView(
-        destination = CharsGraph.CharacterSeries,
+        destination = ComicsGraph.ComicsEvents,
         onNavIconClicked = navigateUp
     ) {
         LazyVerticalGrid(
@@ -37,12 +37,12 @@ fun CharacterEventsScreen(
                 .fillMaxSize()
                 .padding(Dimens.Size.medium)
         ) {
-            if (state.events.isNotEmpty()) {
-                state.events.forEach { event: Event ->
+            if (state.characters.isNotEmpty()) {
+                state.characters.forEach { event: Event ->
 
                     image(event.thumbnail.path)
+
                     title(event.title)
-                    descriptionJustifiedText(event.description)
 
                     event.characters.items.ifNotEmpty {
                         categorySubTitle(R.string.title_characters)
@@ -60,7 +60,7 @@ fun CharacterEventsScreen(
                     }
 
                     event.series.items.ifNotEmpty {
-                        categorySubTitle(R.string.title_stories)
+                        categorySubTitle(R.string.title_series)
                         categoryListView(it)
                     }
 
@@ -77,13 +77,12 @@ fun CharacterEventsScreen(
     }
 }
 
-
 @Preview
 @Composable
-fun CharacterEventsPreview() {
+fun ComicEventsPreview() {
     MarvelTheme {
-        CharacterEventsScreen(
-            state = CharacterEventsViewModel.State(),
+        ComicEventsScreen(
+            state = ComicEventsViewModel.State(),
             navigateUp = {}
         )
     }

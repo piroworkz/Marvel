@@ -1,11 +1,9 @@
 package com.luna.marvel.app.ui.navigation.graphs
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.luna.marvel.app.ui.navigation.utils.Args
-
 
 sealed class MainGraph(
     route: String,
@@ -24,43 +22,8 @@ sealed class MainGraph(
         icon = Icons.Rounded.Menu
     )
 
-    data object Comics : MainGraph(
-        route = COMICS,
-        title = com.luna.marvel.R.string.title_comics,
-        icon = Icons.Outlined.ArrowBack
-    )
-
-    data object Creators : MainGraph(
-        route = CREATORS,
-        title = com.luna.marvel.R.string.title_creators,
-        icon = Icons.Outlined.ArrowBack
-    )
-
-    data object Events : MainGraph(
-        route = EVENTS,
-        title = com.luna.marvel.R.string.title_events,
-        icon = Icons.Outlined.ArrowBack
-    )
-
-    data object Series : MainGraph(
-        route = SERIES,
-        title = com.luna.marvel.R.string.title_series,
-        icon = Icons.Outlined.ArrowBack
-    )
-
-    data object Stories : MainGraph(
-        route = STORIES,
-        title = com.luna.marvel.R.string.title_stories,
-        icon = Icons.Outlined.ArrowBack
-    )
-
     companion object {
         private const val INIT = "INIT"
         private const val MENU = "MENU"
-        private const val COMICS = "COMICS"
-        private const val CREATORS = "CREATORS"
-        private const val EVENTS = "EVENTS"
-        private const val SERIES = "SERIES"
-        private const val STORIES = "STORIES"
     }
 }

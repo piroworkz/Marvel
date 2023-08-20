@@ -1,33 +1,33 @@
-package com.luna.marvel.app.ui.screens.characters.detail
+package com.luna.marvel.app.ui.screens.comics.detail
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.luna.marvel.R
 import com.luna.marvel.app.data.ifNotEmpty
-import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
+import com.luna.marvel.app.ui.navigation.graphs.ComicsGraph
 import com.luna.marvel.app.ui.navigation.views.AppScaffoldView
-import com.luna.marvel.app.ui.screens.composables.lazy_views.whiteDivider
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categoryListView
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categorySubTitle
 import com.luna.marvel.app.ui.screens.composables.lazy_views.descriptionJustifiedText
-import com.luna.marvel.app.ui.screens.composables.lazy_views.image
+import com.luna.marvel.app.ui.screens.composables.lazy_views.images
+import com.luna.marvel.app.ui.screens.composables.lazy_views.whiteDivider
 import com.luna.marvel.app.ui.screens.composables.loading.LoadingView
 import com.luna.marvel.app.ui.theme.Dimens
+import com.luna.marvel.app.ui.theme.MarvelTheme
 
 @Composable
-fun CharactersDetailScreen(
-    state: CharactersDetailViewModel.State,
+fun ComicDetailScreen(
+    state: ComicDetailViewModel.State,
     navigateUp: () -> Unit
 ) {
 
     AppScaffoldView(
-        destination = CharsGraph.CharacterComics,
+        destination = ComicsGraph.ComicsDetail,
         onNavIconClicked = navigateUp
     ) {
         LazyVerticalGrid(
@@ -37,28 +37,29 @@ fun CharactersDetailScreen(
                 .padding(Dimens.Size.medium)
         ) {
 
-            state.character?.thumbnail?.path?.let { image(it) }
-
-            state.character?.description?.let {
-                descriptionJustifiedText(it)
+            state.comic?.images.ifNotEmpty { images ->
+                images(images)
             }
 
-            state.character?.comics?.items.ifNotEmpty {
+            state.comic?.description?.let {
+                val tagRegex = "<(.*?)>".toRegex()
+                descriptionJustifiedText(it.replace(tagRegex, ""))
+
+            }
+
+
+            state.comic?.characters?.items.ifNotEmpty {
                 categorySubTitle(R.string.title_comics)
                 categoryListView(it)
             }
 
-            state.character?.events?.items.ifNotEmpty {
+            state.comic?.events?.items.ifNotEmpty {
                 categorySubTitle(R.string.title_events)
                 categoryListView(it)
             }
 
-            state.character?.series?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_series)
-                categoryListView(it)
-            }
 
-            state.character?.stories?.items.ifNotEmpty {
+            state.comic?.stories?.items.ifNotEmpty {
                 categorySubTitle(R.string.title_stories)
                 categoryListView(it)
             }
@@ -71,10 +72,11 @@ fun CharactersDetailScreen(
 
 @Preview
 @Composable
-fun CharactersDetailPreview() {
-    MaterialTheme {
-        CharactersDetailScreen(
-            CharactersDetailViewModel.State()
-        ) {}
+fun ComicDetailPreview() {
+    MarvelTheme {
+        ComicDetailScreen(
+            state = ComicDetailViewModel.State(),
+            navigateUp = {}
+        )
     }
 }

@@ -4,7 +4,7 @@ import com.luna.domain.common.Image
 import com.luna.domain.common.Object
 import com.luna.domain.common.Url
 
-data class Creators(
+data class Creator(
     val comics: Object,
     val events: Object,
     val firstName: String,

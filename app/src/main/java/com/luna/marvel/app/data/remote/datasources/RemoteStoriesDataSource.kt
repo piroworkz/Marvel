@@ -5,7 +5,7 @@ import com.luna.data.sources.StoriesDataSource
 import com.luna.domain.AppError
 import com.luna.domain.Character
 import com.luna.domain.Comic
-import com.luna.domain.Creators
+import com.luna.domain.Creator
 import com.luna.domain.Event
 import com.luna.domain.MarvelItem
 import com.luna.domain.Series
@@ -33,7 +33,7 @@ class RemoteStoriesDataSource(private val service: StoriesService) : StoriesData
             service.getComicsByStoryId(storyId).data.results.map { it.toDomain() }
         }
 
-    override suspend fun getCreatorsByStoryId(storyId: Int): Either<AppError, List<Creators>> =
+    override suspend fun getCreatorsByStoryId(storyId: Int): Either<AppError, List<Creator>> =
         tryCatch {
             service.getCreatorsByStoryId(storyId).data.results.map { it.toDomain() }
         }

@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.luna.marvel.R
 import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
+import com.luna.marvel.app.ui.navigation.graphs.ComicsGraph
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.screens.composables.ComicStripeBackgroundView
 import com.luna.marvel.app.ui.screens.utils.AnimState.START
@@ -63,35 +64,35 @@ fun MenuScreen(
                 modifier = Modifier
                     .constrainAs(comic) { comicsConstraints(guideline25, verticalCenter) },
                 image = R.drawable.btn_comics,
-                onClick = { navigate(CharsGraph.Characters) }
+                onClick = { navigate(ComicsGraph.Comics) }
             )
 
             CircleButtonView(
                 modifier = Modifier
                     .constrainAs(creator) { creatorsConstraints(guideline50, comic) },
                 image = R.drawable.btn_creators,
-                onClick = { navigate(CharsGraph.Characters) }
+                onClick = { }
             )
 
             CircleButtonView(
                 modifier = Modifier
                     .constrainAs(event) { eventConstraints(guideline64, series) },
                 image = R.drawable.btn_events,
-                onClick = { navigate(CharsGraph.Characters) }
+                onClick = { }
             )
 
             CircleButtonView(
                 modifier = Modifier
                     .constrainAs(series) { seriesConstraints(guideline75, verticalCenter) },
                 image = R.drawable.btn_series,
-                onClick = { navigate(CharsGraph.Characters) }
+                onClick = { }
             )
 
             CircleButtonView(
                 modifier = Modifier
                     .constrainAs(story) { storiesConstraints(guideline64, series) },
                 image = R.drawable.btn_stories,
-                onClick = { navigate(CharsGraph.Characters) }
+                onClick = { }
             )
 
         }
