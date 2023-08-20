@@ -104,6 +104,8 @@ fun LazyGridScope.title(title: String) {
 
 
 fun LazyGridScope.image(path: String) {
+    if (path.isEmpty())
+        return
 
     item(span = { GridItemSpan(2) }) {
         val size = (LocalConfiguration.current.screenWidthDp.dp - Dimens.Size.xxLarge)
@@ -127,6 +129,8 @@ fun LazyGridScope.image(path: String) {
 }
 
 fun LazyGridScope.descriptionJustifiedText(text: String) {
+    if (text.isEmpty())
+        return
     item(span = { GridItemSpan(2) }) {
         Text(
             text = text,
@@ -136,6 +140,18 @@ fun LazyGridScope.descriptionJustifiedText(text: String) {
                 color = secondary,
                 textAlign = TextAlign.Justify
             )
+        )
+    }
+}
+
+fun LazyGridScope.whiteDivider() {
+    item(span = { GridItemSpan(2) }) {
+        Divider(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = Dimens.Size.medium),
+            thickness = Dimens.Size.small / 2,
+            color = background
         )
     }
 }

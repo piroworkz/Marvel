@@ -3,7 +3,7 @@ package com.luna.data.sources
 import arrow.core.Either
 import com.luna.domain.AppError
 import com.luna.domain.Comic
-import com.luna.domain.Creators
+import com.luna.domain.Creator
 import com.luna.domain.Event
 import com.luna.domain.MarvelItem
 import com.luna.domain.Series
@@ -13,7 +13,7 @@ interface CreatorsDataSource {
 
     suspend fun getCreators(): Either<AppError, List<MarvelItem>>
 
-    suspend fun getCreatorById(creatorId: Int): Either<AppError, List<Creators>>
+    suspend fun getCreatorById(creatorId: Int): Either<AppError, List<Creator>>
 
     suspend fun getComicsByCreatorId(creatorId: Int): Either<AppError, List<Comic>>
 

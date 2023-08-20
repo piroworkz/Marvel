@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.characters.events
+package com.luna.marvel.app.ui.screens.comics.creators
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -7,28 +7,29 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.luna.domain.Event
+import com.luna.domain.Creator
 import com.luna.marvel.R
 import com.luna.marvel.app.data.ifNotEmpty
-import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
+import com.luna.marvel.app.ui.navigation.graphs.ComicsGraph
 import com.luna.marvel.app.ui.navigation.views.AppScaffoldView
-import com.luna.marvel.app.ui.screens.composables.lazy_views.whiteDivider
+import com.luna.marvel.app.ui.screens.comics.events.ComicEventsViewModel
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categoryListView
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categorySubTitle
-import com.luna.marvel.app.ui.screens.composables.lazy_views.descriptionJustifiedText
 import com.luna.marvel.app.ui.screens.composables.lazy_views.image
 import com.luna.marvel.app.ui.screens.composables.lazy_views.title
+import com.luna.marvel.app.ui.screens.composables.lazy_views.whiteDivider
 import com.luna.marvel.app.ui.screens.composables.loading.LoadingView
 import com.luna.marvel.app.ui.theme.Dimens
 import com.luna.marvel.app.ui.theme.MarvelTheme
 
 @Composable
-fun CharacterEventsScreen(
-    state: CharacterEventsViewModel.State,
+fun ComicCreatorsScreen(
+    state: ComicCreatorsViewModel.State,
     navigateUp: () -> Unit
 ) {
+
     AppScaffoldView(
-        destination = CharsGraph.CharacterSeries,
+        destination = ComicsGraph.ComicsCreators,
         onNavIconClicked = navigateUp
     ) {
         LazyVerticalGrid(
@@ -37,34 +38,29 @@ fun CharacterEventsScreen(
                 .fillMaxSize()
                 .padding(Dimens.Size.medium)
         ) {
-            if (state.events.isNotEmpty()) {
-                state.events.forEach { event: Event ->
+            if (state.characters.isNotEmpty()) {
+                state.characters.forEach { creator: Creator ->
 
-                    image(event.thumbnail.path)
-                    title(event.title)
-                    descriptionJustifiedText(event.description)
+                    image(creator.thumbnail.path)
 
-                    event.characters.items.ifNotEmpty {
-                        categorySubTitle(R.string.title_characters)
-                        categoryListView(it)
-                    }
+                    title(creator.fullName)
 
-                    event.comics.items.ifNotEmpty {
+                    creator.comics.items.ifNotEmpty {
                         categorySubTitle(R.string.title_comics)
                         categoryListView(it)
                     }
 
-                    event.creators.items.ifNotEmpty {
-                        categorySubTitle(R.string.title_creators)
+                    creator.events.items.ifNotEmpty {
+                        categorySubTitle(R.string.title_events)
                         categoryListView(it)
                     }
 
-                    event.series.items.ifNotEmpty {
-                        categorySubTitle(R.string.title_stories)
+                    creator.series.items.ifNotEmpty {
+                        categorySubTitle(R.string.title_series)
                         categoryListView(it)
                     }
 
-                    event.stories.items.ifNotEmpty {
+                    creator.stories.items.ifNotEmpty {
                         categorySubTitle(R.string.title_stories)
                         categoryListView(it)
                     }
@@ -77,13 +73,12 @@ fun CharacterEventsScreen(
     }
 }
 
-
 @Preview
 @Composable
-fun CharacterEventsPreview() {
+fun ComicCreatorsPreview() {
     MarvelTheme {
-        CharacterEventsScreen(
-            state = CharacterEventsViewModel.State(),
+        com.luna.marvel.app.ui.screens.comics.events.ComicEventsScreen(
+            state = ComicEventsViewModel.State(),
             navigateUp = {}
         )
     }

@@ -10,6 +10,7 @@ class RemoteComicsDataSource @Inject constructor(private val service: ComicsServ
 
     override suspend fun getComics() = tryCatch {
         service.getComics().data.results.map { it.toDomainMarvelItem() }
+            .filter { !it.thumbnail.path.contains("image_not_available") }
     }
 
     override suspend fun getComicById(id: Int) = tryCatch {

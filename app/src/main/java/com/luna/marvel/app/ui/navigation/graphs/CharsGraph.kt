@@ -10,7 +10,9 @@ sealed class CharsGraph(
     route: String, title: Int? = null, icon: ImageVector? = null, args: List<Args> = emptyList()
 ) : Destination(route, title, icon, args) {
 
-    data object Init : CharsGraph(INIT)
+    data object Init : CharsGraph(
+        route = INIT
+    )
 
     data object Characters : CharsGraph(
         route = CHARACTERS,
