@@ -9,6 +9,7 @@ import com.luna.marvel.app.ui.navigation.utils.navigateTo
 import com.luna.marvel.app.ui.screens.characters.navigation.charactersNavGraph
 import com.luna.marvel.app.ui.screens.comics.navigation.comicsNavGraph
 import com.luna.marvel.app.ui.screens.creators.navigation.creatorsNavGraph
+import com.luna.marvel.app.ui.screens.events.navigation.eventsNavGraph
 import com.luna.marvel.app.ui.screens.menu.navigation.menuNavGraph
 import com.luna.marvel.app.ui.screens.splash.navigation.splashGraph
 
@@ -42,6 +43,11 @@ fun Navigator() {
         )
 
         creatorsNavGraph(
+            navigate = navController::navigateTo,
+            navigateUp = { navController.popBackStack() }
+        )
+
+        eventsNavGraph(
             navigate = navController::navigateTo,
             navigateUp = { navController.popBackStack() }
         )

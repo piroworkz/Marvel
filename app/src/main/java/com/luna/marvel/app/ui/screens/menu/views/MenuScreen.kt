@@ -20,6 +20,7 @@ import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
 import com.luna.marvel.app.ui.navigation.graphs.ComicsGraph
 import com.luna.marvel.app.ui.navigation.graphs.CreatorsGraph
 import com.luna.marvel.app.ui.navigation.graphs.Destination
+import com.luna.marvel.app.ui.navigation.graphs.EventsGraph
 import com.luna.marvel.app.ui.screens.composables.ComicStripeBackgroundView
 import com.luna.marvel.app.ui.screens.utils.AnimState.START
 import com.luna.marvel.app.ui.screens.utils.AnimationEffects
@@ -79,7 +80,7 @@ fun MenuScreen(
                 modifier = Modifier
                     .constrainAs(event) { eventConstraints(guideline64, series) },
                 image = R.drawable.btn_events,
-                onClick = { }
+                onClick = { navigate(EventsGraph.Events) }
             )
 
             CircleButtonView(
