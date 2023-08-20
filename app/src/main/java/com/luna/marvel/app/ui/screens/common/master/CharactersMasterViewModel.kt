@@ -35,10 +35,10 @@ class CharactersMasterViewModel @Inject constructor(
         val characterId: Int? = null
     )
 
-    fun sendEvent(event: CharacterEvent) {
+    fun sendEvent(event: MarvelEvent) {
         when (event) {
-            is CharacterEvent.NavigateTo -> setNavigate(event)
-            CharacterEvent.NavigateUp -> setNavigateUp()
+            is MarvelEvent.NavigateTo -> setNavigate(event)
+            MarvelEvent.NavigateUp -> setNavigateUp()
         }
     }
 
@@ -46,7 +46,7 @@ class CharactersMasterViewModel @Inject constructor(
         _state.update { s -> s.copy(navigateUp = !s.navigateUp) }
     }
 
-    private fun setNavigate(event: CharacterEvent.NavigateTo) {
+    private fun setNavigate(event: MarvelEvent.NavigateTo) {
         _state.update { s ->
             s.copy(
                 destination = event.destination,

@@ -28,7 +28,6 @@ import coil.compose.AsyncImage
 import com.luna.domain.common.Item
 import com.luna.marvel.R
 import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
-import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.navigation.views.AppScaffoldView
 import com.luna.marvel.app.ui.screens.composables.BulletText
 import com.luna.marvel.app.ui.theme.Dimens
@@ -38,7 +37,6 @@ import com.luna.marvel.app.ui.theme.secondary
 
 @Composable
 fun CharactersDetailScreen(
-    destination: Destination,
     state: CharactersDetailViewModel.State,
     navigateUp: () -> Unit
 ) {
@@ -46,7 +44,7 @@ fun CharactersDetailScreen(
     val height = (LocalConfiguration.current.screenWidthDp.dp - Dimens.Size.xxLarge)
 
     AppScaffoldView(
-        destination = destination,
+        destination = CharsGraph.CharacterDetail,
         onNavIconClicked = navigateUp
     ) {
         LazyVerticalGrid(
@@ -162,7 +160,6 @@ private fun LazyGridScope.itemsDetailList(list: List<String>) {
 fun CharactersDetailPreview() {
     MaterialTheme {
         CharactersDetailScreen(
-            CharsGraph.CharacterDetail,
             CharactersDetailViewModel.State()
         ) {}
     }

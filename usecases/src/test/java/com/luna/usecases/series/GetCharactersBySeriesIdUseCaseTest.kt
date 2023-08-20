@@ -2,9 +2,10 @@ package com.luna.usecases.series
 
 import arrow.core.Either
 import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import com.luna.data.repositories.SeriesRepository
+import com.luna.testshared.fakeCharacters
 import com.luna.testshared.fakeError
-import com.luna.testshared.fakeSeries
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 import org.junit.Test
@@ -22,14 +23,14 @@ class GetCharactersBySeriesIdUseCaseTest {
     private val getCharactersBySeriesIdUseCase by lazy { GetCharactersBySeriesIdUseCase(repository) }
 
     @Test
-    fun `on success getCharactersBySeriesIdUseCase() should return a list of series on the right side of either result`() =
+    fun `on success getCharactersBySeriesIdUseCase() should return a list of characters on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeSeries)
+            val expected = Either.Right(fakeCharacters)
             whenever(repository.getCharactersBySeriesId(1)).thenReturn(expected)
 
             val actual = getCharactersBySeriesIdUseCase(1)
 
-            Truth.assertThat(actual).isEqualTo(expected)
+            assertThat(actual).isEqualTo(expected)
         }
 
     @Test
@@ -40,7 +41,7 @@ class GetCharactersBySeriesIdUseCaseTest {
 
             val actual = getCharactersBySeriesIdUseCase(1)
 
-            Truth.assertThat(actual).isEqualTo(expected)
+            assertThat(actual).isEqualTo(expected)
         }
 
 }

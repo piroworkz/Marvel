@@ -2,7 +2,7 @@ package com.luna.marvel.app.ui.screens.characters.navigation
 
 import androidx.compose.runtime.Composable
 import com.luna.marvel.app.ui.navigation.graphs.Destination
-import com.luna.marvel.app.ui.screens.common.master.CharacterEvent
+import com.luna.marvel.app.ui.screens.common.master.MarvelEvent
 import com.luna.marvel.app.ui.screens.common.master.CharactersMasterViewModel
 
 @Composable
@@ -14,10 +14,10 @@ fun NavigateFromMasterChars(
 ) {
     if (state.navigateUp) {
         navigateUp()
-        viewModel.sendEvent(CharacterEvent.NavigateUp)
+        viewModel.sendEvent(MarvelEvent.NavigateUp)
     }
     state.destination?.let {
         navigate(it, listOf(state.characterId ?: ""))
-        viewModel.sendEvent(CharacterEvent.NavigateTo(null, null))
+        viewModel.sendEvent(MarvelEvent.NavigateTo(null, null))
     }
 }

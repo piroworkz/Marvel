@@ -4,38 +4,39 @@ import com.luna.marvel.R
 import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 
-sealed class AboutCharMenu(
-    val title: Int,
-    val destination: Destination? = null
-) {
-    data object Detail : AboutCharMenu(
+
+sealed class Character(
+    title: Int,
+    destination: Destination? = null
+) : AppMenu(title, destination) {
+
+    data object Detail : Character(
         title = R.string.btn_details,
         destination = CharsGraph.CharacterDetail
     )
 
-    data object Comics : AboutCharMenu(
-        title = R.string.btn_comics
+    data object Comics : Character(
+        title = R.string.btn_comics,
+        destination = CharsGraph.CharacterComics
     )
 
-    data object Events : AboutCharMenu(
+    data object Events : Character(
         title = R.string.btn_events
     )
 
-    data object Series : AboutCharMenu(
+    data object Series : Character(
         title = R.string.btn_series
     )
 
-    data object Stories : AboutCharMenu(
+    data object Stories : Character(
         title = R.string.btn_stories
     )
 
-    data object Characters : AboutCharMenu(
+    data object Characters : Character(
         title = R.string.btn_characters
     )
 
-    data object Creators : AboutCharMenu(
+    data object Creators : Character(
         title = R.string.btn_creators
     )
-
-
 }

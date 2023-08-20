@@ -4,7 +4,12 @@ import arrow.core.Either
 import com.google.common.truth.Truth
 import com.luna.data.sources.CharactersDataSource
 import com.luna.testshared.fakeCharacters
+import com.luna.testshared.fakeComics
 import com.luna.testshared.fakeError
+import com.luna.testshared.fakeEvents
+import com.luna.testshared.fakeMarvelItem
+import com.luna.testshared.fakeSeries
+import com.luna.testshared.fakeStories
 import com.luna.testshared.fakeUnknownError
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
@@ -31,8 +36,8 @@ class CharactersRepositoryUnitTest {
     @Test
     fun `getCharacters should return a list of characters on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeCharacters)
-            whenever(remote.getCharacters()).thenReturn(Either.Right(fakeCharacters))
+            val expected = Either.Right(fakeMarvelItem)
+            whenever(remote.getCharacters()).thenReturn(expected)
 
             val actual = repository.getCharacters()
 
@@ -75,8 +80,8 @@ class CharactersRepositoryUnitTest {
     @Test
     fun `getCharacterComicsById should return a list of characters on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeCharacters)
-            whenever(remote.getCharacterComicsById(1)).thenReturn(Either.Right(fakeCharacters))
+            val expected = Either.Right(fakeComics)
+            whenever(remote.getCharacterComicsById(1)).thenReturn(expected)
 
             val actual = repository.getCharacterComicsById(1)
 
@@ -97,8 +102,8 @@ class CharactersRepositoryUnitTest {
     @Test
     fun `getCharacterEventsById should return a list of characters on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeCharacters)
-            whenever(remote.getCharacterEventsById(1)).thenReturn(Either.Right(fakeCharacters))
+            val expected = Either.Right(fakeEvents)
+            whenever(remote.getCharacterEventsById(1)).thenReturn(expected)
 
             val actual = repository.getCharacterEventsById(1)
 
@@ -119,8 +124,8 @@ class CharactersRepositoryUnitTest {
     @Test
     fun `getCharacterSeriesById should return a list of characters on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeCharacters)
-            whenever(remote.getCharacterSeriesById(1)).thenReturn(Either.Right(fakeCharacters))
+            val expected = Either.Right(fakeSeries)
+            whenever(remote.getCharacterSeriesById(1)).thenReturn(expected)
 
             val actual = repository.getCharacterSeriesById(1)
 
@@ -141,8 +146,8 @@ class CharactersRepositoryUnitTest {
     @Test
     fun `getCharacterStoriesById should return a list of characters on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeCharacters)
-            whenever(remote.getCharacterStoriesById(1)).thenReturn(Either.Right(fakeCharacters))
+            val expected = Either.Right(fakeStories)
+            whenever(remote.getCharacterStoriesById(1)).thenReturn(expected)
 
             val actual = repository.getCharacterStoriesById(1)
 

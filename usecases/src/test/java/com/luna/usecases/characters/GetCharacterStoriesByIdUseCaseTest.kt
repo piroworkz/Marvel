@@ -3,8 +3,8 @@ package com.luna.usecases.characters
 import arrow.core.Either
 import com.google.common.truth.Truth
 import com.luna.data.repositories.CharactersRepository
-import com.luna.testshared.fakeCharacters
 import com.luna.testshared.fakeError
+import com.luna.testshared.fakeStories
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 import org.junit.Test
@@ -26,7 +26,7 @@ class GetCharacterStoriesByIdUseCaseTest {
     @Test
     fun `on success getCharacterStoriesByIdUseCase() should return a list of characters on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeCharacters)
+            val expected = Either.Right(fakeStories)
             whenever(repository.getCharacterStoriesById(1)).thenReturn(expected)
 
             val actual = getCharacterStoriesByIdUseCase(1)

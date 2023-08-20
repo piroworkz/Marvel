@@ -3,8 +3,8 @@ package com.luna.usecases.stories
 import arrow.core.Either
 import com.google.common.truth.Truth
 import com.luna.data.repositories.StoriesRepository
+import com.luna.testshared.fakeComics
 import com.luna.testshared.fakeError
-import com.luna.testshared.fakeStories
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 import org.junit.Test
@@ -22,9 +22,9 @@ class GetComicsByStoryIdUseCaseTest {
     private val getComicsByStoryIdUseCase by lazy { GetComicsByStoryIdUseCase(repository) }
 
     @Test
-    fun `on success getComicsByStoryIdUseCase() should return a list of stories on the right side of either result`() =
+    fun `on success getComicsByStoryIdUseCase() should return a list of comics on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeStories)
+            val expected = Either.Right(fakeComics)
             whenever(repository.getComicsByStoryId(1)).thenReturn(expected)
 
             val actual = getComicsByStoryIdUseCase(1)
