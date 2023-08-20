@@ -33,7 +33,7 @@ fun NavGraphBuilder.comicsNavGraph(
         navComposable(ComicsGraph.Comics) {
             val viewModel: ComicsViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            NavigateFromMasterComics(state, navigateUp, viewModel, navigate)
+            navigateFromMasterComics(state, navigateUp, viewModel, navigate)
             ComicsScreen(
                 state = state,
                 sendEvent = viewModel::sendEvent
