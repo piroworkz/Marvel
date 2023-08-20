@@ -14,7 +14,7 @@ data class RemoteComic(
     val collections: List<RemoteItem>,
     val creators: RemoteItems,
     val dates: List<RemoteDate>,
-    val description: String,
+    val description: String?,
     val diamondCode: String,
     val digitalId: String,
     val ean: String,

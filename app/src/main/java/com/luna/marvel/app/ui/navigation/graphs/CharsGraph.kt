@@ -27,28 +27,28 @@ sealed class CharsGraph(
 
     data object CharacterComics : CharsGraph(
         route = CHARACTER_COMICS,
-        title = R.string.top_bar_title_characters,
+        title = R.string.top_bar_title_comics,
         icon = Icons.Outlined.ArrowBack,
         args = listOf(Args.ItemId)
     )
 
     data object CharacterEvents : CharsGraph(
         route = CHARACTER_EVENTS,
-        title = R.string.top_bar_title_characters,
+        title = R.string.top_bar_title_events,
         icon = Icons.Outlined.ArrowBack,
         args = listOf(Args.ItemId)
     )
 
     data object CharacterSeries : CharsGraph(
         route = CHARACTER_SERIES,
-        title = R.string.top_bar_title_characters,
+        title = R.string.top_bar_title_series,
         icon = Icons.Outlined.ArrowBack,
         args = listOf(Args.ItemId)
     )
 
     data object CharacterStories : CharsGraph(
         route = CHARACTER_STORIES,
-        title = R.string.top_bar_title_characters,
+        title = R.string.top_bar_title_stories,
         icon = Icons.Outlined.ArrowBack,
         args = listOf(Args.ItemId)
     )

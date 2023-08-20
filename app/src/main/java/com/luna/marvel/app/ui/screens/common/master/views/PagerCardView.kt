@@ -47,7 +47,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.luna.marvel.app.ui.application.log
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.screens.common.master.fakeChars
 import com.luna.marvel.app.ui.theme.Dimens
@@ -57,18 +56,12 @@ import com.luna.marvel.app.ui.theme.onBackground
 import com.luna.marvel.app.ui.theme.onPrimary
 import com.luna.marvel.app.ui.theme.primary
 
-private val menuAboutMenus = listOf(
-    AboutCharMenu.Detail,
-    AboutCharMenu.Comics,
-    AboutCharMenu.Events,
-    AboutCharMenu.Series,
-    AboutCharMenu.Stories
-)
 
 @Composable
 @OptIn(ExperimentalFoundationApi::class)
 fun PagerCardView(
     title: String?,
+    menu: List<AppMenu>,
     imagePath: String?,
     pagerState: PagerState,
     page: Int,
@@ -163,7 +156,7 @@ fun PagerCardView(
                                 color = background
                             )
                         )
-                        menuAboutMenus.forEach { menu: AboutCharMenu ->
+                        menu.forEach { menu: AppMenu ->
                             TextButton(menu, onClick)
                         }
                     }
@@ -175,11 +168,10 @@ fun PagerCardView(
 
 @Composable
 private fun TextButton(
-    menu: AboutCharMenu,
+    menu: AppMenu,
     onClick: (Destination?) -> Unit
 ) {
     TextButton(onClick = {
-        menu.javaClass.simpleName.log("Clicked button")
         onClick(menu.destination)
     }) {
         Text(
@@ -206,6 +198,7 @@ fun PagePreview() {
     MarvelTheme {
         PagerCardView(
             title = item.name,
+            characterMenu,
             imagePath = item.thumbnail.path,
             pagerState = pagerState,
             page = 0,

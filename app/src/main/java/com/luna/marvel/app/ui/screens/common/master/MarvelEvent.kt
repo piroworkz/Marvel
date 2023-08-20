@@ -2,8 +2,8 @@ package com.luna.marvel.app.ui.screens.common.master
 
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 
-sealed class CharacterEvent {
-    data object NavigateUp : CharacterEvent()
+sealed class MarvelEvent {
+    data object NavigateUp : MarvelEvent()
     data class NavigateTo(val destination: Destination?, val itemId: Int?) :
-        CharacterEvent()
+        MarvelEvent()
 }

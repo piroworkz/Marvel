@@ -23,8 +23,11 @@ import com.luna.domain.MarvelItem
 import com.luna.domain.common.Image
 import com.luna.marvel.R
 import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
+import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.navigation.views.AppScaffoldView
+import com.luna.marvel.app.ui.screens.common.master.views.AppMenu
 import com.luna.marvel.app.ui.screens.common.master.views.PagerCardView
+import com.luna.marvel.app.ui.screens.common.master.views.characterMenu
 import com.luna.marvel.app.ui.screens.loading.LoadingView
 import com.luna.marvel.app.ui.theme.Dimens
 import com.luna.marvel.app.ui.theme.MarvelTheme
@@ -32,16 +35,18 @@ import com.luna.marvel.app.ui.theme.MarvelTheme
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CharactersMasterScreen(
+    destination: Destination?,
+    menu: List<AppMenu>,
     items: List<MarvelItem>,
-    sendEvent: (CharacterEvent) -> Unit
+    sendEvent: (MarvelEvent) -> Unit
 ) {
     val height = (LocalConfiguration.current.screenHeightDp * .17F).dp
     val pagerState: PagerState =
         rememberPagerState(pageCount = { if (items.isEmpty()) 1 else items.count() })
 
     AppScaffoldView(
-        destination = CharsGraph.Characters,
-        onNavIconClicked = { sendEvent(CharacterEvent.NavigateUp) }
+        destination = destination,
+        onNavIconClicked = { sendEvent(MarvelEvent.NavigateUp) }
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -66,12 +71,13 @@ fun CharactersMasterScreen(
                     if (items.isNotEmpty()) items[index] else null
                 PagerCardView(
                     title = item?.name,
+                    menu = menu,
                     imagePath = item?.thumbnail?.path,
                     pagerState = pagerState,
                     page = index,
                     onClick = {
                         sendEvent(
-                            CharacterEvent.NavigateTo(
+                            MarvelEvent.NavigateTo(
                                 destination = it,
                                 itemId = item?.id
                             )
@@ -97,7 +103,11 @@ fun CharactersMasterScreen(
 @Composable
 fun CharactersMasterPreview() {
     MarvelTheme {
-        CharactersMasterScreen(fakeChars) {}
+        CharactersMasterScreen(
+            destination = CharsGraph.CharacterDetail,
+            characterMenu,
+            fakeChars
+        ) {}
     }
 }
 

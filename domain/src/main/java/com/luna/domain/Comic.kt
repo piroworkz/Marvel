@@ -14,7 +14,7 @@ data class Comic(
     val collections: List<Item>,
     val creators: Object,
     val dates: List<Date>,
-    val description: String,
+    val description: String?,
     val diamondCode: String,
     val digitalId: String,
     val ean: String,

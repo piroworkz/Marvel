@@ -4,7 +4,7 @@ import arrow.core.Either
 import com.google.common.truth.Truth
 import com.luna.data.repositories.SeriesRepository
 import com.luna.testshared.fakeError
-import com.luna.testshared.fakeSeries
+import com.luna.testshared.fakeEvents
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 import org.junit.Test
@@ -22,9 +22,9 @@ class GetEventsBySeriesIdUseCaseTest {
     private val getEventsBySeriesIdUseCase by lazy { GetEventsBySeriesIdUseCase(repository) }
 
     @Test
-    fun `on success getEventsBySeriesIdUseCase() should return a list of series on the right side of either result`() =
+    fun `on success getEventsBySeriesIdUseCase() should return a list of events on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeSeries)
+            val expected = Either.Right(fakeEvents)
             whenever(repository.getEventsBySeriesId(1)).thenReturn(expected)
 
             val actual = getEventsBySeriesIdUseCase(1)

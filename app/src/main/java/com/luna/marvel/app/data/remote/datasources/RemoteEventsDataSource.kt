@@ -1,8 +1,8 @@
 package com.luna.marvel.app.data.remote.datasources
 
+import com.luna.data.sources.EventsDataSource
 import com.luna.marvel.app.data.remote.services.EventsService
 import com.luna.marvel.app.data.tryCatch
-import com.luna.data.sources.EventsDataSource
 import javax.inject.Inject
 
 class RemoteEventsDataSource @Inject constructor(private val service: EventsService) :

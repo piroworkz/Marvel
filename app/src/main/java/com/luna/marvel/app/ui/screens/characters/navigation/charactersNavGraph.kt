@@ -8,10 +8,13 @@ import androidx.navigation.navigation
 import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.navigation.utils.navComposable
+import com.luna.marvel.app.ui.screens.characters.comics.CharactersComicsScreen
+import com.luna.marvel.app.ui.screens.characters.comics.CharactersComicsViewModel
 import com.luna.marvel.app.ui.screens.characters.detail.CharactersDetailScreen
 import com.luna.marvel.app.ui.screens.characters.detail.CharactersDetailViewModel
 import com.luna.marvel.app.ui.screens.common.master.CharactersMasterScreen
 import com.luna.marvel.app.ui.screens.common.master.CharactersMasterViewModel
+import com.luna.marvel.app.ui.screens.common.master.views.characterMenu
 
 fun NavGraphBuilder.charactersNavGraph(
     navigate: (Destination, List<Any>) -> Unit,
@@ -27,6 +30,8 @@ fun NavGraphBuilder.charactersNavGraph(
             val state by viewModel.state.collectAsState()
             NavigateFromMasterChars(state, navigateUp, viewModel, navigate)
             CharactersMasterScreen(
+                destination = CharsGraph.Characters,
+                menu = characterMenu,
                 items = state.characters,
                 sendEvent = viewModel::sendEvent
             )
@@ -36,7 +41,15 @@ fun NavGraphBuilder.charactersNavGraph(
             val viewModel: CharactersDetailViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
             CharactersDetailScreen(
-                destination = CharsGraph.CharacterDetail,
+                state = state,
+                navigateUp = navigateUp
+            )
+        }
+
+        navComposable(CharsGraph.CharacterComics) {
+            val viewModel: CharactersComicsViewModel = hiltViewModel()
+            val state by viewModel.state.collectAsState()
+            CharactersComicsScreen(
                 state = state,
                 navigateUp = navigateUp
             )

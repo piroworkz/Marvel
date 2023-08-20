@@ -3,9 +3,14 @@ package com.luna.data.repositories
 import arrow.core.Either
 import com.google.common.truth.Truth
 import com.luna.data.sources.SeriesDataSource
+import com.luna.testshared.fakeCharacters
+import com.luna.testshared.fakeComics
+import com.luna.testshared.fakeCreators
 import com.luna.testshared.fakeError
+import com.luna.testshared.fakeEvents
 import com.luna.testshared.fakeMarvelItem
 import com.luna.testshared.fakeSeries
+import com.luna.testshared.fakeStories
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 import org.junit.Before
@@ -73,9 +78,9 @@ class SeriesRepositoryTest {
         }
 
     @Test
-    fun `on success getCharactersBySeriesId should return a list of series on the right side of either result`() =
+    fun `on success getCharactersBySeriesId should return a list of characters on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeSeries)
+            val expected = Either.Right(fakeCharacters)
             whenever(remote.getCharactersBySeriesId(1)).thenReturn(expected)
 
             val actual = repository.getCharactersBySeriesId(1)
@@ -95,9 +100,9 @@ class SeriesRepositoryTest {
         }
 
     @Test
-    fun `on success getComicsBySeriesId should return a list of series on the right side of either result`() =
+    fun `on success getComicsBySeriesId should return a list of comics on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeSeries)
+            val expected = Either.Right(fakeComics)
             whenever(remote.getComicsBySeriesId(1)).thenReturn(expected)
 
             val actual = repository.getComicsBySeriesId(1)
@@ -117,9 +122,9 @@ class SeriesRepositoryTest {
         }
 
     @Test
-    fun `on success getCreatorsBySeriesId should return a list of series on the right side of either result`() =
+    fun `on success getCreatorsBySeriesId should return a list of creators on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeSeries)
+            val expected = Either.Right(fakeCreators)
             whenever(remote.getCreatorsBySeriesId(1)).thenReturn(expected)
 
             val actual = repository.getCreatorsBySeriesId(1)
@@ -139,9 +144,9 @@ class SeriesRepositoryTest {
         }
 
     @Test
-    fun `on success getEventsBySeriesId should return a list of series on the right side of either result`() =
+    fun `on success getEventsBySeriesId should return a list of events on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeSeries)
+            val expected = Either.Right(fakeEvents)
             whenever(remote.getEventsBySeriesId(1)).thenReturn(expected)
 
             val actual = repository.getEventsBySeriesId(1)
@@ -161,9 +166,9 @@ class SeriesRepositoryTest {
         }
 
     @Test
-    fun `on success getStoriesBySeriesId should return a list of series on the right side of either result`() =
+    fun `on success getStoriesBySeriesId should return a list of stories on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeSeries)
+            val expected = Either.Right(fakeStories)
             whenever(remote.getStoriesBySeriesId(1)).thenReturn(expected)
 
             val actual = repository.getStoriesBySeriesId(1)
