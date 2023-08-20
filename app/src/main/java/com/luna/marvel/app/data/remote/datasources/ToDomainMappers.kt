@@ -6,7 +6,7 @@ import com.luna.domain.Creators
 import com.luna.domain.Event
 import com.luna.domain.MarvelItem
 import com.luna.domain.Series
-import com.luna.domain.Stories
+import com.luna.domain.Story
 import com.luna.domain.common.Date
 import com.luna.domain.common.Image
 import com.luna.domain.common.Item
@@ -69,7 +69,7 @@ fun RemoteStories.toDomainMarvelItem(): MarvelItem =
     MarvelItem(
         id = id,
         name = title,
-        thumbnail = thumbnail.toDomain(),
+        thumbnail = thumbnail?.toDomain()!!,
     )
 
 
@@ -219,8 +219,8 @@ fun RemoteSeries.toDomain(): Series =
         events = events.toDomain(),
         id = id,
         modified = modified,
-        next = next.toDomain(),
-        previous = previous.toDomain(),
+        next = next?.toDomain(),
+        previous = previous?.toDomain(),
         rating = rating,
         resourceURI = resourceURI,
         startYear = startYear,
@@ -230,7 +230,7 @@ fun RemoteSeries.toDomain(): Series =
         urls = urls.map { it.toDomain() }
     )
 
-fun RemoteStories.toDomain(): Stories = Stories(
+fun RemoteStories.toDomain(): Story = Story(
     characters = characters.toDomain(),
     comics = comics.toDomain(),
     creators = creators.toDomain(),
@@ -238,10 +238,10 @@ fun RemoteStories.toDomain(): Stories = Stories(
     events = events.toDomain(),
     id = id,
     modified = modified,
-    originalissue = originalissue.toDomain(),
+    originalissue = originalissue?.toDomain(),
     resourceURI = resourceURI,
     series = series.toDomain(),
-    thumbnail = thumbnail.toDomain(),
+    thumbnail = thumbnail?.toDomain() ?: Image("", ""),
     title = title,
     type = type
 )

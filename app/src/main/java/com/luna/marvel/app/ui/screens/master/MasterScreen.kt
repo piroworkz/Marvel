@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.common.master
+package com.luna.marvel.app.ui.screens.master
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -25,16 +25,16 @@ import com.luna.marvel.R
 import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.navigation.views.AppScaffoldView
-import com.luna.marvel.app.ui.screens.common.master.views.AppMenu
-import com.luna.marvel.app.ui.screens.common.master.views.PagerCardView
-import com.luna.marvel.app.ui.screens.common.master.views.characterMenu
-import com.luna.marvel.app.ui.screens.loading.LoadingView
+import com.luna.marvel.app.ui.navigation.menus.AppMenu
+import com.luna.marvel.app.ui.screens.master.views.PagerCardView
+import com.luna.marvel.app.ui.navigation.menus.characterMenu
+import com.luna.marvel.app.ui.screens.composables.loading.LoadingView
 import com.luna.marvel.app.ui.theme.Dimens
 import com.luna.marvel.app.ui.theme.MarvelTheme
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun CharactersMasterScreen(
+fun MasterScreen(
     destination: Destination?,
     menu: List<AppMenu>,
     items: List<MarvelItem>,
@@ -96,14 +96,13 @@ fun CharactersMasterScreen(
         }
         LoadingView(loading = items.isEmpty())
     }
-
 }
 
 @Preview
 @Composable
 fun CharactersMasterPreview() {
     MarvelTheme {
-        CharactersMasterScreen(
+        MasterScreen(
             destination = CharsGraph.CharacterDetail,
             characterMenu,
             fakeChars
@@ -115,7 +114,8 @@ val fakeChars = (0..13).map {
     MarvelItem(
         id = it,
         name = "Shelby Vazquez",
-        thumbnail = Image(
+        thumbnail =
+        Image(
             extension = "habitant",
             path = "https://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"
         )

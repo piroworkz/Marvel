@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.loading
+package com.luna.marvel.app.ui.screens.composables.loading
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

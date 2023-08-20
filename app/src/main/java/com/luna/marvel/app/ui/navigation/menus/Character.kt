@@ -1,9 +1,16 @@
-package com.luna.marvel.app.ui.screens.common.master.views
+package com.luna.marvel.app.ui.navigation.menus
 
 import com.luna.marvel.R
 import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 
+val characterMenu = listOf(
+    Character.Detail,
+    Character.Comics,
+    Character.Events,
+    Character.Series,
+    Character.Stories
+)
 
 sealed class Character(
     title: Int,
@@ -21,22 +28,17 @@ sealed class Character(
     )
 
     data object Events : Character(
-        title = R.string.btn_events
+        title = R.string.btn_events,
+        destination = CharsGraph.CharacterEvents
     )
 
     data object Series : Character(
-        title = R.string.btn_series
+        title = R.string.btn_series,
+        destination = CharsGraph.CharacterSeries
     )
 
     data object Stories : Character(
-        title = R.string.btn_stories
-    )
-
-    data object Characters : Character(
-        title = R.string.btn_characters
-    )
-
-    data object Creators : Character(
-        title = R.string.btn_creators
+        title = R.string.btn_stories,
+        destination = CharsGraph.CharacterStories
     )
 }
