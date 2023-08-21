@@ -8,13 +8,12 @@ plugins {
 
 android {
     namespace = "com.luna.marvel"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.luna.marvel"
         minSdk = 26
-        //noinspection OldTargetApi
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -44,7 +43,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
     packaging {
         resources {
@@ -61,13 +60,19 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
+    implementation(project(":usecases"))
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
     implementation(platform(libs.compose.bom))
     implementation(libs.ui)
     implementation(libs.ui.graphics)
+    debugImplementation(libs.ui.tooling)
     implementation(libs.ui.tooling.preview)
+    implementation(libs.compose.navigation)
+    implementation(libs.constraint.layout)
+    implementation(libs.coil.compose)
+
     implementation(libs.material3)
 
     implementation(libs.retrofit.gson)

@@ -1,15 +1,16 @@
 package com.luna.marvel.app.data.remote.datasources
 
+import com.luna.data.sources.CreatorsDataSource
 import com.luna.marvel.app.data.remote.services.CreatorsService
 import com.luna.marvel.app.data.tryCatch
-import com.luna.data.sources.CreatorsDataSource
 import javax.inject.Inject
 
 class RemoteCreatorsDataSource @Inject constructor(private val service: CreatorsService) :
     CreatorsDataSource {
 
     override suspend fun getCreators() = tryCatch {
-        service.getCreators().data.results.map { it.toDomain() }
+        service.getCreators().data.results.map { it.toDomainMarvelItem() }
+            .filter { !it.thumbnail.path.contains("image_not_available") }
     }
 
     override suspend fun getCreatorById(creatorId: Int) = tryCatch {

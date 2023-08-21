@@ -3,10 +3,11 @@ package com.luna.testshared
 import com.luna.domain.AppError
 import com.luna.domain.Character
 import com.luna.domain.Comic
-import com.luna.domain.Creators
+import com.luna.domain.Creator
 import com.luna.domain.Event
+import com.luna.domain.MarvelItem
 import com.luna.domain.Series
-import com.luna.domain.Stories
+import com.luna.domain.Story
 import com.luna.domain.common.Date
 import com.luna.domain.common.Image
 import com.luna.domain.common.Item
@@ -69,12 +70,20 @@ val fakeObject = Object(
     returned = "orci"
 )
 
+val fakeMarvelItem = (0..5).map {
+    MarvelItem(
+        id = 8719,
+        name = "Cora Blanchard",
+        thumbnail = Image(extension = "iaculis", path = "simul")
+    )
+}
+
 val fakeCharacters = (0..2).map {
     Character(
         comics = fakeObject,
         description = "quas",
         events = fakeObject,
-        id = "populo",
+        id = 111,
         modified = "litora",
         name = "Rene Hutchinson",
         resourceURI = "natum",
@@ -85,8 +94,8 @@ val fakeCharacters = (0..2).map {
     )
 }
 
-val fakeError = AppError.NetworkError("error")
-val fakeUnknownError = AppError.UnknownError("error")
+val fakeError = AppError.NetworkError
+val fakeUnknownError = AppError.UnknownError
 
 
 val fakeEvents = (0..2).map {
@@ -96,7 +105,7 @@ val fakeEvents = (0..2).map {
         creators = fakeObject,
         description = "mutat",
         end = "utamur",
-        id = "assueverit",
+        id = 123,
         modified = "quaestio",
         next = fakeItem,
         previous = fakeItem,
@@ -118,7 +127,7 @@ val fakeSeries = (0..2).map {
         description = "mutat",
         endYear = "utamur",
         events = fakeObject,
-        id = "assueverit",
+        id = 123,
         modified = "quaestio",
         next = fakeItem,
         previous = fakeItem,
@@ -133,13 +142,13 @@ val fakeSeries = (0..2).map {
 }
 
 val fakeStories = (0..2).map {
-    Stories(
+    Story(
         characters = fakeObject,
         comics = fakeObject,
         creators = fakeObject,
         description = "mutat",
         events = fakeObject,
-        id = "assueverit",
+        id = 123,
         modified = "quaestio",
         originalissue = fakeItem,
         resourceURI = "utroque",
@@ -149,7 +158,6 @@ val fakeStories = (0..2).map {
         type = "id"
     )
 }
-
 
 
 val fakeComics = (0..2).map {
@@ -165,7 +173,7 @@ val fakeComics = (0..2).map {
         ean = "accumsan",
         events = fakeObject,
         format = "scripserit",
-        id = "natoque",
+        id = 123,
         images = fakeImages,
         isbn = "per",
         issn = "perpetua",
@@ -187,12 +195,12 @@ val fakeComics = (0..2).map {
 }
 
 val fakeCreators = (0..2).map {
-    Creators(
+    Creator(
         comics = fakeObject,
         events = fakeObject,
         firstName = "Wilbur Graham",
         fullName = "Luther Sosa",
-        id = "integer",
+        id = 123,
         lastName = "Sean Maxwell",
         middleName = "Brent Rasmussen",
         modified = "consequat",

@@ -1,5 +1,19 @@
 package com.luna.marvel.app.data.remote.datasources
 
+import com.luna.domain.Character
+import com.luna.domain.Comic
+import com.luna.domain.Creator
+import com.luna.domain.Event
+import com.luna.domain.MarvelItem
+import com.luna.domain.Series
+import com.luna.domain.Story
+import com.luna.domain.common.Date
+import com.luna.domain.common.Image
+import com.luna.domain.common.Item
+import com.luna.domain.common.Object
+import com.luna.domain.common.Price
+import com.luna.domain.common.TextObject
+import com.luna.domain.common.Url
 import com.luna.marvel.app.data.remote.model.RemoteCharacter
 import com.luna.marvel.app.data.remote.model.RemoteComic
 import com.luna.marvel.app.data.remote.model.RemoteCreators
@@ -13,19 +27,51 @@ import com.luna.marvel.app.data.remote.model.common.RemoteItems
 import com.luna.marvel.app.data.remote.model.common.RemotePrice
 import com.luna.marvel.app.data.remote.model.common.RemoteTextObject
 import com.luna.marvel.app.data.remote.model.common.RemoteUrl
-import com.luna.domain.Character
-import com.luna.domain.Comic
-import com.luna.domain.Creators
-import com.luna.domain.Event
-import com.luna.domain.Series
-import com.luna.domain.Stories
-import com.luna.domain.common.Date
-import com.luna.domain.common.Image
-import com.luna.domain.common.Item
-import com.luna.domain.common.Object
-import com.luna.domain.common.Price
-import com.luna.domain.common.TextObject
-import com.luna.domain.common.Url
+
+fun RemoteCharacter.toDomainMarvelItem(): MarvelItem =
+    MarvelItem(
+        id = id,
+        name = name,
+        thumbnail = thumbnail.toDomain(),
+    )
+
+fun RemoteComic.toDomainMarvelItem(): MarvelItem =
+    MarvelItem(
+        id = id,
+        name = title,
+        thumbnail = thumbnail.toDomain(),
+    )
+
+fun RemoteCreators.toDomainMarvelItem(): MarvelItem =
+    MarvelItem(
+        id = id,
+        name = fullName,
+        thumbnail = thumbnail.toDomain(),
+    )
+
+fun RemoteEvent.toDomainMarvelItem(): MarvelItem =
+    MarvelItem(
+        id = id,
+        name = title,
+        thumbnail = thumbnail.toDomain(),
+    )
+
+
+fun RemoteSeries.toDomainMarvelItem(): MarvelItem =
+    MarvelItem(
+        id = id,
+        name = title,
+        thumbnail = thumbnail.toDomain(),
+    )
+
+
+fun RemoteStories.toDomainMarvelItem(): MarvelItem =
+    MarvelItem(
+        id = id,
+        name = title,
+        thumbnail = thumbnail?.toDomain() ?: Image("", "")
+    )
+
 
 fun RemoteCharacter.toDomain(): Character =
     Character(
@@ -51,7 +97,7 @@ fun RemoteUrl.toDomain(): Url =
 fun RemoteImage.toDomain(): Image =
     Image(
         extension = extension,
-        path = path
+        path = path.replace("p:", "ps:").plus(".$extension")
     )
 
 fun RemoteItems.toDomain(): Object =
@@ -124,8 +170,8 @@ fun RemoteDate.toDomain(): Date =
         type = type
     )
 
-fun RemoteCreators.toDomain(): Creators =
-    Creators(
+fun RemoteCreators.toDomain(): Creator =
+    Creator(
         comics = comics.toDomain(),
         events = events.toDomain(),
         firstName = firstName,
@@ -173,8 +219,8 @@ fun RemoteSeries.toDomain(): Series =
         events = events.toDomain(),
         id = id,
         modified = modified,
-        next = next.toDomain(),
-        previous = previous.toDomain(),
+        next = next?.toDomain(),
+        previous = previous?.toDomain(),
         rating = rating,
         resourceURI = resourceURI,
         startYear = startYear,
@@ -184,7 +230,7 @@ fun RemoteSeries.toDomain(): Series =
         urls = urls.map { it.toDomain() }
     )
 
-fun RemoteStories.toDomain(): Stories = Stories(
+fun RemoteStories.toDomain(): Story = Story(
     characters = characters.toDomain(),
     comics = comics.toDomain(),
     creators = creators.toDomain(),
@@ -192,10 +238,10 @@ fun RemoteStories.toDomain(): Stories = Stories(
     events = events.toDomain(),
     id = id,
     modified = modified,
-    originalissue = originalissue.toDomain(),
+    originalissue = originalissue?.toDomain(),
     resourceURI = resourceURI,
     series = series.toDomain(),
-    thumbnail = thumbnail.toDomain(),
+    thumbnail = thumbnail?.toDomain() ?: Image("", ""),
     title = title,
     type = type
 )

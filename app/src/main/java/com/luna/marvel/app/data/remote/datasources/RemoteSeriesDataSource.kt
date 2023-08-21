@@ -1,15 +1,16 @@
 package com.luna.marvel.app.data.remote.datasources
 
+import com.luna.data.sources.SeriesDataSource
 import com.luna.marvel.app.data.remote.services.SeriesService
 import com.luna.marvel.app.data.tryCatch
-import com.luna.data.sources.SeriesDataSource
 import javax.inject.Inject
 
 class RemoteSeriesDataSource @Inject constructor(private val service: SeriesService) :
     SeriesDataSource {
 
     override suspend fun getSeries() = tryCatch {
-        service.getSeries().data.results.map { it.toDomain() }
+        service.getSeries().data.results.map { it.toDomainMarvelItem() }
+            .filter { !it.thumbnail.path.contains("image_not_available") }
     }
 
     override suspend fun getSeriesById(seriesId: Int) = tryCatch {

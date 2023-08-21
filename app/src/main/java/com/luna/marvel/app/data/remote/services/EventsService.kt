@@ -1,31 +1,36 @@
 package com.luna.marvel.app.data.remote.services
 
+import com.luna.marvel.app.data.remote.model.RemoteCharacter
+import com.luna.marvel.app.data.remote.model.RemoteComic
+import com.luna.marvel.app.data.remote.model.RemoteCreators
 import com.luna.marvel.app.data.remote.model.RemoteEvent
+import com.luna.marvel.app.data.remote.model.RemoteSeries
+import com.luna.marvel.app.data.remote.model.RemoteStories
 import com.luna.marvel.app.data.remote.model.common.MarvelNetworkResponse
-import retrofit2.http.POST
+import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface EventsService {
 
-    @POST("events")
+    @GET("events")
     suspend fun getEvents(): MarvelNetworkResponse<RemoteEvent>
 
-    @POST("events/{eventId}")
+    @GET("events/{eventId}")
     suspend fun getEventById(@Path("eventId") eventId: Int): MarvelNetworkResponse<RemoteEvent>
 
-    @POST("events/{eventId}/characters")
-    suspend fun getCharactersByEventId(@Path("eventId") eventId: Int): MarvelNetworkResponse<RemoteEvent>
+    @GET("events/{eventId}/characters")
+    suspend fun getCharactersByEventId(@Path("eventId") eventId: Int): MarvelNetworkResponse<RemoteCharacter>
 
-    @POST("events/{eventId}/comics")
-    suspend fun getComicsByEventId(@Path("eventId") eventId: Int): MarvelNetworkResponse<RemoteEvent>
+    @GET("events/{eventId}/comics")
+    suspend fun getComicsByEventId(@Path("eventId") eventId: Int): MarvelNetworkResponse<RemoteComic>
 
-    @POST("events/{eventId}/creators")
-    suspend fun getCreatorsByEventId(@Path("eventId") eventId: Int): MarvelNetworkResponse<RemoteEvent>
+    @GET("events/{eventId}/creators")
+    suspend fun getCreatorsByEventId(@Path("eventId") eventId: Int): MarvelNetworkResponse<RemoteCreators>
 
-    @POST("events/{eventId}/series")
-    suspend fun getSeriesByEventId(@Path("eventId") eventId: Int): MarvelNetworkResponse<RemoteEvent>
+    @GET("events/{eventId}/series")
+    suspend fun getSeriesByEventId(@Path("eventId") eventId: Int): MarvelNetworkResponse<RemoteSeries>
 
-    @POST("events/{eventId}/stories")
-    suspend fun getStoriesByEventId(@Path("eventId") eventId: Int): MarvelNetworkResponse<RemoteEvent>
+    @GET("events/{eventId}/stories")
+    suspend fun getStoriesByEventId(@Path("eventId") eventId: Int): MarvelNetworkResponse<RemoteStories>
 
 }
