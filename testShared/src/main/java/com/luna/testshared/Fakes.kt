@@ -94,8 +94,8 @@ val fakeCharacters = (0..2).map {
     )
 }
 
-val fakeError = AppError.NetworkError("error")
-val fakeUnknownError = AppError.UnknownError("error")
+val fakeError = AppError.NetworkError
+val fakeUnknownError = AppError.UnknownError
 
 
 val fakeEvents = (0..2).map {
