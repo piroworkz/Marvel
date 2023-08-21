@@ -8,6 +8,8 @@ import androidx.navigation.navigation
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.navigation.graphs.EventsGraph
 import com.luna.marvel.app.ui.navigation.utils.navComposable
+import com.luna.marvel.app.ui.navigation.utils.navigateFromMaster
+import com.luna.marvel.app.ui.navigation.utils.navigateUpFromGraph
 import com.luna.marvel.app.ui.screens.events.characters.EventCharactersScreen
 import com.luna.marvel.app.ui.screens.events.characters.EventCharactersViewModel
 import com.luna.marvel.app.ui.screens.events.comics.EventComicsScreen
@@ -36,7 +38,14 @@ fun NavGraphBuilder.eventsNavGraph(
         navComposable(EventsGraph.Events) {
             val viewModel: EventsViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            navigateFromMasterEvents(state, navigateUp, viewModel, navigate)
+            navigateFromMaster(
+                state.navigateUp,
+                state.destination,
+                state.id,
+                navigateUp,
+                viewModel::sendEvent,
+                navigate
+            )
             EventsScreen(
                 state = state,
                 sendEvent = viewModel::sendEvent
@@ -46,78 +55,60 @@ fun NavGraphBuilder.eventsNavGraph(
         navComposable(EventsGraph.EventsDetail) {
             val viewModel: EventDetailViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             EventDetailScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 
         navComposable(EventsGraph.EventsCharacters) {
             val viewModel: EventCharactersViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             EventCharactersScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 
         navComposable(EventsGraph.EventsComics) {
             val viewModel: EventComicsViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             EventComicsScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 
         navComposable(EventsGraph.EventsCreators) {
             val viewModel: EventCreatorsViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             EventCreatorsScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 
         navComposable(EventsGraph.EventsSeries) {
             val viewModel: EventSeriesViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             EventSeriesScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 
         navComposable(EventsGraph.EventsStories) {
             val viewModel: EventStoriesViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             EventStoriesScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 

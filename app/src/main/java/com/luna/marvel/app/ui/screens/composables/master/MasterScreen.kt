@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.master
+package com.luna.marvel.app.ui.screens.composables.master
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -24,11 +24,12 @@ import com.luna.domain.common.Image
 import com.luna.marvel.R
 import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
 import com.luna.marvel.app.ui.navigation.graphs.Destination
-import com.luna.marvel.app.ui.navigation.views.AppScaffoldView
 import com.luna.marvel.app.ui.navigation.menus.AppMenu
-import com.luna.marvel.app.ui.screens.master.views.PagerCardView
 import com.luna.marvel.app.ui.navigation.menus.characterMenu
+import com.luna.marvel.app.ui.navigation.views.AppScaffoldView
+import com.luna.marvel.app.ui.screens.common.MarvelEvent
 import com.luna.marvel.app.ui.screens.composables.loading.LoadingView
+import com.luna.marvel.app.ui.screens.composables.master.views.PagerCardView
 import com.luna.marvel.app.ui.theme.Dimens
 import com.luna.marvel.app.ui.theme.MarvelTheme
 

@@ -11,6 +11,8 @@ import com.luna.marvel.R
 import com.luna.marvel.app.data.ifNotEmpty
 import com.luna.marvel.app.ui.navigation.graphs.SeriesGraph
 import com.luna.marvel.app.ui.navigation.views.AppScaffoldView
+import com.luna.marvel.app.ui.screens.common.AppEvent
+import com.luna.marvel.app.ui.screens.composables.dialog.AppDialogScreen
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categoryListView
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categorySubTitle
 import com.luna.marvel.app.ui.screens.composables.lazy_views.image
@@ -22,12 +24,12 @@ import com.luna.marvel.app.ui.theme.Dimens
 @Composable
 fun SeriesCreatorsScreen(
     state: SeriesCreatorsViewModel.State,
-    navigateUp: () -> Unit
+    sendEvent: (AppEvent) -> Unit
 ) {
 
     AppScaffoldView(
         destination = SeriesGraph.SeriesCreators,
-        onNavIconClicked = navigateUp
+        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) }
     ) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
@@ -67,5 +69,9 @@ fun SeriesCreatorsScreen(
             }
         }
         LoadingView(loading = state.loading)
+
+        state.appError?.let {
+            AppDialogScreen(message = it.appError) { sendEvent(AppEvent.NavigateUp) }
+        }
     }
 }

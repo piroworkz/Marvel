@@ -12,11 +12,14 @@ import com.luna.domain.Series
 import com.luna.domain.Story
 import com.luna.marvel.app.data.remote.services.StoriesService
 import com.luna.marvel.app.data.tryCatch
+import javax.inject.Inject
 
-class RemoteStoriesDataSource(private val service: StoriesService) : StoriesDataSource {
+class RemoteStoriesDataSource @Inject constructor(private val service: StoriesService) :
+    StoriesDataSource {
 
     override suspend fun getStories(): Either<AppError, List<MarvelItem>> = tryCatch {
         service.getStories().data.results.map { it.toDomainMarvelItem() }
+            .filter { !it.thumbnail.path.contains("image_not_available") }
     }
 
     override suspend fun getStoryById(storyId: Int): Either<AppError, List<Story>> = tryCatch {

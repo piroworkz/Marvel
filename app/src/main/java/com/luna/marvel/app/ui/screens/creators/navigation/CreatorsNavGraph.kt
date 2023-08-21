@@ -8,6 +8,8 @@ import androidx.navigation.navigation
 import com.luna.marvel.app.ui.navigation.graphs.CreatorsGraph
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.navigation.utils.navComposable
+import com.luna.marvel.app.ui.navigation.utils.navigateFromMaster
+import com.luna.marvel.app.ui.navigation.utils.navigateUpFromGraph
 import com.luna.marvel.app.ui.screens.creators.comics.CreatorComicsScreen
 import com.luna.marvel.app.ui.screens.creators.comics.CreatorComicsViewModel
 import com.luna.marvel.app.ui.screens.creators.detail.CreatorDetailScreen
@@ -33,7 +35,14 @@ fun NavGraphBuilder.creatorsNavGraph(
         navComposable(CreatorsGraph.Creators) {
             val viewModel: CreatorsViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            navigateFromMasterCreators(state, navigateUp, viewModel, navigate)
+            navigateFromMaster(
+                state.navigateUp,
+                state.destination,
+                state.id,
+                navigateUp,
+                viewModel::sendEvent,
+                navigate
+            )
             CreatorsScreen(
                 state = state,
                 sendEvent = viewModel::sendEvent
@@ -43,65 +52,50 @@ fun NavGraphBuilder.creatorsNavGraph(
         navComposable(CreatorsGraph.CreatorsDetail) {
             val viewModel: CreatorDetailViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             CreatorDetailScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 
         navComposable(CreatorsGraph.CreatorsComics) {
             val viewModel: CreatorComicsViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             CreatorComicsScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 
         navComposable(CreatorsGraph.CreatorsEvents) {
             val viewModel: CreatorEventsViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             CreatorEventsScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 
         navComposable(CreatorsGraph.CreatorsSeries) {
             val viewModel: CreatorSeriesViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             CreatorSeriesScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 
         navComposable(CreatorsGraph.CreatorsStories) {
             val viewModel: CreatorStoriesViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             CreatorStoriesScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
     }

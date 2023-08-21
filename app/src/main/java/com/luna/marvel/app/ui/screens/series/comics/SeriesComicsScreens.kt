@@ -9,8 +9,10 @@ import androidx.compose.ui.Modifier
 import com.luna.domain.Comic
 import com.luna.marvel.R
 import com.luna.marvel.app.data.ifNotEmpty
-import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
+import com.luna.marvel.app.ui.navigation.graphs.SeriesGraph
 import com.luna.marvel.app.ui.navigation.views.AppScaffoldView
+import com.luna.marvel.app.ui.screens.common.AppEvent
+import com.luna.marvel.app.ui.screens.composables.dialog.AppDialogScreen
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categoryListView
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categorySubTitle
 import com.luna.marvel.app.ui.screens.composables.lazy_views.images
@@ -22,12 +24,12 @@ import com.luna.marvel.app.ui.theme.Dimens
 @Composable
 fun SeriesComicsScreens(
     state: SeriesComicsViewModel.State,
-    navigateUp: () -> Unit
+    sendEvent: (AppEvent) -> Unit
 ) {
 
     AppScaffoldView(
-        destination = CharsGraph.CharacterComics,
-        onNavIconClicked = navigateUp
+        destination = SeriesGraph.SeriesComics,
+        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) }
     ) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
@@ -67,5 +69,9 @@ fun SeriesComicsScreens(
             }
         }
         LoadingView(loading = state.loading)
+
+        state.appError?.let {
+            AppDialogScreen(message = it.appError) { sendEvent(AppEvent.NavigateUp) }
+        }
     }
 }

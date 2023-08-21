@@ -4,9 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.luna.domain.AppError
 import com.luna.domain.MarvelItem
+import com.luna.marvel.app.data.isEmpty
 import com.luna.marvel.app.data.toAppError
 import com.luna.marvel.app.ui.navigation.graphs.Destination
-import com.luna.marvel.app.ui.screens.master.MarvelEvent
+import com.luna.marvel.app.ui.screens.common.MarvelEvent
 import com.luna.usecases.comics.GetComicsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -29,40 +30,35 @@ class ComicsViewModel @Inject constructor(
 
     data class State(
         val loading: Boolean = false,
-        val error: AppError? = null,
+        val appError: AppError? = null,
         val comics: List<MarvelItem> = emptyList(),
         val navigateUp: Boolean = false,
         val destination: Destination? = null,
-        val characterId: Int? = null
+        val id: Int? = null
     )
 
     fun sendEvent(event: MarvelEvent) {
         when (event) {
             is MarvelEvent.NavigateTo -> setNavigate(event)
             MarvelEvent.NavigateUp -> setNavigateUp()
+            MarvelEvent.ResetAppError -> resetAppError()
         }
     }
 
-    private fun setNavigateUp() {
+    private fun resetAppError() =
+        _state.update { s -> s.copy(appError = null) }
+
+    private fun setNavigateUp() =
         _state.update { s -> s.copy(navigateUp = !s.navigateUp) }
-    }
 
-    private fun setNavigate(event: MarvelEvent.NavigateTo) {
-        _state.update { s ->
-            s.copy(
-                destination = event.destination,
-                characterId = event.itemId
-            )
-        }
-    }
+    private fun setNavigate(event: MarvelEvent.NavigateTo) =
+        _state.update { s -> s.copy(destination = event.destination, id = event.itemId) }
 
-    private fun getCharacters() {
-        dataDownload {
-            getComicsUseCase().fold(
-                ifLeft = { _state.update { s -> s.copy(error = it) } },
-                ifRight = { _state.update { s -> s.copy(comics = it) } }
-            )
-        }
+    private fun getCharacters() = dataDownload {
+        getComicsUseCase().fold(
+            ifLeft = { _state.update { s -> s.copy(appError = it) } },
+            ifRight = { _state.update { s -> s.copy(comics = it, appError = it.isEmpty) } }
+        )
     }
 
     private fun dataDownload(body: suspend () -> Unit) {
@@ -71,7 +67,7 @@ class ComicsViewModel @Inject constructor(
                 toggleLoading()
                 body()
             } catch (e: Exception) {
-                _state.update { s -> s.copy(error = e.toAppError()) }
+                _state.update { s -> s.copy(appError = e.toAppError()) }
             } finally {
                 toggleLoading()
             }
