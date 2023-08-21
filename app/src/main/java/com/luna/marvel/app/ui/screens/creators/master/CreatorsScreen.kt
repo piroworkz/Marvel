@@ -1,12 +1,11 @@
 package com.luna.marvel.app.ui.screens.creators.master
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import com.luna.marvel.app.ui.navigation.graphs.CreatorsGraph
 import com.luna.marvel.app.ui.navigation.menus.creatorsMenu
-import com.luna.marvel.app.ui.screens.master.MarvelEvent
-import com.luna.marvel.app.ui.screens.master.MasterScreen
-import com.luna.marvel.app.ui.theme.MarvelTheme
+import com.luna.marvel.app.ui.screens.common.MarvelEvent
+import com.luna.marvel.app.ui.screens.composables.dialog.AppDialogScreen
+import com.luna.marvel.app.ui.screens.composables.master.MasterScreen
 
 @Composable
 fun CreatorsScreen(
@@ -19,15 +18,7 @@ fun CreatorsScreen(
         items = state.creators,
         sendEvent = sendEvent
     )
-}
-
-@Preview
-@Composable
-fun CreatorsPreview() {
-    MarvelTheme {
-        CreatorsScreen(
-            state = CreatorsViewModel.State(),
-            sendEvent = {}
-        )
+    state.appError?.let {
+        AppDialogScreen(message = it.appError) { sendEvent(MarvelEvent.ResetAppError) }
     }
 }

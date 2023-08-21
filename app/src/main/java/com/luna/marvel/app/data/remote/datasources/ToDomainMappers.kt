@@ -69,7 +69,7 @@ fun RemoteStories.toDomainMarvelItem(): MarvelItem =
     MarvelItem(
         id = id,
         name = title,
-        thumbnail = thumbnail?.toDomain()!!,
+        thumbnail = thumbnail?.toDomain() ?: Image("", "")
     )
 
 

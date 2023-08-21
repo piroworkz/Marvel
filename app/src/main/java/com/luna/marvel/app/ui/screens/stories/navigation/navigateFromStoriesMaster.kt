@@ -1,13 +1,13 @@
-package com.luna.marvel.app.ui.screens.events.navigation
+package com.luna.marvel.app.ui.screens.stories.navigation
 
 import com.luna.marvel.app.ui.navigation.graphs.Destination
-import com.luna.marvel.app.ui.screens.events.master.EventsViewModel
-import com.luna.marvel.app.ui.screens.master.MarvelEvent
+import com.luna.marvel.app.ui.screens.common.MarvelEvent
+import com.luna.marvel.app.ui.screens.stories.master.StoriesViewModel
 
-fun navigateFromMasterEvents(
-    state: EventsViewModel.State,
+fun navigateFromStoriesMaster(
+    state: StoriesViewModel.State,
     navigateUp: () -> Unit,
-    viewModel: EventsViewModel,
+    viewModel: StoriesViewModel,
     navigate: (Destination, List<Any>) -> Unit
 ) {
     if (state.navigateUp) {
@@ -15,7 +15,7 @@ fun navigateFromMasterEvents(
         viewModel.sendEvent(MarvelEvent.NavigateUp)
     }
     state.destination?.let {
-        navigate(it, listOf(state.characterId ?: ""))
+        navigate(it, listOf(state.id ?: ""))
         viewModel.sendEvent(MarvelEvent.NavigateTo(null, null))
     }
 }

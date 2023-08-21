@@ -1,12 +1,11 @@
 package com.luna.marvel.app.ui.screens.events.master
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import com.luna.marvel.app.ui.navigation.graphs.EventsGraph
 import com.luna.marvel.app.ui.navigation.menus.eventsMenu
-import com.luna.marvel.app.ui.screens.master.MarvelEvent
-import com.luna.marvel.app.ui.screens.master.MasterScreen
-import com.luna.marvel.app.ui.theme.MarvelTheme
+import com.luna.marvel.app.ui.screens.common.MarvelEvent
+import com.luna.marvel.app.ui.screens.composables.dialog.AppDialogScreen
+import com.luna.marvel.app.ui.screens.composables.master.MasterScreen
 
 @Composable
 fun EventsScreen(
@@ -19,15 +18,8 @@ fun EventsScreen(
         items = state.events,
         sendEvent = sendEvent
     )
-}
 
-@Preview
-@Composable
-fun EventsPreview() {
-    MarvelTheme {
-        EventsScreen(
-            state = EventsViewModel.State(),
-            sendEvent = {}
-        )
+    state.appError?.let {
+        AppDialogScreen(message = it.appError) { sendEvent(MarvelEvent.ResetAppError) }
     }
 }

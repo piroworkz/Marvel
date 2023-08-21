@@ -8,6 +8,8 @@ import androidx.navigation.navigation
 import com.luna.marvel.app.ui.navigation.graphs.ComicsGraph
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.navigation.utils.navComposable
+import com.luna.marvel.app.ui.navigation.utils.navigateFromMaster
+import com.luna.marvel.app.ui.navigation.utils.navigateUpFromGraph
 import com.luna.marvel.app.ui.screens.comics.characters.ComicCharactersScreen
 import com.luna.marvel.app.ui.screens.comics.characters.ComicCharactersViewModel
 import com.luna.marvel.app.ui.screens.comics.creators.ComicCreatorsScreen
@@ -26,14 +28,21 @@ fun NavGraphBuilder.comicsNavGraph(
     navigateUp: () -> Unit
 ) {
     navigation(
-        startDestination = ComicsGraph.Comics.route,
-        route = ComicsGraph.Init.route
+        route = ComicsGraph.Init.route,
+        startDestination = ComicsGraph.Comics.route
     ) {
 
         navComposable(ComicsGraph.Comics) {
             val viewModel: ComicsViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            navigateFromMasterComics(state, navigateUp, viewModel, navigate)
+            navigateFromMaster(
+                state.navigateUp,
+                state.destination,
+                state.id,
+                navigateUp,
+                viewModel::sendEvent,
+                navigate
+            )
             ComicsScreen(
                 state = state,
                 sendEvent = viewModel::sendEvent
@@ -43,65 +52,50 @@ fun NavGraphBuilder.comicsNavGraph(
         navComposable(ComicsGraph.ComicsDetail) {
             val viewModel: ComicDetailViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             ComicDetailScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 
         navComposable(ComicsGraph.ComicsCharacters) {
             val viewModel: ComicCharactersViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             ComicCharactersScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 
         navComposable(ComicsGraph.ComicsCreators) {
             val viewModel: ComicCreatorsViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             ComicCreatorsScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 
         navComposable(ComicsGraph.ComicsEvents) {
             val viewModel: ComicEventsViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             ComicEventsScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 
         navComposable(ComicsGraph.ComicsStories) {
             val viewModel: ComicStoriesViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             ComicStoriesScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 

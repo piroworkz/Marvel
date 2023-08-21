@@ -12,11 +12,13 @@ import com.luna.marvel.R
 import com.luna.marvel.app.data.ifNotEmpty
 import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
 import com.luna.marvel.app.ui.navigation.views.AppScaffoldView
-import com.luna.marvel.app.ui.screens.composables.lazy_views.whiteDivider
+import com.luna.marvel.app.ui.screens.common.AppEvent
+import com.luna.marvel.app.ui.screens.composables.dialog.AppDialogScreen
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categoryListView
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categorySubTitle
 import com.luna.marvel.app.ui.screens.composables.lazy_views.images
 import com.luna.marvel.app.ui.screens.composables.lazy_views.title
+import com.luna.marvel.app.ui.screens.composables.lazy_views.whiteDivider
 import com.luna.marvel.app.ui.screens.composables.loading.LoadingView
 import com.luna.marvel.app.ui.theme.Dimens
 import com.luna.marvel.app.ui.theme.MarvelTheme
@@ -24,12 +26,12 @@ import com.luna.marvel.app.ui.theme.MarvelTheme
 @Composable
 fun CharactersComicsScreen(
     state: CharactersComicsViewModel.State,
-    navigateUp: () -> Unit
+    sendEvent: (AppEvent) -> Unit
 ) {
 
     AppScaffoldView(
         destination = CharsGraph.CharacterComics,
-        onNavIconClicked = navigateUp
+        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) }
     ) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
@@ -68,6 +70,11 @@ fun CharactersComicsScreen(
             }
         }
         LoadingView(loading = state.loading)
+        state.appError?.let {
+            AppDialogScreen(message = it.appError) {
+                sendEvent(AppEvent.NavigateUp)
+            }
+        }
     }
 }
 
@@ -78,7 +85,7 @@ fun CharactersComicsPreview() {
     MarvelTheme {
         CharactersComicsScreen(
             state = CharactersComicsViewModel.State(),
-            navigateUp = { }
+            sendEvent = { }
         )
     }
 }

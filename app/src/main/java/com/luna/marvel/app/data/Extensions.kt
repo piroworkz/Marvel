@@ -19,14 +19,12 @@ suspend fun <T> tryCatch(action: suspend () -> T): Either<AppError, T> = try {
 
 fun Throwable.toAppError(): AppError {
     return when (this) {
-        is HttpException -> AppError.NetworkError(
-            message ?: "Hubo un error de comunicación, por favor intente más tarde."
-        )
+        is HttpException -> AppError.NetworkError
 
-        is ConnectException -> AppError.NetworkError(message.toString())
-        is SocketTimeoutException -> AppError.NetworkError("Hubo un error de comunicación, por favor intente más tarde.")
-        is IOException -> AppError.NetworkError("Hubo un error de comunicación, por favor intente más tarde.")
-        else -> AppError.UnknownError("Hubo un error de comunicación, por favor intente más tarde.")
+        is ConnectException -> AppError.NetworkError
+        is SocketTimeoutException -> AppError.NetworkError
+        is IOException -> AppError.NetworkError
+        else -> AppError.UnknownError
     }
 }
 
@@ -37,3 +35,10 @@ fun <E> List<E>?.ifNotEmpty(block: (List<E>) -> Unit) {
         return
     }
 }
+
+val <E> List<E>?.isEmpty: AppError?
+    get() = if (this.isNullOrEmpty()) {
+        AppError.NotAvailable
+    } else {
+        null
+    }

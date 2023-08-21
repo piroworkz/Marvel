@@ -8,6 +8,8 @@ import androidx.navigation.navigation
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.navigation.graphs.SeriesGraph
 import com.luna.marvel.app.ui.navigation.utils.navComposable
+import com.luna.marvel.app.ui.navigation.utils.navigateFromMaster
+import com.luna.marvel.app.ui.navigation.utils.navigateUpFromGraph
 import com.luna.marvel.app.ui.screens.series.characters.SeriesCharactersScreen
 import com.luna.marvel.app.ui.screens.series.characters.SeriesCharactersViewModel
 import com.luna.marvel.app.ui.screens.series.comics.SeriesComicsScreens
@@ -35,85 +37,74 @@ fun NavGraphBuilder.seriesNavGraph(
         navComposable(SeriesGraph.Series) {
             val viewModel: SeriesViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            navigateFromSeriesMaster(state, navigateUp, viewModel, navigate)
+            navigateFromMaster(
+                state.navigateUp,
+                state.destination,
+                state.id,
+                navigateUp,
+                viewModel::sendEvent,
+                navigate
+            )
             SeriesScreens(state = state, sendEvent = viewModel::sendEvent)
         }
 
         navComposable(SeriesGraph.SeriesDetail) {
             val viewModel: SeriesDetailViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             SeriesDetailScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 
         navComposable(SeriesGraph.SeriesCharacter) {
             val viewModel: SeriesCharactersViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             SeriesCharactersScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 
         navComposable(SeriesGraph.SeriesComics) {
             val viewModel: SeriesComicsViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             SeriesComicsScreens(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 
         navComposable(SeriesGraph.SeriesCreators) {
             val viewModel: SeriesCreatorsViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             SeriesCreatorsScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 
         navComposable(SeriesGraph.SeriesEvents) {
             val viewModel: SeriesEventsViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             SeriesEventsScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 
         navComposable(SeriesGraph.SeriesStories) {
             val viewModel: SeriesStoriesViewModel = hiltViewModel()
             val state by viewModel.state.collectAsState()
-            if (state.navigateUp) {
-                navigateUp()
-                viewModel.toggleNavigateUp()
-            }
+            navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             SeriesStoriesScreen(
                 state = state,
-                navigateUp = navigateUp
+                sendEvent = viewModel::sendEvent
             )
         }
 

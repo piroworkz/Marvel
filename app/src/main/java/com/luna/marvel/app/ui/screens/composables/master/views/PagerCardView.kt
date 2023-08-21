@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.master.views
+package com.luna.marvel.app.ui.screens.composables.master.views
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -47,10 +47,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.luna.marvel.R
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.navigation.menus.AppMenu
 import com.luna.marvel.app.ui.navigation.menus.characterMenu
-import com.luna.marvel.app.ui.screens.master.fakeChars
+import com.luna.marvel.app.ui.screens.composables.master.fakeChars
 import com.luna.marvel.app.ui.theme.Dimens
 import com.luna.marvel.app.ui.theme.MarvelTheme
 import com.luna.marvel.app.ui.theme.background
@@ -86,7 +87,7 @@ fun PagerCardView(
         contentAlignment = Alignment.Center
     ) {
         AsyncImage(
-            model = imagePath ?: "",
+            model = if (imagePath.isNullOrEmpty())  R.drawable.placeholder else imagePath,
             modifier = Modifier
                 .fillMaxSize(),
             contentDescription = null,
