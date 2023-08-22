@@ -6,7 +6,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.luna.marvel.R
-import com.luna.marvel.app.ui.navigation.utils.Args
 
 sealed class ComicsGraph(
     route: String,

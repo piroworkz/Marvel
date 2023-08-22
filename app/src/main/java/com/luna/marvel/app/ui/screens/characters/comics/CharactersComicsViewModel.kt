@@ -7,7 +7,7 @@ import com.luna.domain.AppError
 import com.luna.domain.Comic
 import com.luna.marvel.app.data.isEmpty
 import com.luna.marvel.app.data.toAppError
-import com.luna.marvel.app.ui.navigation.utils.Args
+import com.luna.marvel.app.ui.navigation.graphs.Args
 import com.luna.marvel.app.ui.screens.common.AppEvent
 import com.luna.usecases.characters.GetCharacterComicsByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -64,18 +64,13 @@ class CharactersComicsViewModel @Inject constructor(
     private fun dataDownload(body: suspend () -> Unit) {
         viewModelScope.launch {
             try {
-                toggleLoading()
+                _state.update { s -> s.copy(loading = true) }
                 body()
             } catch (e: Exception) {
                 _state.update { s -> s.copy(appError = e.toAppError()) }
             } finally {
-                toggleLoading()
+                _state.update { s -> s.copy(loading = false) }
             }
         }
     }
-
-    private fun toggleLoading() {
-        _state.update { s -> s.copy(loading = !s.loading) }
-    }
-
 }
