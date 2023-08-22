@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.navigation.views
+package com.luna.marvel.app.ui.screens.composables
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -9,7 +9,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -22,7 +22,6 @@ import com.luna.marvel.app.ui.theme.Dimens
 import com.luna.marvel.app.ui.theme.MarvelTheme
 import com.luna.marvel.app.ui.theme.primary
 import com.luna.marvel.app.ui.theme.secondary
-import com.luna.marvel.app.ui.theme.titleMarvel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -62,8 +61,8 @@ fun AppTopBarView(
                 }
             }
         },
-        colors = TopAppBarDefaults.smallTopAppBarColors(
-            containerColor = primary
+        colors = topAppBarColors(
+            containerColor = primary,
         )
     )
 }

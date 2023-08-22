@@ -12,7 +12,7 @@ sealed interface Dimens {
         val large = 24.dp
         val xLarge = 32.dp
         val xxLarge = 48.dp
-        val loading = 128.dp
+        val loading = 96.dp
     }
 
     data object Shape : Dimens {

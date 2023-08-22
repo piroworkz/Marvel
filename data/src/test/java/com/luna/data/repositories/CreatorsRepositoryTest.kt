@@ -7,7 +7,7 @@ import com.luna.testshared.fakeComics
 import com.luna.testshared.fakeCreators
 import com.luna.testshared.fakeError
 import com.luna.testshared.fakeEvents
-import com.luna.testshared.fakeMarvelItem
+import com.luna.testshared.fakeMarvelItems
 import com.luna.testshared.fakeSeries
 import com.luna.testshared.fakeStories
 import kotlinx.coroutines.test.runTest
@@ -34,7 +34,7 @@ class CreatorsRepositoryTest {
     @Test
     fun `getCreators should return a list of creators on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeMarvelItem)
+            val expected = Either.Right(fakeMarvelItems)
             whenever(remote.getCreators()).thenReturn(expected)
 
             val result = repository.getCreators()
