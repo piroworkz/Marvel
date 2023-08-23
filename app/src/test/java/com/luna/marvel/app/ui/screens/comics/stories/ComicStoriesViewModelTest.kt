@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.characters.events
+package com.luna.marvel.app.ui.screens.comics.stories
 
 import androidx.lifecycle.SavedStateHandle
 import app.cash.turbine.test
@@ -7,9 +7,9 @@ import com.google.common.truth.Truth
 import com.luna.marvel.app.rules.CoroutineTestRule
 import com.luna.marvel.app.ui.navigation.graphs.Args
 import com.luna.marvel.app.ui.screens.common.AppEvent
-import com.luna.testshared.fakeEvents
+import com.luna.testshared.fakeStories
 import com.luna.testshared.fakeUnknownError
-import com.luna.usecases.characters.GetCharacterEventsByIdUseCase
+import com.luna.usecases.comics.GetComicStoriesByIdUseCase
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
@@ -21,26 +21,27 @@ import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.whenever
 
 @RunWith(MockitoJUnitRunner::class)
-class CharacterEventsViewModelTest {
-
+class ComicStoriesViewModelTest {
+    
     @get:Rule
     val coroutineRule = CoroutineTestRule()
-
+    
     @Mock
     lateinit var savedStateHandle: SavedStateHandle
-
+    
     @Mock
-    lateinit var getCharacterEventsByIdUseCase: GetCharacterEventsByIdUseCase
+    lateinit var getComicStoriesByIdUseCase: GetComicStoriesByIdUseCase
+    
+    private val state = ComicStoriesViewModel.State()
+    private val stories = fakeStories
 
-    private val state = CharacterEventsViewModel.State()
-    private val events = fakeEvents
 
     @Test
-    fun `on ViewModel initialization downloads a list of events from service`() = runTest {
+    fun `on ViewModel initialization downloads a list of creators from service`() = runTest {
         whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(1)
-        whenever(getCharacterEventsByIdUseCase(1)).thenReturn(Either.Right(events))
-        val viewModel = CharacterEventsViewModel(savedStateHandle, getCharacterEventsByIdUseCase)
-        val expected = state.copy(events = events, loading = true)
+        whenever(getComicStoriesByIdUseCase(1)).thenReturn(Either.Right(stories))
+        val viewModel = ComicStoriesViewModel(savedStateHandle, getComicStoriesByIdUseCase)
+        val expected = state.copy(stories = stories, loading = true)
 
         viewModel.state.onEach { println("<-- $it") }.test {
             Truth.assertThat(awaitItem()).isEqualTo(state)
@@ -52,11 +53,11 @@ class CharacterEventsViewModelTest {
     }
 
     @Test
-    fun `on ViewModel initialization downloads an empty list of events from service and sets AppError on state`() =
+    fun `on ViewModel initialization downloads an empty list of creators from service and sets AppError on state`() =
         runTest {
             whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(0)
             val viewModel =
-                CharacterEventsViewModel(savedStateHandle, getCharacterEventsByIdUseCase)
+                ComicStoriesViewModel(savedStateHandle, getComicStoriesByIdUseCase)
             val expected = state.copy(appError = fakeUnknownError, loading = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
@@ -73,7 +74,7 @@ class CharacterEventsViewModelTest {
     fun `on app event NavigateUp toggles navigateUp`() =
         runTest {
             val viewModel =
-                CharacterEventsViewModel(savedStateHandle, getCharacterEventsByIdUseCase)
+                ComicStoriesViewModel(savedStateHandle, getComicStoriesByIdUseCase)
             val expected = state.copy(navigateUp = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
@@ -88,7 +89,7 @@ class CharacterEventsViewModelTest {
     fun `on app event ResetAppError resets appError`() = runTest {
         whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(0)
         val viewModel =
-            CharacterEventsViewModel(savedStateHandle, getCharacterEventsByIdUseCase)
+            ComicStoriesViewModel(savedStateHandle, getComicStoriesByIdUseCase)
         val expected = state.copy(appError = null)
 
         viewModel.state.onEach { println("<-- $it") }.test {

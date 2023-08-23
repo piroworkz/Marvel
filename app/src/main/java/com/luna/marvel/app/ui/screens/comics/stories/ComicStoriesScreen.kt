@@ -38,8 +38,8 @@ fun ComicStoriesScreen(
                 .fillMaxSize()
                 .padding(Dimens.Size.medium)
         ) {
-            if (state.characters.isNotEmpty()) {
-                state.characters.forEach { story: Story ->
+            if (state.stories.isNotEmpty()) {
+                state.stories.forEach { story: Story ->
 
                     image(story.thumbnail.path)
                     title(story.title)

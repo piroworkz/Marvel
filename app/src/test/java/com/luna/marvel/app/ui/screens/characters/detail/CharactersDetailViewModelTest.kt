@@ -3,7 +3,7 @@ package com.luna.marvel.app.ui.screens.characters.detail
 import androidx.lifecycle.SavedStateHandle
 import app.cash.turbine.test
 import arrow.core.Either
-import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import com.luna.marvel.app.rules.CoroutineTestRule
 import com.luna.marvel.app.ui.navigation.graphs.Args
 import com.luna.marvel.app.ui.screens.common.AppEvent
@@ -40,13 +40,13 @@ class CharactersDetailViewModelTest {
         whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(1)
         whenever(getCharacterByIdUseCase(1)).thenReturn(Either.Right(fakeCharacters))
         val viewModel = CharactersDetailViewModel(savedStateHandle, getCharacterByIdUseCase)
-        val expected = state.copy(character = character)
+        val expected = state.copy(character = character, loading = true)
 
         viewModel.state.onEach { println("<-- $it") }.test {
-            Truth.assertThat(awaitItem()).isEqualTo(state)
-            awaitItem()
-            awaitItem()
-            Truth.assertThat(awaitItem()).isEqualTo(expected)
+            assertThat(awaitItem()).isEqualTo(state)
+            assertThat(awaitItem().loading).isTrue()
+            assertThat(awaitItem()).isEqualTo(expected)
+            assertThat(awaitItem().loading).isFalse()
             cancel()
         }
     }
@@ -57,13 +57,13 @@ class CharactersDetailViewModelTest {
             whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(0)
             val viewModel =
                 CharactersDetailViewModel(savedStateHandle, getCharacterByIdUseCase)
-            val expected = state.copy(appError = fakeUnknownError)
+            val expected = state.copy(appError = fakeUnknownError, loading = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
-                Truth.assertThat(awaitItem()).isEqualTo(state)
-                awaitItem()
-                awaitItem()
-                Truth.assertThat(awaitItem()).isEqualTo(expected)
+                assertThat(awaitItem()).isEqualTo(state)
+                assertThat(awaitItem().loading).isTrue()
+                assertThat(awaitItem()).isEqualTo(expected)
+                assertThat(awaitItem().loading).isFalse()
                 cancel()
             }
         }
@@ -77,9 +77,9 @@ class CharactersDetailViewModelTest {
             val expected = state.copy(navigateUp = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
-                Truth.assertThat(awaitItem()).isEqualTo(state)
+                assertThat(awaitItem()).isEqualTo(state)
                 viewModel.sendEvent(AppEvent.NavigateUp)
-                Truth.assertThat(awaitItem()).isEqualTo(expected)
+                assertThat(awaitItem()).isEqualTo(expected)
                 cancel()
             }
         }
@@ -92,12 +92,12 @@ class CharactersDetailViewModelTest {
         val expected = state.copy(appError = null)
 
         viewModel.state.onEach { println("<-- $it") }.test {
-            Truth.assertThat(awaitItem()).isEqualTo(state)
-            awaitItem()
-            awaitItem()
-            awaitItem()
+            assertThat(awaitItem()).isEqualTo(state)
+            assertThat(awaitItem().loading).isTrue()
+            assertThat(awaitItem().appError).isNotNull()
+            assertThat(awaitItem().loading).isFalse()
             viewModel.sendEvent(AppEvent.ResetAppError)
-            Truth.assertThat(awaitItem()).isEqualTo(expected)
+            assertThat(awaitItem()).isEqualTo(expected)
             cancel()
         }
     }

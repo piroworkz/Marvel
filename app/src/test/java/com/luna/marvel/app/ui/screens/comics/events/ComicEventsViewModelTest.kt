@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.characters.events
+package com.luna.marvel.app.ui.screens.comics.events
 
 import androidx.lifecycle.SavedStateHandle
 import app.cash.turbine.test
@@ -9,7 +9,7 @@ import com.luna.marvel.app.ui.navigation.graphs.Args
 import com.luna.marvel.app.ui.screens.common.AppEvent
 import com.luna.testshared.fakeEvents
 import com.luna.testshared.fakeUnknownError
-import com.luna.usecases.characters.GetCharacterEventsByIdUseCase
+import com.luna.usecases.comics.GetComicEventsByIdUseCase
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
@@ -21,25 +21,26 @@ import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.whenever
 
 @RunWith(MockitoJUnitRunner::class)
-class CharacterEventsViewModelTest {
+class ComicEventsViewModelTest {
 
     @get:Rule
-    val coroutineRule = CoroutineTestRule()
+    val coroutineTestRule = CoroutineTestRule()
 
     @Mock
     lateinit var savedStateHandle: SavedStateHandle
 
     @Mock
-    lateinit var getCharacterEventsByIdUseCase: GetCharacterEventsByIdUseCase
+    lateinit var getComicEventsByIdUseCase: GetComicEventsByIdUseCase
 
-    private val state = CharacterEventsViewModel.State()
+    private val state = ComicEventsViewModel.State()
     private val events = fakeEvents
+
 
     @Test
     fun `on ViewModel initialization downloads a list of events from service`() = runTest {
         whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(1)
-        whenever(getCharacterEventsByIdUseCase(1)).thenReturn(Either.Right(events))
-        val viewModel = CharacterEventsViewModel(savedStateHandle, getCharacterEventsByIdUseCase)
+        whenever(getComicEventsByIdUseCase(1)).thenReturn(Either.Right(events))
+        val viewModel = ComicEventsViewModel(savedStateHandle, getComicEventsByIdUseCase)
         val expected = state.copy(events = events, loading = true)
 
         viewModel.state.onEach { println("<-- $it") }.test {
@@ -55,8 +56,7 @@ class CharacterEventsViewModelTest {
     fun `on ViewModel initialization downloads an empty list of events from service and sets AppError on state`() =
         runTest {
             whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(0)
-            val viewModel =
-                CharacterEventsViewModel(savedStateHandle, getCharacterEventsByIdUseCase)
+            val viewModel = ComicEventsViewModel(savedStateHandle, getComicEventsByIdUseCase)
             val expected = state.copy(appError = fakeUnknownError, loading = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
@@ -73,7 +73,7 @@ class CharacterEventsViewModelTest {
     fun `on app event NavigateUp toggles navigateUp`() =
         runTest {
             val viewModel =
-                CharacterEventsViewModel(savedStateHandle, getCharacterEventsByIdUseCase)
+                ComicEventsViewModel(savedStateHandle, getComicEventsByIdUseCase)
             val expected = state.copy(navigateUp = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
@@ -88,7 +88,7 @@ class CharacterEventsViewModelTest {
     fun `on app event ResetAppError resets appError`() = runTest {
         whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(0)
         val viewModel =
-            CharacterEventsViewModel(savedStateHandle, getCharacterEventsByIdUseCase)
+            ComicEventsViewModel(savedStateHandle, getComicEventsByIdUseCase)
         val expected = state.copy(appError = null)
 
         viewModel.state.onEach { println("<-- $it") }.test {
@@ -101,5 +101,6 @@ class CharacterEventsViewModelTest {
             cancel()
         }
     }
+
 
 }
