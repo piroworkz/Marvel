@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.series.comics
+package com.luna.marvel.app.ui.screens.stories.comics
 
 import androidx.lifecycle.SavedStateHandle
 import app.cash.turbine.test
@@ -9,7 +9,7 @@ import com.luna.marvel.app.ui.navigation.graphs.Args
 import com.luna.marvel.app.ui.screens.common.AppEvent
 import com.luna.testshared.fakeComics
 import com.luna.testshared.fakeUnknownError
-import com.luna.usecases.series.GetComicsBySeriesIdUseCase
+import com.luna.usecases.stories.GetComicsByStoryIdUseCase
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
@@ -21,25 +21,25 @@ import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.whenever
 
 @RunWith(MockitoJUnitRunner::class)
-class SeriesComicsViewModelTest {
+class StoryComicsViewModelTest {
 
     @get:Rule
-    val coroutineTestRule = CoroutineTestRule()
+    val coroutineRule = CoroutineTestRule()
 
     @Mock
     lateinit var savedStateHandle: SavedStateHandle
 
     @Mock
-    lateinit var getComicsBySeriesIdUseCase: GetComicsBySeriesIdUseCase
+    lateinit var getComicsByStoryIdUseCase: GetComicsByStoryIdUseCase
 
-    private val state = SeriesComicsViewModel.State()
+    private val state = StoryComicsViewModel.State()
     private val comics = fakeComics
 
     @Test
     fun `on ViewModel initialization downloads a list of comics from service`() = runTest {
         whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(1)
-        whenever(getComicsBySeriesIdUseCase(1)).thenReturn(Either.Right(comics))
-        val viewModel = SeriesComicsViewModel(savedStateHandle, getComicsBySeriesIdUseCase)
+        whenever(getComicsByStoryIdUseCase(1)).thenReturn(Either.Right(comics))
+        val viewModel = StoryComicsViewModel(savedStateHandle, getComicsByStoryIdUseCase)
         val expected = state.copy(comics = comics, loading = true)
 
         viewModel.state.onEach { println("<-- $it") }.test {
@@ -56,7 +56,7 @@ class SeriesComicsViewModelTest {
         runTest {
             whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(0)
             val viewModel =
-                SeriesComicsViewModel(savedStateHandle, getComicsBySeriesIdUseCase)
+                StoryComicsViewModel(savedStateHandle, getComicsByStoryIdUseCase)
             val expected = state.copy(appError = fakeUnknownError, loading = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
@@ -73,7 +73,7 @@ class SeriesComicsViewModelTest {
     fun `on app event NavigateUp toggles navigateUp`() =
         runTest {
             val viewModel =
-                SeriesComicsViewModel(savedStateHandle, getComicsBySeriesIdUseCase)
+                StoryComicsViewModel(savedStateHandle, getComicsByStoryIdUseCase)
             val expected = state.copy(navigateUp = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
@@ -88,7 +88,7 @@ class SeriesComicsViewModelTest {
     fun `on app event ResetAppError resets appError`() = runTest {
         whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(0)
         val viewModel =
-            SeriesComicsViewModel(savedStateHandle, getComicsBySeriesIdUseCase)
+            StoryComicsViewModel(savedStateHandle, getComicsByStoryIdUseCase)
         val expected = state.copy(appError = null)
 
         viewModel.state.onEach { println("<-- $it") }.test {
