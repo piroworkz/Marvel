@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.navigation.views
+package com.luna.marvel.app.ui.screens.composables
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

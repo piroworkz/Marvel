@@ -70,7 +70,7 @@ val fakeObject = Object(
     returned = "orci"
 )
 
-val fakeMarvelItem = (0..5).map {
+val fakeMarvelItems = (0..5).map {
     MarvelItem(
         id = 8719,
         name = "Cora Blanchard",
@@ -96,7 +96,6 @@ val fakeCharacters = (0..2).map {
 
 val fakeError = AppError.NetworkError
 val fakeUnknownError = AppError.UnknownError
-
 
 val fakeEvents = (0..2).map {
     Event(

@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
 import com.luna.marvel.R
 import com.luna.marvel.app.data.ifNotEmpty
 import com.luna.marvel.app.ui.navigation.graphs.EventsGraph
-import com.luna.marvel.app.ui.navigation.views.AppScaffoldView
 import com.luna.marvel.app.ui.screens.common.AppEvent
+import com.luna.marvel.app.ui.screens.composables.AppScaffoldView
 import com.luna.marvel.app.ui.screens.composables.dialog.AppDialogScreen
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categoryListView
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categorySubTitle
@@ -38,37 +38,37 @@ fun EventDetailScreen(
                 .padding(Dimens.Size.medium)
         ) {
 
-            state.creator?.thumbnail?.path?.let(::image)
+            state.event?.thumbnail?.path?.let(::image)
 
-            state.creator?.description?.let {
+            state.event?.description?.let {
                 whiteDivider()
                 descriptionJustifiedText(it)
                 whiteDivider()
             }
 
-            state.creator?.title?.let(::title)
+            state.event?.title?.let(::title)
 
-            state.creator?.characters?.items.ifNotEmpty {
+            state.event?.characters?.items.ifNotEmpty {
                 categorySubTitle(R.string.title_events)
                 categoryListView(it)
             }
 
-            state.creator?.comics?.items.ifNotEmpty {
+            state.event?.comics?.items.ifNotEmpty {
                 categorySubTitle(R.string.title_comics)
                 categoryListView(it)
             }
 
-            state.creator?.creators?.items.ifNotEmpty {
+            state.event?.creators?.items.ifNotEmpty {
                 categorySubTitle(R.string.title_series)
                 categoryListView(it)
             }
 
-            state.creator?.series?.items.ifNotEmpty {
+            state.event?.series?.items.ifNotEmpty {
                 categorySubTitle(R.string.title_series)
                 categoryListView(it)
             }
 
-            state.creator?.stories?.items.ifNotEmpty {
+            state.event?.stories?.items.ifNotEmpty {
                 categorySubTitle(R.string.title_stories)
                 categoryListView(it)
             }

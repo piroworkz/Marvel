@@ -7,7 +7,7 @@ import com.luna.domain.AppError
 import com.luna.domain.Creator
 import com.luna.marvel.app.data.isEmpty
 import com.luna.marvel.app.data.toAppError
-import com.luna.marvel.app.ui.navigation.utils.Args
+import com.luna.marvel.app.ui.navigation.graphs.Args
 import com.luna.marvel.app.ui.screens.common.AppEvent
 import com.luna.usecases.series.GetCreatorsBySeriesIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -35,7 +35,7 @@ class SeriesCreatorsViewModel @Inject constructor(
     data class State(
         val loading: Boolean = false,
         val appError: AppError? = null,
-        val characters: List<Creator> = emptyList(),
+        val creators: List<Creator> = emptyList(),
         val navigateUp: Boolean = false
     )
 
@@ -56,7 +56,7 @@ class SeriesCreatorsViewModel @Inject constructor(
         dataDownload {
             getCreatorsBySeriesIdUseCase(itemId).fold(
                 ifLeft = { _state.update { s -> s.copy(appError = it) } },
-                ifRight = { _state.update { s -> s.copy(characters = it, appError = it.isEmpty) } }
+                ifRight = { _state.update { s -> s.copy(creators = it, appError = it.isEmpty) } }
             )
         }
     }

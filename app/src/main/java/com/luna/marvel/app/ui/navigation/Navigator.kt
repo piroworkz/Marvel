@@ -1,8 +1,8 @@
 package com.luna.marvel.app.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.rememberNavController
 import com.luna.marvel.app.ui.navigation.graphs.MainGraph
 import com.luna.marvel.app.ui.navigation.graphs.SplashGraph
 import com.luna.marvel.app.ui.navigation.utils.navigateTo
@@ -16,10 +16,7 @@ import com.luna.marvel.app.ui.screens.splash.navigation.splashGraph
 import com.luna.marvel.app.ui.screens.stories.navigation.storiesNavGraph
 
 @Composable
-fun Navigator() {
-
-    val navController = rememberNavController()
-
+fun Navigator(navController: NavHostController) {
     NavHost(
         navController = navController,
         startDestination = SplashGraph.Init.route
@@ -63,8 +60,6 @@ fun Navigator() {
             navigate = navController::navigateTo,
             navigateUp = { navController.popBackStack() }
         )
-
-
     }
 
 }

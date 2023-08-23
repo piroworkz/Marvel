@@ -26,8 +26,8 @@ import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.navigation.menus.AppMenu
 import com.luna.marvel.app.ui.navigation.menus.characterMenu
-import com.luna.marvel.app.ui.navigation.views.AppScaffoldView
 import com.luna.marvel.app.ui.screens.common.MarvelEvent
+import com.luna.marvel.app.ui.screens.composables.AppScaffoldView
 import com.luna.marvel.app.ui.screens.composables.loading.LoadingView
 import com.luna.marvel.app.ui.screens.composables.master.views.PagerCardView
 import com.luna.marvel.app.ui.theme.Dimens

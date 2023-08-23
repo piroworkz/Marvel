@@ -7,7 +7,7 @@ import com.luna.domain.AppError
 import com.luna.domain.Story
 import com.luna.marvel.app.data.isEmpty
 import com.luna.marvel.app.data.toAppError
-import com.luna.marvel.app.ui.navigation.utils.Args
+import com.luna.marvel.app.ui.navigation.graphs.Args
 import com.luna.marvel.app.ui.screens.common.AppEvent
 import com.luna.usecases.comics.GetComicStoriesByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,8 +19,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ComicStoriesViewModel @Inject constructor(
-    private val getComicStoriesByIdUseCase: GetComicStoriesByIdUseCase,
-    savedStateHandle: SavedStateHandle
+    savedStateHandle: SavedStateHandle,
+    private val getComicStoriesByIdUseCase: GetComicStoriesByIdUseCase
 ) : ViewModel() {
     private val comicId: Int = savedStateHandle.get<Int>(Args.ItemId.args.first) ?: 0
 
@@ -28,13 +28,13 @@ class ComicStoriesViewModel @Inject constructor(
     val state = _state.asStateFlow()
 
     init {
-        getComics()
+        getStories()
     }
 
     data class State(
         val loading: Boolean = false,
         val appError: AppError? = null,
-        val characters: List<Story> = emptyList(),
+        val stories: List<Story> = emptyList(),
         val navigateUp: Boolean = false
     )
 
@@ -51,11 +51,11 @@ class ComicStoriesViewModel @Inject constructor(
     private fun setNavigateUp() =
         _state.update { s -> s.copy(navigateUp = !s.navigateUp) }
 
-    private fun getComics() {
+    private fun getStories() {
         dataDownload {
             getComicStoriesByIdUseCase(comicId).fold(
                 ifLeft = { _state.update { s -> s.copy(appError = it) } },
-                ifRight = { _state.update { s -> s.copy(characters = it, appError = it.isEmpty) } }
+                ifRight = { _state.update { s -> s.copy(stories = it, appError = it.isEmpty) } }
             )
         }
     }

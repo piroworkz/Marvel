@@ -7,7 +7,7 @@ import com.luna.domain.AppError
 import com.luna.domain.Series
 import com.luna.marvel.app.data.isEmpty
 import com.luna.marvel.app.data.toAppError
-import com.luna.marvel.app.ui.navigation.utils.Args
+import com.luna.marvel.app.ui.navigation.graphs.Args
 import com.luna.marvel.app.ui.screens.common.AppEvent
 import com.luna.usecases.series.GetSeriesByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

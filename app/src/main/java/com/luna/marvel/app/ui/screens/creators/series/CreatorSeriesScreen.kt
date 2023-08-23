@@ -13,8 +13,8 @@ import com.luna.domain.Series
 import com.luna.marvel.R
 import com.luna.marvel.app.data.ifNotEmpty
 import com.luna.marvel.app.ui.navigation.graphs.CreatorsGraph
-import com.luna.marvel.app.ui.navigation.views.AppScaffoldView
 import com.luna.marvel.app.ui.screens.common.AppEvent
+import com.luna.marvel.app.ui.screens.composables.AppScaffoldView
 import com.luna.marvel.app.ui.screens.composables.dialog.AppDialogScreen
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categoryListView
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categorySubTitle
@@ -40,8 +40,8 @@ fun CreatorSeriesScreen(
                 .fillMaxSize()
                 .padding(Dimens.Size.medium)
         ) {
-            if (state.events.isNotEmpty()) {
-                state.events.forEach { series: Series ->
+            if (state.series.isNotEmpty()) {
+                state.series.forEach { series: Series ->
 
                     image(series.thumbnail.path)
                     title(series.title)

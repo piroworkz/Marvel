@@ -10,8 +10,8 @@ import com.luna.domain.Story
 import com.luna.marvel.R
 import com.luna.marvel.app.data.ifNotEmpty
 import com.luna.marvel.app.ui.navigation.graphs.ComicsGraph
-import com.luna.marvel.app.ui.navigation.views.AppScaffoldView
 import com.luna.marvel.app.ui.screens.common.AppEvent
+import com.luna.marvel.app.ui.screens.composables.AppScaffoldView
 import com.luna.marvel.app.ui.screens.composables.dialog.AppDialogScreen
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categoryListView
 import com.luna.marvel.app.ui.screens.composables.lazy_views.categorySubTitle
@@ -38,8 +38,8 @@ fun ComicStoriesScreen(
                 .fillMaxSize()
                 .padding(Dimens.Size.medium)
         ) {
-            if (state.characters.isNotEmpty()) {
-                state.characters.forEach { story: Story ->
+            if (state.stories.isNotEmpty()) {
+                state.stories.forEach { story: Story ->
 
                     image(story.thumbnail.path)
                     title(story.title)

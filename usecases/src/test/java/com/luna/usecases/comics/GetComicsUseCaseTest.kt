@@ -3,9 +3,8 @@ package com.luna.usecases.comics
 import arrow.core.Either
 import com.google.common.truth.Truth
 import com.luna.data.repositories.ComicsRepository
-import com.luna.testshared.fakeComics
 import com.luna.testshared.fakeError
-import com.luna.testshared.fakeMarvelItem
+import com.luna.testshared.fakeMarvelItems
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -24,7 +23,7 @@ class GetComicsUseCaseTest {
     @Test
     fun `on success getComicsUseCase() should return a list of comics on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeMarvelItem)
+            val expected = Either.Right(fakeMarvelItems)
             whenever(repository.getComics()).thenReturn(expected)
 
             val actual = getComicsUseCase()
