@@ -41,13 +41,13 @@ class CharactersComicsViewModelTest {
         whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(1)
         whenever(getCharacterComicsByIdUseCase(1)).thenReturn(Either.Right(comics))
         val viewModel = CharactersComicsViewModel(savedStateHandle, getCharacterComicsByIdUseCase)
-        val expected = state.copy(comics = comics)
+        val expected = state.copy(comics = comics, loading = true)
 
         viewModel.state.onEach { println("<-- $it") }.test {
             Truth.assertThat(awaitItem()).isEqualTo(state)
-            awaitItem()
-            awaitItem()
+            Truth.assertThat(awaitItem().loading).isTrue()
             Truth.assertThat(awaitItem()).isEqualTo(expected)
+            Truth.assertThat(awaitItem().loading).isFalse()
             cancel()
         }
     }
@@ -58,13 +58,13 @@ class CharactersComicsViewModelTest {
             whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(0)
             val viewModel =
                 CharactersComicsViewModel(savedStateHandle, getCharacterComicsByIdUseCase)
-            val expected = state.copy(appError = fakeUnknownError)
+            val expected = state.copy(appError = fakeUnknownError, loading = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
                 Truth.assertThat(awaitItem()).isEqualTo(state)
-                awaitItem()
-                awaitItem()
+                Truth.assertThat(awaitItem().loading).isTrue()
                 Truth.assertThat(awaitItem()).isEqualTo(expected)
+                Truth.assertThat(awaitItem().loading).isFalse()
                 cancel()
             }
         }
@@ -94,9 +94,9 @@ class CharactersComicsViewModelTest {
 
         viewModel.state.onEach { println("<-- $it") }.test {
             Truth.assertThat(awaitItem()).isEqualTo(state)
-            awaitItem()
-            awaitItem()
-            awaitItem()
+            Truth.assertThat(awaitItem().loading).isTrue()
+            Truth.assertThat(awaitItem().appError).isNotNull()
+            Truth.assertThat(awaitItem().loading).isFalse()
             viewModel.sendEvent(AppEvent.ResetAppError)
             Truth.assertThat(awaitItem()).isEqualTo(expected)
             cancel()

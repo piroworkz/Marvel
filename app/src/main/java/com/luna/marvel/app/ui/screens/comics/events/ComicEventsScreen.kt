@@ -37,8 +37,8 @@ fun ComicEventsScreen(
                 .fillMaxSize()
                 .padding(Dimens.Size.medium)
         ) {
-            if (state.characters.isNotEmpty()) {
-                state.characters.forEach { event: Event ->
+            if (state.events.isNotEmpty()) {
+                state.events.forEach { event: Event ->
 
                     image(event.thumbnail.path)
 

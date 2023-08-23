@@ -34,7 +34,7 @@ class ComicCreatorsViewModel @Inject constructor(
     data class State(
         val loading: Boolean = false,
         val appError: AppError? = null,
-        val characters: List<Creator> = emptyList(),
+        val creators: List<Creator> = emptyList(),
         val navigateUp: Boolean = false
     )
 
@@ -55,7 +55,7 @@ class ComicCreatorsViewModel @Inject constructor(
         dataDownload {
             getComicCreatorsByIdUseCase(comicId).fold(
                 ifLeft = { _state.update { s -> s.copy(appError = it) } },
-                ifRight = { _state.update { s -> s.copy(characters = it, appError = it.isEmpty) } }
+                ifRight = { _state.update { s -> s.copy(creators = it, appError = it.isEmpty) } }
             )
         }
     }
