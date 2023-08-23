@@ -35,7 +35,7 @@ class EventDetailViewModel @Inject constructor(
     data class State(
         val loading: Boolean = false,
         val appError: AppError? = null,
-        val creator: Event? = null,
+        val event: Event? = null,
         val navigateUp: Boolean = false,
     )
 
@@ -56,7 +56,14 @@ class EventDetailViewModel @Inject constructor(
         dataDownload {
             getEventByIdUseCase(eventId = itemId).fold(
                 ifLeft = { _state.update { s -> s.copy(appError = it) } },
-                ifRight = { _state.update { s -> s.copy(creator = it.first(), appError = it.isEmpty) } }
+                ifRight = {
+                    _state.update { s ->
+                        s.copy(
+                            event = it.first(),
+                            appError = it.isEmpty
+                        )
+                    }
+                }
             )
         }
     }

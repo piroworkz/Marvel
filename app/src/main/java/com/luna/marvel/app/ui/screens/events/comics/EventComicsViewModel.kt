@@ -19,8 +19,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EventComicsViewModel @Inject constructor(
-    private val getComicsByEventIdUseCase: GetComicsByEventIdUseCase,
-    savedStateHandle: SavedStateHandle
+    savedStateHandle: SavedStateHandle,
+    private val getComicsByEventIdUseCase: GetComicsByEventIdUseCase
 ) : ViewModel() {
     private val itemId: Int = savedStateHandle.get<Int>(Args.ItemId.args.first) ?: 0
 

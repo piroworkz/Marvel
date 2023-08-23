@@ -35,7 +35,7 @@ class EventStoriesViewModel @Inject constructor(
     data class State(
         val loading: Boolean = false,
         val appError: AppError? = null,
-        val events: List<Story> = emptyList(),
+        val stories: List<Story> = emptyList(),
         val navigateUp: Boolean = false
     )
 
@@ -56,7 +56,7 @@ class EventStoriesViewModel @Inject constructor(
         dataDownload {
             getStoriesByEventIdUseCase(itemId).fold(
                 ifLeft = { _state.update { s -> s.copy(appError = it) } },
-                ifRight = { _state.update { s -> s.copy(events = it, appError = it.isEmpty) } }
+                ifRight = { _state.update { s -> s.copy(stories = it, appError = it.isEmpty) } }
             )
         }
     }
