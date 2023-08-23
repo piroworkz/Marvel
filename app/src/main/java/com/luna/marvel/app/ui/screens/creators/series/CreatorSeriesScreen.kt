@@ -40,8 +40,8 @@ fun CreatorSeriesScreen(
                 .fillMaxSize()
                 .padding(Dimens.Size.medium)
         ) {
-            if (state.events.isNotEmpty()) {
-                state.events.forEach { series: Series ->
+            if (state.series.isNotEmpty()) {
+                state.series.forEach { series: Series ->
 
                     image(series.thumbnail.path)
                     title(series.title)

@@ -39,8 +39,8 @@ fun CreatorStoriesScreen(
                 .fillMaxSize()
                 .padding(Dimens.Size.medium)
         ) {
-            if (state.events.isNotEmpty()) {
-                state.events.forEach { story: Story ->
+            if (state.stories.isNotEmpty()) {
+                state.stories.forEach { story: Story ->
 
                     title(story.title)
                     descriptionJustifiedText(story.description)

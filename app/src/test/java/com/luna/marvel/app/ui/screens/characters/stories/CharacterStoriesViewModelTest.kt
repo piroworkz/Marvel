@@ -35,7 +35,6 @@ class CharacterStoriesViewModelTest {
     private val state = CharacterStoriesViewModel.State()
     private val stories = fakeStories
 
-
     @Test
     fun `on ViewModel initialization downloads a stories list from service`() = runTest {
         whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(1)
