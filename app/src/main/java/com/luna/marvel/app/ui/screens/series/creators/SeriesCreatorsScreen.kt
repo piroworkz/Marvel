@@ -37,8 +37,8 @@ fun SeriesCreatorsScreen(
                 .fillMaxSize()
                 .padding(Dimens.Size.medium)
         ) {
-            if (state.characters.isNotEmpty()) {
-                state.characters.forEach { creator: Creator ->
+            if (state.creators.isNotEmpty()) {
+                state.creators.forEach { creator: Creator ->
 
                     image(creator.thumbnail.path)
 
