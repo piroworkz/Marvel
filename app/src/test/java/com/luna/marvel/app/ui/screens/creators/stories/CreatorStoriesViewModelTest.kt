@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.comics.characters
+package com.luna.marvel.app.ui.screens.creators.stories
 
 import androidx.lifecycle.SavedStateHandle
 import app.cash.turbine.test
@@ -7,9 +7,9 @@ import com.google.common.truth.Truth
 import com.luna.marvel.app.rules.CoroutineTestRule
 import com.luna.marvel.app.ui.navigation.graphs.Args
 import com.luna.marvel.app.ui.screens.common.AppEvent
-import com.luna.testshared.fakeCharacters
+import com.luna.testshared.fakeStories
 import com.luna.testshared.fakeUnknownError
-import com.luna.usecases.comics.GetComicCharactersByIdUseCase
+import com.luna.usecases.creators.GetStoriesByCreatorIdUseCase
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
@@ -21,26 +21,26 @@ import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.whenever
 
 @RunWith(MockitoJUnitRunner::class)
-class ComicCharactersViewModelTest {
+class CreatorStoriesViewModelTest {
 
     @get:Rule
-    val coroutineRule = CoroutineTestRule()
+    val coroutineTestRule = CoroutineTestRule()
 
     @Mock
     lateinit var savedStateHandle: SavedStateHandle
 
     @Mock
-    lateinit var getComicCharactersByIdUseCase: GetComicCharactersByIdUseCase
+    lateinit var getStoriesByCreatorIdUseCase: GetStoriesByCreatorIdUseCase
 
-    private val state = ComicCharactersViewModel.State()
-    private val characters = fakeCharacters
+    private val state = CreatorStoriesViewModel.State()
+    private val stories = fakeStories
 
     @Test
-    fun `on ViewModel initialization downloads a list of characters from service`() = runTest {
+    fun `on ViewModel initialization downloads a stories list from service`() = runTest {
         whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(1)
-        whenever(getComicCharactersByIdUseCase(1)).thenReturn(Either.Right(characters))
-        val viewModel = ComicCharactersViewModel(savedStateHandle, getComicCharactersByIdUseCase)
-        val expected = state.copy(characters = characters, loading = true)
+        whenever(getStoriesByCreatorIdUseCase(1)).thenReturn(Either.Right(stories))
+        val viewModel = CreatorStoriesViewModel(savedStateHandle, getStoriesByCreatorIdUseCase)
+        val expected = state.copy(stories = stories, loading = true)
 
         viewModel.state.onEach { println("<-- $it") }.test {
             Truth.assertThat(awaitItem()).isEqualTo(state)
@@ -52,11 +52,11 @@ class ComicCharactersViewModelTest {
     }
 
     @Test
-    fun `on ViewModel initialization downloads an empty list of characters from service and sets AppError on state`() =
+    fun `on ViewModel initialization downloads an empty list of stories from service and sets AppError on state`() =
         runTest {
             whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(0)
             val viewModel =
-                ComicCharactersViewModel(savedStateHandle, getComicCharactersByIdUseCase)
+                CreatorStoriesViewModel(savedStateHandle, getStoriesByCreatorIdUseCase)
             val expected = state.copy(appError = fakeUnknownError, loading = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
@@ -70,25 +70,24 @@ class ComicCharactersViewModelTest {
 
 
     @Test
-    fun `on app event NavigateUp toggles navigateUp`() =
-        runTest {
-            val viewModel =
-                ComicCharactersViewModel(savedStateHandle, getComicCharactersByIdUseCase)
-            val expected = state.copy(navigateUp = true)
+    fun `on app event NavigateUp toggles navigateUp`() = runTest {
+        val viewModel =
+            CreatorStoriesViewModel(savedStateHandle, getStoriesByCreatorIdUseCase)
+        val expected = state.copy(navigateUp = true)
 
-            viewModel.state.onEach { println("<-- $it") }.test {
-                Truth.assertThat(awaitItem()).isEqualTo(state)
-                viewModel.sendEvent(AppEvent.NavigateUp)
-                Truth.assertThat(awaitItem()).isEqualTo(expected)
-                cancel()
-            }
+        viewModel.state.onEach { println("<-- $it") }.test {
+            Truth.assertThat(awaitItem()).isEqualTo(state)
+            viewModel.sendEvent(AppEvent.NavigateUp)
+            Truth.assertThat(awaitItem()).isEqualTo(expected)
+            cancel()
         }
+    }
 
     @Test
     fun `on app event ResetAppError resets appError`() = runTest {
         whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(0)
         val viewModel =
-            ComicCharactersViewModel(savedStateHandle, getComicCharactersByIdUseCase)
+            CreatorStoriesViewModel(savedStateHandle, getStoriesByCreatorIdUseCase)
         val expected = state.copy(appError = null)
 
         viewModel.state.onEach { println("<-- $it") }.test {
