@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.series.comics
+package com.luna.marvel.app.ui.screens.stories.creators
 
 import androidx.lifecycle.SavedStateHandle
 import app.cash.turbine.test
@@ -7,12 +7,11 @@ import com.google.common.truth.Truth
 import com.luna.marvel.app.rules.CoroutineTestRule
 import com.luna.marvel.app.ui.navigation.graphs.Args
 import com.luna.marvel.app.ui.screens.common.AppEvent
-import com.luna.testshared.fakeComics
+import com.luna.testshared.fakeCreators
 import com.luna.testshared.fakeUnknownError
-import com.luna.usecases.series.GetComicsBySeriesIdUseCase
+import com.luna.usecases.stories.GetCreatorsByStoryIdUseCase
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -21,26 +20,26 @@ import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.whenever
 
 @RunWith(MockitoJUnitRunner::class)
-class SeriesComicsViewModelTest {
+class StoryCreatorsViewModelTest {
 
     @get:Rule
-    val coroutineTestRule = CoroutineTestRule()
+    val coroutineRule = CoroutineTestRule()
 
     @Mock
     lateinit var savedStateHandle: SavedStateHandle
 
     @Mock
-    lateinit var getComicsBySeriesIdUseCase: GetComicsBySeriesIdUseCase
+    lateinit var getCreatorsByStoryIdUseCase: GetCreatorsByStoryIdUseCase
 
-    private val state = SeriesComicsViewModel.State()
-    private val comics = fakeComics
+    private val state = StoryCreatorsViewModel.State()
+    private val creators = fakeCreators
 
     @Test
-    fun `on ViewModel initialization downloads a list of comics from service`() = runTest {
+    fun `on ViewModel initialization downloads a list of creators from service`() = runTest {
         whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(1)
-        whenever(getComicsBySeriesIdUseCase(1)).thenReturn(Either.Right(comics))
-        val viewModel = SeriesComicsViewModel(savedStateHandle, getComicsBySeriesIdUseCase)
-        val expected = state.copy(comics = comics, loading = true)
+        whenever(getCreatorsByStoryIdUseCase(1)).thenReturn(Either.Right(creators))
+        val viewModel = StoryCreatorsViewModel(savedStateHandle, getCreatorsByStoryIdUseCase)
+        val expected = state.copy(creators = creators, loading = true)
 
         viewModel.state.onEach { println("<-- $it") }.test {
             Truth.assertThat(awaitItem()).isEqualTo(state)
@@ -52,11 +51,11 @@ class SeriesComicsViewModelTest {
     }
 
     @Test
-    fun `on ViewModel initialization downloads an empty list of comics from service and sets AppError on state`() =
+    fun `on ViewModel initialization downloads an empty list of creators from service and sets AppError on state`() =
         runTest {
             whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(0)
             val viewModel =
-                SeriesComicsViewModel(savedStateHandle, getComicsBySeriesIdUseCase)
+                StoryCreatorsViewModel(savedStateHandle, getCreatorsByStoryIdUseCase)
             val expected = state.copy(appError = fakeUnknownError, loading = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
@@ -73,7 +72,7 @@ class SeriesComicsViewModelTest {
     fun `on app event NavigateUp toggles navigateUp`() =
         runTest {
             val viewModel =
-                SeriesComicsViewModel(savedStateHandle, getComicsBySeriesIdUseCase)
+                StoryCreatorsViewModel(savedStateHandle, getCreatorsByStoryIdUseCase)
             val expected = state.copy(navigateUp = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
@@ -88,7 +87,7 @@ class SeriesComicsViewModelTest {
     fun `on app event ResetAppError resets appError`() = runTest {
         whenever(savedStateHandle.get<Int>(Args.ItemId.args.first)).thenReturn(0)
         val viewModel =
-            SeriesComicsViewModel(savedStateHandle, getComicsBySeriesIdUseCase)
+            StoryCreatorsViewModel(savedStateHandle, getCreatorsByStoryIdUseCase)
         val expected = state.copy(appError = null)
 
         viewModel.state.onEach { println("<-- $it") }.test {
@@ -101,5 +100,4 @@ class SeriesComicsViewModelTest {
             cancel()
         }
     }
-
 }
