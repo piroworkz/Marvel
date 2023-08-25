@@ -10,5 +10,8 @@ java {
 }
 
 dependencies {
+    implementation(project(":data"))
     implementation(project(":domain"))
+    implementation(libs.arrow.core)
+
 }
