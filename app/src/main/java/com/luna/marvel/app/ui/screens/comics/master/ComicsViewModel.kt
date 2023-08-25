@@ -25,7 +25,7 @@ class ComicsViewModel @Inject constructor(
     val state = _state.asStateFlow()
 
     init {
-        getCharacters()
+        getComics()
     }
 
     data class State(
@@ -54,7 +54,7 @@ class ComicsViewModel @Inject constructor(
     private fun setNavigate(event: MarvelEvent.NavigateTo) =
         _state.update { s -> s.copy(destination = event.destination, id = event.itemId) }
 
-    private fun getCharacters() = dataDownload {
+    private fun getComics() = dataDownload {
         getComicsUseCase().fold(
             ifLeft = { _state.update { s -> s.copy(appError = it) } },
             ifRight = { _state.update { s -> s.copy(comics = it, appError = it.isEmpty) } }

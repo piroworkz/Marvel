@@ -29,7 +29,7 @@ class ComicDetailViewModel @Inject constructor(
     val state = _state.asStateFlow()
 
     init {
-        getCharacterById()
+        getComicById()
     }
 
     data class State(
@@ -52,7 +52,7 @@ class ComicDetailViewModel @Inject constructor(
     private fun setNavigateUp() =
         _state.update { s -> s.copy(navigateUp = !s.navigateUp) }
 
-    private fun getCharacterById() {
+    private fun getComicById() {
         dataDownload {
             getComicByIdUseCase(characterId).fold(
                 ifLeft = { _state.update { s -> s.copy(appError = it) } },

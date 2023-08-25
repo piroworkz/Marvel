@@ -9,7 +9,7 @@ import com.luna.marvel.app.data.isEmpty
 import com.luna.marvel.app.data.toAppError
 import com.luna.marvel.app.ui.navigation.graphs.Args
 import com.luna.marvel.app.ui.screens.common.AppEvent
-import com.luna.usecases.characters.GetCharacterComicsByIdUseCase
+import com.luna.usecases.creators.GetComicsByCreatorIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,9 +20,9 @@ import javax.inject.Inject
 @HiltViewModel
 class CreatorComicsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    private val getCreatorComicsByIdUseCase: GetCharacterComicsByIdUseCase
+    private val getComicsByCreatorIdUseCase: GetComicsByCreatorIdUseCase
 ) : ViewModel() {
-    private val characterId: Int = savedStateHandle.get<Int>(Args.ItemId.args.first) ?: 0
+    private val id: Int = savedStateHandle.get<Int>(Args.ItemId.args.first) ?: 0
 
     private val _state = MutableStateFlow(State())
     val state = _state.asStateFlow()
@@ -53,7 +53,7 @@ class CreatorComicsViewModel @Inject constructor(
 
     private fun getComics() {
         dataDownload {
-            getCreatorComicsByIdUseCase(characterId = characterId).fold(
+            getComicsByCreatorIdUseCase(creatorId = id).fold(
                 ifLeft = { _state.update { s -> s.copy(appError = it) } },
                 ifRight = { _state.update { s -> s.copy(comics = it, appError = it.isEmpty) } }
             )
