@@ -30,22 +30,15 @@ Check out the project introduction video on YouTube:
 
 1. Clone this repository to your local machine.
 2. Open the project in Android Studio.
-3. Build and run the application on a device or emulator.
-
-## Contribution
-
-All contributions are welcome! If you wish to contribute to this project, follow these steps:
-
-1. Fork this repository.
-2. Create a branch for your feature or bug fix: `git checkout -b new-feature`.
-3. Make your changes and commit: `git commit -m 'Add new feature'`.
-4. Push the branch: `git push origin new-feature`.
-5. Open a pull request in this repository.
+3. Add your api public and private keys to keys.c file
+4. Build and run the application on a device or emulator.
 
 ## Credits
 
 - Marvel API: [Official Marvel Website](https://developer.marvel.com)
 
 ## Contact
+[LinkedIn](https://www.linkedin.com/in/davidlunacervantes/)
 
-If you have any questions or suggestions about the project, feel free to get in touch with me via my email address: youremail@example.com.
+If you have any questions or suggestions about the project, feel free to get in touch with me via my email address: [Email](voxel.mail@gmail.com)
+
