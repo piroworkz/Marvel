@@ -9,7 +9,7 @@ data class RemoteCreators(
     val events: RemoteItems,
     val firstName: String,
     val fullName: String,
-    val id: String,
+    val id: Int,
     val lastName: String,
     val middleName: String,
     val modified: String,

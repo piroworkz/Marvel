@@ -1,0 +1,28 @@
+package com.luna.marvel.app.ui.navigation.utils
+
+import androidx.navigation.NavHostController
+import androidx.navigation.NavOptionsBuilder
+import com.luna.marvel.app.ui.application.log
+import com.luna.marvel.app.ui.navigation.graphs.Destination
+
+fun NavHostController.navigateTo(
+    destination: Destination,
+    args: List<Any> = emptyList(),
+    navOptionsBuilder: NavOptionsBuilder.() -> Unit = {
+        popUpTo(destination.route) {
+            inclusive = false
+        }
+        launchSingleTop = true
+    }
+) {
+    destination.route.log("navigateTo")
+    navigate(
+        route = destination.createRoute(args),
+        builder = { navOptionsBuilder() }
+    )
+}
+
+private fun Destination.createRoute(args: List<Any>): String = listOf(route)
+    .plus(args)
+    .joinToString("/")
+

@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Marvel</string>
+    <string name="top_bar_title_menu">MARVEL®</string>
+    <string name="title_characters">CHARACTERS</string>
+    <string name="title_creators">CREATORS</string>
+    <string name="title_comics">COMICS</string>
+    <string name="title_events">EVENTS</string>
+    <string name="title_series">SERIES</string>
+    <string name="title_stories">STORIES</string>
+    <string name="btn_start">START</string>
+    <string name="btn_details">DETAILS</string>
+    <string name="btn_comics">COMICS</string>
+    <string name="btn_events">EVENTS</string>
+    <string name="btn_series">SERIES</string>
+    <string name="btn_stories">STORIES</string>
+    <string name="btn_characters">CHARACTERS</string>
+    <string name="btn_creators">CREATORS</string>
 </resources>
