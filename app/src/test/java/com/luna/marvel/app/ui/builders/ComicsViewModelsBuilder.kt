@@ -1,9 +1,11 @@
-package com.luna.marvel.app.data.remote.builders
+package com.luna.marvel.app.ui.builders
 
 import androidx.lifecycle.SavedStateHandle
 import com.luna.data.repositories.ComicsRepository
 import com.luna.data.sources.ComicsDataSource
-import com.luna.marvel.app.data.remote.datasources.FakeRemoteComicsDataSource
+import com.luna.marvel.app.data.remote.datasources.RemoteComicsDataSource
+import com.luna.marvel.app.data.remote.services.ComicsService
+import com.luna.marvel.app.data.remote.services.FakeComicsService
 import com.luna.marvel.app.ui.navigation.graphs.Args
 import com.luna.marvel.app.ui.screens.comics.characters.ComicCharactersViewModel
 import com.luna.marvel.app.ui.screens.comics.creators.ComicCreatorsViewModel
@@ -20,7 +22,8 @@ import com.luna.usecases.comics.GetComicsUseCase
 
 class ComicsViewModelsBuilder {
 
-    private val dataSource: ComicsDataSource = FakeRemoteComicsDataSource()
+    private val service: ComicsService = FakeComicsService()
+    private val dataSource: ComicsDataSource = RemoteComicsDataSource(service)
     private val repository = ComicsRepository(dataSource)
     private val getComicsUseCase = GetComicsUseCase(repository)
     private val getComicByIdUseCase = GetComicByIdUseCase(repository)

@@ -16,6 +16,7 @@ import com.luna.domain.common.Price
 import com.luna.domain.common.TextObject
 import com.luna.domain.common.Url
 
+
 val fakeTextObject = TextObject(
     language = "en-us",
     text = "text",
@@ -39,8 +40,8 @@ val fakePrice = Price(
 val fakePrices = (0..2).map { fakePrice }
 
 val fakeImage = Image(
-    extension = "cetero",
-    path = "nominavi"
+    extension = "jpg",
+    path = "nominavi.jpg"
 )
 
 val fakeImages = (0..2).map {
@@ -74,18 +75,22 @@ val fakeMarvelItems = (0..2).map {
     MarvelItem(
         id = 8719,
         name = "Cora Blanchard",
-        thumbnail = Image(extension = "iaculis", path = "simul")
+        thumbnail = fakeImage
     )
 }
+
+val fakeError = AppError.NetworkError
+val fakeUnknownError = AppError.UnknownError
+val fakeNotAvailableError = AppError.NotAvailable
 
 val fakeCharacters = (0..2).map {
     Character(
         comics = fakeObject,
         description = "quas",
         events = fakeObject,
-        id = 111,
+        id = 8719,
         modified = "litora",
-        name = "Rene Hutchinson",
+        name = "Cora Blanchard",
         resourceURI = "natum",
         series = fakeObject,
         stories = fakeObject,
@@ -94,10 +99,6 @@ val fakeCharacters = (0..2).map {
     )
 }
 
-val fakeError = AppError.NetworkError
-val fakeUnknownError = AppError.UnknownError
-val fakeNotAvailableError = AppError.NotAvailable
-
 val fakeEvents = (0..2).map {
     Event(
         characters = fakeObject,
@@ -105,7 +106,7 @@ val fakeEvents = (0..2).map {
         creators = fakeObject,
         description = "mutat",
         end = "utamur",
-        id = 123,
+        id = 8719,
         modified = "quaestio",
         next = fakeItem,
         previous = fakeItem,
@@ -114,7 +115,7 @@ val fakeEvents = (0..2).map {
         start = "falli",
         stories = fakeObject,
         thumbnail = fakeImage,
-        title = "id",
+        title = "Cora Blanchard",
         urls = fakeUrls
     )
 }
@@ -127,7 +128,7 @@ val fakeSeries = (0..2).map {
         description = "mutat",
         endYear = "utamur",
         events = fakeObject,
-        id = 123,
+        id = 8719,
         modified = "quaestio",
         next = fakeItem,
         previous = fakeItem,
@@ -136,7 +137,7 @@ val fakeSeries = (0..2).map {
         startYear = "id",
         stories = fakeObject,
         thumbnail = fakeImage,
-        title = "id",
+        title = "Cora Blanchard",
         urls = fakeUrls
     )
 }
@@ -148,13 +149,13 @@ val fakeStories = (0..2).map {
         creators = fakeObject,
         description = "mutat",
         events = fakeObject,
-        id = 123,
+        id = 8719,
         modified = "quaestio",
         originalissue = fakeItem,
         resourceURI = "utroque",
         series = fakeObject,
         thumbnail = fakeImage,
-        title = "falli",
+        title = "Cora Blanchard",
         type = "id"
     )
 }
@@ -173,7 +174,7 @@ val fakeComics = (0..2).map {
         ean = "accumsan",
         events = fakeObject,
         format = "scripserit",
-        id = 123,
+        id = 8719,
         images = fakeImages,
         isbn = "per",
         issn = "perpetua",
@@ -186,7 +187,7 @@ val fakeComics = (0..2).map {
         stories = fakeObject,
         textObjects = fakeTextObjects,
         thumbnail = fakeImage,
-        title = "ultricies",
+        title = "Cora Blanchard",
         upc = "scelerisque",
         urls = fakeUrls,
         variantDescription = "eleifend",
@@ -199,8 +200,8 @@ val fakeCreators = (0..2).map {
         comics = fakeObject,
         events = fakeObject,
         firstName = "Wilbur Graham",
-        fullName = "Luther Sosa",
-        id = 123,
+        fullName = "Cora Blanchard",
+        id = 8719,
         lastName = "Sean Maxwell",
         middleName = "Brent Rasmussen",
         modified = "consequat",
