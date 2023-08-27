@@ -1,19 +1,17 @@
-package com.luna.marvel.app.data.remote.datasources
+package com.luna.marvel.app.ui.screens.characters
 
 import app.cash.turbine.test
 import com.google.common.truth.Truth.assertThat
-import com.luna.marvel.app.data.remote.builders.StoriesViewModelsBuilder
 import com.luna.marvel.app.rules.CoroutineTestRule
-import com.luna.marvel.app.ui.screens.stories.characters.StoryCharactersViewModel
-import com.luna.marvel.app.ui.screens.stories.comics.StoryComicsViewModel
-import com.luna.marvel.app.ui.screens.stories.creators.StoryCreatorsViewModel
-import com.luna.marvel.app.ui.screens.stories.detail.StoryDetailViewModel
-import com.luna.marvel.app.ui.screens.stories.events.StoryEventsViewModel
-import com.luna.marvel.app.ui.screens.stories.master.StoriesViewModel
-import com.luna.marvel.app.ui.screens.stories.series.StorySeriesViewModel
+import com.luna.marvel.app.ui.builders.CharactersViewModelsBuilder
+import com.luna.marvel.app.ui.screens.characters.comics.CharactersComicsViewModel
+import com.luna.marvel.app.ui.screens.characters.detail.CharactersDetailViewModel
+import com.luna.marvel.app.ui.screens.characters.events.CharacterEventsViewModel
+import com.luna.marvel.app.ui.screens.characters.master.CharactersViewModel
+import com.luna.marvel.app.ui.screens.characters.series.CharacterSeriesViewModel
+import com.luna.marvel.app.ui.screens.characters.stories.CharacterStoriesViewModel
 import com.luna.testshared.fakeCharacters
 import com.luna.testshared.fakeComics
-import com.luna.testshared.fakeCreators
 import com.luna.testshared.fakeEvents
 import com.luna.testshared.fakeMarvelItems
 import com.luna.testshared.fakeNotAvailableError
@@ -29,23 +27,24 @@ import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class StoriesIntegrationTest {
+class CharactersIntegrationTest {
+
     @get:Rule
     val coroutineTestRule = CoroutineTestRule()
 
-    private lateinit var builder: StoriesViewModelsBuilder
+    private lateinit var builder: CharactersViewModelsBuilder
 
     @Before
     fun setup() {
-        builder = StoriesViewModelsBuilder()
+        builder = CharactersViewModelsBuilder()
     }
 
     @Test
-    fun `when getStories if successful should return a list of marvelItems on right side of either`() =
+    fun `when getCharacters if successful, should return a list of MarvelItems on the right side of either`() =
         runTest {
-            val state = StoriesViewModel.State()
-            val viewModel = builder.storiesViewModel()
-            val expected = state.copy(stories = fakeMarvelItems, loading = true)
+            val state = CharactersViewModel.State()
+            val viewModel = builder.charactersViewModel()
+            val expected = state.copy(characters = fakeMarvelItems, loading = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
                 assertThat(awaitItem()).isEqualTo(state)
@@ -57,74 +56,10 @@ class StoriesIntegrationTest {
         }
 
     @Test
-    fun `when getStoryById if successful should return a story's detail on the right side of either`() =
+    fun `when getCharacterComicsById if successful, should return comics by character id on right side of either`() =
         runTest {
-            val state = StoryDetailViewModel.State()
-            val viewModel = builder.storyDetailViewModel()
-            val expected = state.copy(story = fakeStories.first(), loading = true)
-
-            viewModel.state.onEach { println("<-- $it") }.test {
-                assertThat(awaitItem()).isEqualTo(state)
-                assertThat(awaitItem().loading).isTrue()
-                assertThat(awaitItem()).isEqualTo(expected)
-                assertThat(awaitItem().loading).isFalse()
-                cancel()
-            }
-        }
-
-    @Test
-    fun `when getStoryById if response is empty should return an app error on the left side of either`() =
-        runTest {
-            val state = StoryDetailViewModel.State()
-            val viewModel = builder.storyDetailViewModel(0)
-            val expected = state.copy(appError = fakeUnknownError, loading = true)
-
-            viewModel.state.onEach { println("<-- $it") }.test {
-                assertThat(awaitItem()).isEqualTo(state)
-                assertThat(awaitItem().loading).isTrue()
-                assertThat(awaitItem()).isEqualTo(expected)
-                assertThat(awaitItem().loading).isFalse()
-                cancel()
-            }
-        }
-
-    @Test
-    fun `when getCharactersByStoryId if successful should return a list of characters on the right side of either`() =
-        runTest {
-            val state = StoryCharactersViewModel.State()
-            val viewModel = builder.storyCharactersViewModel()
-            val expected = state.copy(characters = fakeCharacters, loading = true)
-
-            viewModel.state.onEach { println("<-- $it") }.test {
-                assertThat(awaitItem()).isEqualTo(state)
-                assertThat(awaitItem().loading).isTrue()
-                assertThat(awaitItem()).isEqualTo(expected)
-                assertThat(awaitItem().loading).isFalse()
-                cancel()
-            }
-        }
-
-    @Test
-    fun `when getCharactersByStoryId if response is empty should return an app error on the left side of either`() =
-        runTest {
-            val state = StoryCharactersViewModel.State()
-            val viewModel = builder.storyCharactersViewModel(0)
-            val expected = state.copy(appError = fakeNotAvailableError, loading = true)
-
-            viewModel.state.onEach { println("<-- $it") }.test {
-                assertThat(awaitItem()).isEqualTo(state)
-                assertThat(awaitItem().loading).isTrue()
-                assertThat(awaitItem()).isEqualTo(expected)
-                assertThat(awaitItem().loading).isFalse()
-                cancel()
-            }
-        }
-
-    @Test
-    fun `when getComicsByStoryId if successful should return a list of comics on the right side of either`() =
-        runTest {
-            val state = StoryComicsViewModel.State()
-            val viewModel = builder.storyComicsViewModel()
+            val state = CharactersComicsViewModel.State()
+            val viewModel = builder.charactersComicsViewModel()
             val expected = state.copy(comics = fakeComics, loading = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
@@ -137,10 +72,10 @@ class StoriesIntegrationTest {
         }
 
     @Test
-    fun `when getComicsByStoryId if response is empty should return an app error on the left side of either`() =
+    fun `when getCharacterComicsById if response result is empty, should return app error on left side of either`() =
         runTest {
-            val state = StoryComicsViewModel.State()
-            val viewModel = builder.storyComicsViewModel(0)
+            val state = CharactersComicsViewModel.State()
+            val viewModel = builder.charactersComicsViewModel(0)
             val expected = state.copy(appError = fakeNotAvailableError, loading = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
@@ -153,11 +88,11 @@ class StoriesIntegrationTest {
         }
 
     @Test
-    fun `when getCreatorsByStoryId if successful should return a list of creators on the right side of either`() =
+    fun `when getCharacterById if successful, should return a character's detail on the right side of either`() =
         runTest {
-            val state = StoryCreatorsViewModel.State()
-            val viewModel = builder.storyCreatorsViewModel()
-            val expected = state.copy(creators = fakeCreators, loading = true)
+            val state = CharactersDetailViewModel.State()
+            val viewModel = builder.charactersDetailViewModel()
+            val expected = state.copy(character = fakeCharacters.first(), loading = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
                 assertThat(awaitItem()).isEqualTo(state)
@@ -169,11 +104,11 @@ class StoriesIntegrationTest {
         }
 
     @Test
-    fun `when getCreatorsByStoryId if response is empty should return an app error on the left side of either`() =
+    fun `when getCharacterById if response result is empty, should return app error on left side of either`() =
         runTest {
-            val state = StoryCreatorsViewModel.State()
-            val viewModel = builder.storyCreatorsViewModel(0)
-            val expected = state.copy(appError = fakeNotAvailableError, loading = true)
+            val state = CharactersDetailViewModel.State()
+            val viewModel = builder.charactersDetailViewModel(0)
+            val expected = state.copy(appError = fakeUnknownError, loading = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
                 assertThat(awaitItem()).isEqualTo(state)
@@ -185,10 +120,10 @@ class StoriesIntegrationTest {
         }
 
     @Test
-    fun `when getEventsByStoryId if successful should return a list of events on the right side of either`() =
+    fun `when getCharacterEventsById if successful, should return a list of characters on the right side of either`() =
         runTest {
-            val state = StoryEventsViewModel.State()
-            val viewModel = builder.storyEventsViewModel()
+            val state = CharacterEventsViewModel.State()
+            val viewModel = builder.charactersEventsViewModel()
             val expected = state.copy(events = fakeEvents, loading = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
@@ -201,10 +136,10 @@ class StoriesIntegrationTest {
         }
 
     @Test
-    fun `when getEventsByStoryId if response is empty should return an app error on the left side of either`() =
+    fun `when getCharacterEventsById if response result is empty, should return app error on left side of either`() =
         runTest {
-            val state = StoryEventsViewModel.State()
-            val viewModel = builder.storyEventsViewModel(0)
+            val state = CharacterEventsViewModel.State()
+            val viewModel = builder.charactersEventsViewModel(0)
             val expected = state.copy(appError = fakeNotAvailableError, loading = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
@@ -217,10 +152,10 @@ class StoriesIntegrationTest {
         }
 
     @Test
-    fun `when getSeriesByStoryId if successful should return a list of series on the right side of either`() =
+    fun `when getCharacterSeriesById if successful, should return a list of Series on the right side of either`() =
         runTest {
-            val state = StorySeriesViewModel.State()
-            val viewModel = builder.storySeriesViewModel()
+            val state = CharacterSeriesViewModel.State()
+            val viewModel = builder.charactersSeriesViewModel()
             val expected = state.copy(series = fakeSeries, loading = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
@@ -233,10 +168,10 @@ class StoriesIntegrationTest {
         }
 
     @Test
-    fun `when getSeriesByStoryId if response is empty should return an app error on the left side of either`() =
+    fun `when getCharacterSeriesById if response result is empty, should return app error on left side of either`() =
         runTest {
-            val state = StorySeriesViewModel.State()
-            val viewModel = builder.storySeriesViewModel(0)
+            val state = CharacterSeriesViewModel.State()
+            val viewModel = builder.charactersSeriesViewModel(0)
             val expected = state.copy(appError = fakeNotAvailableError, loading = true)
 
             viewModel.state.onEach { println("<-- $it") }.test {
@@ -248,4 +183,35 @@ class StoriesIntegrationTest {
             }
         }
 
+    @Test
+    fun `when getCharacterStoriesById if successful, should return a list of Stories on the right side of either`() =
+        runTest {
+            val state = CharacterStoriesViewModel.State()
+            val viewModel = builder.charactersStoriesViewModel()
+            val expected = state.copy(stories = fakeStories, loading = true)
+
+            viewModel.state.onEach { println("<-- $it") }.test {
+                assertThat(awaitItem()).isEqualTo(state)
+                assertThat(awaitItem().loading).isTrue()
+                assertThat(awaitItem()).isEqualTo(expected)
+                assertThat(awaitItem().loading).isFalse()
+                cancel()
+            }
+        }
+
+    @Test
+    fun `when getCharacterStoriesById if response result is empty, should return app error on left side of either`() =
+        runTest {
+            val state = CharacterStoriesViewModel.State()
+            val viewModel = builder.charactersStoriesViewModel(0)
+            val expected = state.copy(appError = fakeNotAvailableError, loading = true)
+
+            viewModel.state.onEach { println("<-- $it") }.test {
+                assertThat(awaitItem()).isEqualTo(state)
+                assertThat(awaitItem().loading).isTrue()
+                assertThat(awaitItem()).isEqualTo(expected)
+                assertThat(awaitItem().loading).isFalse()
+                cancel()
+            }
+        }
 }

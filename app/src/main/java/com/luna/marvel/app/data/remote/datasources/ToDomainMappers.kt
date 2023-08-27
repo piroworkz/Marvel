@@ -23,7 +23,7 @@ import com.luna.marvel.app.data.remote.model.RemoteStories
 import com.luna.marvel.app.data.remote.model.common.RemoteDate
 import com.luna.marvel.app.data.remote.model.common.RemoteImage
 import com.luna.marvel.app.data.remote.model.common.RemoteItem
-import com.luna.marvel.app.data.remote.model.common.RemoteItems
+import com.luna.marvel.app.data.remote.model.common.RemoteObject
 import com.luna.marvel.app.data.remote.model.common.RemotePrice
 import com.luna.marvel.app.data.remote.model.common.RemoteTextObject
 import com.luna.marvel.app.data.remote.model.common.RemoteUrl
@@ -100,7 +100,7 @@ fun RemoteImage.toDomain(): Image =
         path = path.replace("p:", "ps:").plus(".$extension")
     )
 
-fun RemoteItems.toDomain(): Object =
+fun RemoteObject.toDomain(): Object =
     Object(
         available = available,
         collectionURI = collectionURI,
