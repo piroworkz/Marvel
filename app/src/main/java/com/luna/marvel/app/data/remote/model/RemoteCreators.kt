@@ -1,12 +1,12 @@
 package com.luna.marvel.app.data.remote.model
 
 import com.luna.marvel.app.data.remote.model.common.RemoteImage
-import com.luna.marvel.app.data.remote.model.common.RemoteItems
+import com.luna.marvel.app.data.remote.model.common.RemoteObject
 import com.luna.marvel.app.data.remote.model.common.RemoteUrl
 
 data class RemoteCreators(
-    val comics: RemoteItems,
-    val events: RemoteItems,
+    val comics: RemoteObject,
+    val events: RemoteObject,
     val firstName: String,
     val fullName: String,
     val id: Int,
@@ -14,8 +14,8 @@ data class RemoteCreators(
     val middleName: String,
     val modified: String,
     val resourceURI: String,
-    val series: RemoteItems,
-    val stories: RemoteItems,
+    val series: RemoteObject,
+    val stories: RemoteObject,
     val suffix: String,
     val thumbnail: RemoteImage,
     val urls: List<RemoteUrl>

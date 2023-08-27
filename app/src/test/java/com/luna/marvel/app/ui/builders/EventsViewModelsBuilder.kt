@@ -1,9 +1,11 @@
-package com.luna.marvel.app.data.remote.builders
+package com.luna.marvel.app.ui.builders
 
 import androidx.lifecycle.SavedStateHandle
 import com.luna.data.repositories.EventsRepository
 import com.luna.data.sources.EventsDataSource
-import com.luna.marvel.app.data.remote.datasources.FakeRemoteEventsDataSource
+import com.luna.marvel.app.data.remote.datasources.RemoteEventsDataSource
+import com.luna.marvel.app.data.remote.services.EventsService
+import com.luna.marvel.app.data.remote.services.FakeEventsService
 import com.luna.marvel.app.ui.navigation.graphs.Args
 import com.luna.marvel.app.ui.screens.events.characters.EventCharactersViewModel
 import com.luna.marvel.app.ui.screens.events.comics.EventComicsViewModel
@@ -21,7 +23,9 @@ import com.luna.usecases.events.GetSeriesByEventIdUseCase
 import com.luna.usecases.events.GetStoriesByEventIdUseCase
 
 class EventsViewModelsBuilder {
-    private val eventsDataSource: EventsDataSource = FakeRemoteEventsDataSource()
+
+    private val service: EventsService = FakeEventsService()
+    private val eventsDataSource: EventsDataSource = RemoteEventsDataSource(service)
     private val repository = EventsRepository(eventsDataSource)
     private val getEvents = GetEventsUseCase(repository)
     private val getEventByIdUseCase = GetEventByIdUseCase(repository)

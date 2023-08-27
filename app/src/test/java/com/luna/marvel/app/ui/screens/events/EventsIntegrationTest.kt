@@ -1,9 +1,9 @@
-package com.luna.marvel.app.data.remote.datasources
+package com.luna.marvel.app.ui.screens.events
 
 import app.cash.turbine.test
 import com.google.common.truth.Truth.assertThat
-import com.luna.marvel.app.data.remote.builders.EventsViewModelsBuilder
 import com.luna.marvel.app.rules.CoroutineTestRule
+import com.luna.marvel.app.ui.builders.EventsViewModelsBuilder
 import com.luna.marvel.app.ui.screens.events.characters.EventCharactersViewModel
 import com.luna.marvel.app.ui.screens.events.comics.EventComicsViewModel
 import com.luna.marvel.app.ui.screens.events.creators.EventCreatorsViewModel

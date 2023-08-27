@@ -1,9 +1,11 @@
-package com.luna.marvel.app.data.remote.builders
+package com.luna.marvel.app.ui.builders
 
 import androidx.lifecycle.SavedStateHandle
 import com.luna.data.repositories.CreatorsRepository
 import com.luna.data.sources.CreatorsDataSource
-import com.luna.marvel.app.data.remote.datasources.FakeRemoteCreatorsDataSource
+import com.luna.marvel.app.data.remote.datasources.RemoteCreatorsDataSource
+import com.luna.marvel.app.data.remote.services.CreatorsService
+import com.luna.marvel.app.data.remote.services.FakeCreatorsService
 import com.luna.marvel.app.ui.navigation.graphs.Args
 import com.luna.marvel.app.ui.screens.creators.comics.CreatorComicsViewModel
 import com.luna.marvel.app.ui.screens.creators.detail.CreatorDetailViewModel
@@ -19,7 +21,9 @@ import com.luna.usecases.creators.GetSeriesByCreatorIdUseCase
 import com.luna.usecases.creators.GetStoriesByCreatorIdUseCase
 
 class CreatorsViewModelsBuilder {
-    private val remoteCreatorsDataSource: CreatorsDataSource = FakeRemoteCreatorsDataSource()
+
+    private val service: CreatorsService = FakeCreatorsService()
+    private val remoteCreatorsDataSource: CreatorsDataSource = RemoteCreatorsDataSource(service)
     private val repository = CreatorsRepository(remoteCreatorsDataSource)
     private val getCreators = GetCreatorsUseCase(repository)
     private val getCreatorById = GetCreatorByIdUseCase(repository)
