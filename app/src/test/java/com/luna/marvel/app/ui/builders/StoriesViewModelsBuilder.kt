@@ -1,9 +1,11 @@
-package com.luna.marvel.app.data.remote.builders
+package com.luna.marvel.app.ui.builders
 
 import androidx.lifecycle.SavedStateHandle
 import com.luna.data.repositories.StoriesRepository
 import com.luna.data.sources.StoriesDataSource
-import com.luna.marvel.app.data.remote.datasources.FakeRemoteStoriesDataSource
+import com.luna.marvel.app.data.remote.datasources.RemoteStoriesDataSource
+import com.luna.marvel.app.data.remote.services.FakeStoriesService
+import com.luna.marvel.app.data.remote.services.StoriesService
 import com.luna.marvel.app.ui.navigation.graphs.Args
 import com.luna.marvel.app.ui.screens.stories.characters.StoryCharactersViewModel
 import com.luna.marvel.app.ui.screens.stories.comics.StoryComicsViewModel
@@ -21,7 +23,9 @@ import com.luna.usecases.stories.GetStoriesUseCase
 import com.luna.usecases.stories.GetStoryByIdUseCase
 
 class StoriesViewModelsBuilder {
-    private val datasource: StoriesDataSource = FakeRemoteStoriesDataSource()
+
+    private val service: StoriesService = FakeStoriesService()
+    private val datasource: StoriesDataSource = RemoteStoriesDataSource(service)
     private val repository = StoriesRepository(datasource)
     private val getStories = GetStoriesUseCase(repository)
     private val getStoryById = GetStoryByIdUseCase(repository)

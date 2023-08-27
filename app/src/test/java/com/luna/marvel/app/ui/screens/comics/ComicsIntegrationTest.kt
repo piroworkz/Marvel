@@ -1,9 +1,9 @@
-package com.luna.marvel.app.data.remote.datasources
+package com.luna.marvel.app.ui.screens.comics
 
 import app.cash.turbine.test
 import com.google.common.truth.Truth
-import com.luna.marvel.app.data.remote.builders.ComicsViewModelsBuilder
 import com.luna.marvel.app.rules.CoroutineTestRule
+import com.luna.marvel.app.ui.builders.ComicsViewModelsBuilder
 import com.luna.marvel.app.ui.screens.comics.characters.ComicCharactersViewModel
 import com.luna.marvel.app.ui.screens.comics.creators.ComicCreatorsViewModel
 import com.luna.marvel.app.ui.screens.comics.detail.ComicDetailViewModel

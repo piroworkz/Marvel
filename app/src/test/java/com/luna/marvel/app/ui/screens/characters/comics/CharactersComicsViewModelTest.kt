@@ -12,7 +12,6 @@ import com.luna.testshared.fakeUnknownError
 import com.luna.usecases.characters.GetCharacterComicsByIdUseCase
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

@@ -3,22 +3,22 @@ package com.luna.marvel.app.data.remote.model
 import com.luna.marvel.app.data.remote.model.common.RemoteDate
 import com.luna.marvel.app.data.remote.model.common.RemoteImage
 import com.luna.marvel.app.data.remote.model.common.RemoteItem
-import com.luna.marvel.app.data.remote.model.common.RemoteItems
+import com.luna.marvel.app.data.remote.model.common.RemoteObject
 import com.luna.marvel.app.data.remote.model.common.RemotePrice
 import com.luna.marvel.app.data.remote.model.common.RemoteTextObject
 import com.luna.marvel.app.data.remote.model.common.RemoteUrl
 
 data class RemoteComic(
-    val characters: RemoteItems,
+    val characters: RemoteObject,
     val collectedIssues: List<RemoteItem>,
     val collections: List<RemoteItem>,
-    val creators: RemoteItems,
+    val creators: RemoteObject,
     val dates: List<RemoteDate>,
     val description: String?,
     val diamondCode: String,
     val digitalId: String,
     val ean: String,
-    val events: RemoteItems,
+    val events: RemoteObject,
     val format: String,
     val id: Int,
     val images: List<RemoteImage>,
@@ -30,7 +30,7 @@ data class RemoteComic(
     val prices: List<RemotePrice>,
     val resourceURI: String,
     val series: RemoteItem,
-    val stories: RemoteItems,
+    val stories: RemoteObject,
     val textObjects: List<RemoteTextObject>,
     val thumbnail: RemoteImage,
     val title: String,
