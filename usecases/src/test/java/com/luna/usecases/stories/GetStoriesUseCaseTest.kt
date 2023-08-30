@@ -1,12 +1,11 @@
 package com.luna.usecases.stories
 
 import arrow.core.Either
-import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import com.luna.data.repositories.StoriesRepository
 import com.luna.testshared.fakeError
 import com.luna.testshared.fakeMarvelItems
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -30,7 +29,7 @@ class GetStoriesUseCaseTest {
 
             val actual = getStoriesUseCase()
 
-            Truth.assertThat(actual).isEqualTo(expected)
+            assertThat(actual).isEqualTo(expected)
         }
 
     @Test
@@ -41,6 +40,6 @@ class GetStoriesUseCaseTest {
 
             val actual = getStoriesUseCase()
 
-            Truth.assertThat(actual).isEqualTo(expected)
+            assertThat(actual).isEqualTo(expected)
         }
 }

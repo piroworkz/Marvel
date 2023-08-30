@@ -28,46 +28,47 @@ fun CreatorDetailScreen(
 
     AppScaffoldView(
         destination = CreatorsGraph.CreatorsDetail,
-        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) }
-    ) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(Dimens.Size.medium)
-        ) {
+        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) },
+        {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(Dimens.Size.medium)
+            ) {
 
-            state.creator?.thumbnail?.path?.let(::image)
+                state.creator?.thumbnail?.path?.let(::image)
 
-            state.creator?.fullName?.let(::title)
+                state.creator?.fullName?.let(::title)
 
-            state.creator?.comics?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_comics)
-                categoryListView(it)
+                state.creator?.comics?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_comics)
+                    categoryListView(it)
+                }
+
+                state.creator?.events?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_events)
+                    categoryListView(it)
+                }
+
+
+                state.creator?.series?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_series)
+                    categoryListView(it)
+                }
+
+                state.creator?.stories?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_stories)
+                    categoryListView(it)
+                }
+
+                whiteDivider()
             }
+            LoadingView(loading = state.loading)
 
-            state.creator?.events?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_events)
-                categoryListView(it)
+            state.appError?.let {
+                AppDialogScreen(message = it.appError) { sendEvent(AppEvent.NavigateUp) }
             }
-
-
-            state.creator?.series?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_series)
-                categoryListView(it)
-            }
-
-            state.creator?.stories?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_stories)
-                categoryListView(it)
-            }
-
-            whiteDivider()
-        }
-        LoadingView(loading = state.loading)
-
-        state.appError?.let {
-            AppDialogScreen(message = it.appError) { sendEvent(AppEvent.NavigateUp) }
-        }
-    }
+        },
+    )
 }

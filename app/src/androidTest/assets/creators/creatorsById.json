@@ -1,0 +1,267 @@
+{
+  "code": 200,
+  "status": "Ok",
+  "copyright": "© 2023 MARVEL",
+  "attributionText": "Data provided by Marvel. © 2023 MARVEL",
+  "attributionHTML": "<a href=\"http://marvel.com\">Data provided by Marvel. © 2023 MARVEL</a>",
+  "etag": "17d78de88d229f4822161af1b32a5b1b889221f0",
+  "data": {
+    "offset": 0,
+    "limit": 20,
+    "total": 1,
+    "count": 1,
+    "results": [
+      {
+        "id": 1168,
+        "firstName": "All Thumbs Creative",
+        "middleName": "",
+        "lastName": "",
+        "suffix": "",
+        "fullName": "All Thumbs Creative",
+        "modified": "2018-07-24T11:50:20-0400",
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available",
+          "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/creators/1168",
+        "comics": {
+          "available": 13,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/1168/comics",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/68960",
+              "name": "Marvel Masterworks: Captain America Vol. 10 (Trade Paperback)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/28003",
+              "name": "Marvel Masterworks: Captain America Vol. 5 (Trade Paperback)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/25797",
+              "name": "Marvel Masterworks: Deathlok Vol. 1 (Trade Paperback)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/62853",
+              "name": "Marvel Masterworks: Doctor Strange Vol. 8 (Trade Paperback)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/60438",
+              "name": "Marvel Masterworks: Marvel Two-In-One Vol. 2 (Trade Paperback)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/66207",
+              "name": "Marvel Masterworks: Marvel Two-In-One Vol. 3 (Trade Paperback)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/21816",
+              "name": "Marvel Masterworks: The Amazing Spider-Man Vol. 10 (Trade Paperback)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/66777",
+              "name": "Marvel Masterworks: The Avengers Vol. 18 (Trade Paperback)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/24297",
+              "name": "Marvel Masterworks: The Avengers Vol. 9 (Trade Paperback)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/40080",
+              "name": "Marvel Masterworks: The Fantastic Four (Trade Paperback)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/28021",
+              "name": "Marvel Masterworks: The Fantastic Four Vol. 12 (Trade Paperback)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/60444",
+              "name": "Marvel Masterworks: The Fantastic Four Vol. 19 (Trade Paperback)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/67357",
+              "name": "Marvel Masterworks: The Fantastic Four Vol. 20 (Trade Paperback)"
+            }
+          ],
+          "returned": 13
+        },
+        "series": {
+          "available": 13,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/1168/series",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/25021",
+              "name": "Marvel Masterworks: Captain America Vol. 10 (2018)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/8967",
+              "name": "Marvel Masterworks: Captain America Vol. 5 (2010 - Present)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/8031",
+              "name": "Marvel Masterworks: Deathlok Vol. 1 (2009 - Present)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/23051",
+              "name": "Marvel Masterworks: Doctor Strange Vol. 8 (2017)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/22319",
+              "name": "Marvel Masterworks: Marvel Two-In-One Vol. 2 (2017)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/24004",
+              "name": "Marvel Masterworks: Marvel Two-In-One Vol. 3 (2018)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/5398",
+              "name": "Marvel Masterworks: The Amazing Spider-Man Vol. 10 (2008)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/24158",
+              "name": "Marvel Masterworks: The Avengers Vol. 18 (2018)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/7494",
+              "name": "Marvel Masterworks: The Avengers Vol. 9 (2009 - Present)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/14879",
+              "name": "Marvel Masterworks: The Fantastic Four (2011 - Present)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/8985",
+              "name": "Marvel Masterworks: The Fantastic Four Vol. 12 (2010 - Present)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/22325",
+              "name": "Marvel Masterworks: The Fantastic Four Vol. 19 (2017)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/24345",
+              "name": "Marvel Masterworks: The Fantastic Four Vol. 20 (2018)"
+            }
+          ],
+          "returned": 13
+        },
+        "stories": {
+          "available": 21,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/1168/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/47950",
+              "name": "Amazing Spider-Man 88-99",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/53831",
+              "name": "Avengers 80-88; Hulk 140",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/56854",
+              "name": "Interior #56854",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/61249",
+              "name": "Interior #61249",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/61285",
+              "name": "Interior #61285",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/75266",
+              "name": "Interior #75266",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/90936",
+              "name": "Interior #90936",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/131345",
+              "name": "cover from Marvel Masterworks: Marvel Two-in-One (2017)",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/131346",
+              "name": "story from Marvel Masterworks: Marvel Two-in-One (2017)",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/131357",
+              "name": "cover from Marvel Masterworks: The Fantastic Four (2017)",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/131358",
+              "name": "story from Marvel Masterworks: The Fantastic Four (2017)",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/137973",
+              "name": "cover from MARVEL MASTERWORKS: DOCTOR STRANGE VOL. 8 HC (2017) #8",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/137974",
+              "name": "story from MARVEL MASTERWORKS: DOCTOR STRANGE VOL. 8 HC (2017) #8",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/143541",
+              "name": "cover from MARVEL MASTERWORKS: MARVEL TWO-IN-ONE VOL. 3 HC (2018) #3",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/143542",
+              "name": "story from MARVEL MASTERWORKS: MARVEL TWO-IN-ONE VOL. 3 HC (2018) #3",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/144709",
+              "name": "cover from MARVEL MASTERWORKS: THE AVENGERS VOL. 18 HC (2018) #18",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/144710",
+              "name": "story from MARVEL MASTERWORKS: THE AVENGERS VOL. 18 HC (2018) #18",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/145900",
+              "name": "cover from MARVEL MASTERWORKS: THE FANTASTIC FOUR VOL. 20 HC (2018) #20",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/145901",
+              "name": "story from MARVEL MASTERWORKS: THE FANTASTIC FOUR VOL. 20 HC (2018) #20",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/150975",
+              "name": "cover from MARVEL MASTERWORKS: CAPTAIN AMERICA VOL. 10 HC (2018) #10",
+              "type": "cover"
+            }
+          ],
+          "returned": 20
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/1168/events",
+          "items": [],
+          "returned": 0
+        },
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/creators/1168/all_thumbs_creative?utm_campaign=apiRef&utm_source=ed9dd6272880a478484c6af82cf068a8"
+          }
+        ]
+      }
+    ]
+  }
+}

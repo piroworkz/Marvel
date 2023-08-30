@@ -4,7 +4,6 @@ import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
 import com.luna.domain.AppError
-import com.luna.marvel.app.ui.application.log
 import retrofit2.HttpException
 import java.io.IOException
 import java.net.ConnectException
@@ -13,7 +12,6 @@ import java.net.SocketTimeoutException
 suspend fun <T> tryCatch(action: suspend () -> T): Either<AppError, T> = try {
     action().right()
 } catch (e: Exception) {
-    e.stackTraceToString().log("Error")
     e.toAppError().left()
 }
 

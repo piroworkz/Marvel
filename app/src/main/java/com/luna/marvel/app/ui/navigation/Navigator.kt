@@ -17,6 +17,7 @@ import com.luna.marvel.app.ui.screens.stories.navigation.storiesNavGraph
 
 @Composable
 fun Navigator(navController: NavHostController) {
+
     NavHost(
         navController = navController,
         startDestination = SplashGraph.Init.route

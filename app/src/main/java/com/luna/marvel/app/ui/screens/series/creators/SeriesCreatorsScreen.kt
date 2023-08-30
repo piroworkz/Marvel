@@ -29,49 +29,50 @@ fun SeriesCreatorsScreen(
 
     AppScaffoldView(
         destination = SeriesGraph.SeriesCreators,
-        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) }
-    ) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(Dimens.Size.medium)
-        ) {
-            if (state.creators.isNotEmpty()) {
-                state.creators.forEach { creator: Creator ->
+        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) },
+        {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(Dimens.Size.medium)
+            ) {
+                if (state.creators.isNotEmpty()) {
+                    state.creators.forEach { creator: Creator ->
 
-                    image(creator.thumbnail.path)
+                        image(creator.thumbnail.path)
 
-                    title(creator.fullName)
+                        title(creator.fullName)
 
-                    creator.comics.items.ifNotEmpty {
-                        categorySubTitle(R.string.title_comics)
-                        categoryListView(it)
+                        creator.comics.items.ifNotEmpty {
+                            categorySubTitle(R.string.title_comics)
+                            categoryListView(it)
+                        }
+
+                        creator.events.items.ifNotEmpty {
+                            categorySubTitle(R.string.title_events)
+                            categoryListView(it)
+                        }
+
+                        creator.series.items.ifNotEmpty {
+                            categorySubTitle(R.string.title_series)
+                            categoryListView(it)
+                        }
+
+                        creator.stories.items.ifNotEmpty {
+                            categorySubTitle(R.string.title_stories)
+                            categoryListView(it)
+                        }
+
+                        whiteDivider()
                     }
-
-                    creator.events.items.ifNotEmpty {
-                        categorySubTitle(R.string.title_events)
-                        categoryListView(it)
-                    }
-
-                    creator.series.items.ifNotEmpty {
-                        categorySubTitle(R.string.title_series)
-                        categoryListView(it)
-                    }
-
-                    creator.stories.items.ifNotEmpty {
-                        categorySubTitle(R.string.title_stories)
-                        categoryListView(it)
-                    }
-
-                    whiteDivider()
                 }
             }
-        }
-        LoadingView(loading = state.loading)
+            LoadingView(loading = state.loading)
 
-        state.appError?.let {
-            AppDialogScreen(message = it.appError) { sendEvent(AppEvent.NavigateUp) }
-        }
-    }
+            state.appError?.let {
+                AppDialogScreen(message = it.appError) { sendEvent(AppEvent.NavigateUp) }
+            }
+        },
+    )
 }

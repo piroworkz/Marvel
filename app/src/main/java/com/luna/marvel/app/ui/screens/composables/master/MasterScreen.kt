@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -28,6 +29,7 @@ import com.luna.marvel.app.ui.navigation.menus.AppMenu
 import com.luna.marvel.app.ui.navigation.menus.characterMenu
 import com.luna.marvel.app.ui.screens.common.MarvelEvent
 import com.luna.marvel.app.ui.screens.composables.AppScaffoldView
+import com.luna.marvel.app.ui.screens.composables.MasterTags.MASTER_SCREEN
 import com.luna.marvel.app.ui.screens.composables.loading.LoadingView
 import com.luna.marvel.app.ui.screens.composables.master.views.PagerCardView
 import com.luna.marvel.app.ui.theme.Dimens
@@ -50,7 +52,9 @@ fun MasterScreen(
         onNavIconClicked = { sendEvent(MarvelEvent.NavigateUp) }
     ) {
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .testTag(MASTER_SCREEN),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
             Image(

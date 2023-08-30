@@ -1,12 +1,11 @@
 package com.luna.usecases.creators
 
 import arrow.core.Either
-import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import com.luna.data.repositories.CreatorsRepository
-import com.luna.testshared.fakeCreators
 import com.luna.testshared.fakeError
+import com.luna.testshared.fakeStories
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -24,12 +23,12 @@ class GetStoriesByCreatorIdUseCaseTest {
     @Test
     fun `on success getStoriesByCreatorIdUseCase() should return a list of creators on the right side of either result`() =
         runTest {
-            val expected = Either.Right(fakeCreators)
+            val expected = Either.Right(fakeStories)
             whenever(repository.getStoriesByCreatorId(1)).thenReturn(expected)
 
             val actual = getStoriesByCreatorIdUseCase(1)
 
-            Truth.assertThat(actual).isEqualTo(expected)
+            assertThat(actual).isEqualTo(expected)
         }
 
     @Test
@@ -40,6 +39,6 @@ class GetStoriesByCreatorIdUseCaseTest {
 
             val actual = getStoriesByCreatorIdUseCase(1)
 
-            Truth.assertThat(actual).isEqualTo(expected)
+            assertThat(actual).isEqualTo(expected)
         }
 }

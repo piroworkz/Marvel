@@ -1,7 +1,7 @@
 package com.luna.usecases.creators
 
 import arrow.core.Either
-import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import com.luna.data.repositories.CreatorsRepository
 import com.luna.testshared.fakeCreators
 import com.luna.testshared.fakeError
@@ -28,7 +28,7 @@ class GetCreatorByIdUseCaseTest {
 
             val actual = getCreatorByIdUseCase(1)
 
-            Truth.assertThat(actual).isEqualTo(expected)
+            assertThat(actual).isEqualTo(expected)
         }
 
     @Test
@@ -39,6 +39,6 @@ class GetCreatorByIdUseCaseTest {
 
             val actual = getCreatorByIdUseCase(1)
 
-            Truth.assertThat(actual).isEqualTo(expected)
+            assertThat(actual).isEqualTo(expected)
         }
 }
