@@ -1,7 +1,7 @@
 package com.luna.usecases.events
 
 import arrow.core.Either
-import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import com.luna.data.repositories.EventsRepository
 import com.luna.testshared.fakeError
 import com.luna.testshared.fakeStories
@@ -28,7 +28,7 @@ class GetStoriesByEventIdUseCaseTest {
 
             val actual = getStoriesByEventIdUseCase(1)
 
-            Truth.assertThat(actual).isEqualTo(expected)
+            assertThat(actual).isEqualTo(expected)
         }
 
     @Test
@@ -39,6 +39,6 @@ class GetStoriesByEventIdUseCaseTest {
 
             val actual = getStoriesByEventIdUseCase(1)
 
-            Truth.assertThat(actual).isEqualTo(expected)
+            assertThat(actual).isEqualTo(expected)
         }
 }

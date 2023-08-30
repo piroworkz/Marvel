@@ -17,7 +17,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.luna.marvel.app.di.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -58,13 +58,15 @@ android {
 }
 
 dependencies {
+    val composeBom = platform(libs.compose.bom)
+
     implementation(project(":domain"))
     implementation(project(":data"))
     implementation(project(":usecases"))
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
-    implementation(platform(libs.compose.bom))
+    implementation(composeBom)
     implementation(libs.ui)
     implementation(libs.ui.graphics)
     debugImplementation(libs.ui.tooling)
@@ -91,7 +93,7 @@ dependencies {
     implementation(libs.hilt.nav.compose)
     kapt(libs.hilt.compiler)
 
-    //    TESTING
+    //  UNIT  TESTING
     testImplementation(project(":testShared"))
     testImplementation(libs.junit)
     testImplementation(libs.mockito.kotlin)
@@ -100,14 +102,17 @@ dependencies {
     testImplementation(libs.turbine)
     testImplementation(libs.truth)
 
-    androidTestImplementation(libs.junit.ktx)
-    androidTestImplementation(libs.espresso.contrib)
-    androidTestImplementation(libs.runner)
-    androidTestImplementation(libs.rules)
-    androidTestImplementation(libs.hilt.test)
-    androidTestImplementation(libs.coroutines.test)
-    androidTestImplementation(libs.mock.web.server)
+//    INSTRUMENTED TESTING
+    androidTestImplementation(project(":testShared"))
+    androidTestImplementation(composeBom)
+    androidTestImplementation(libs.ui.test.junit4)
+    androidTestImplementation(libs.navigation.testing)
+    debugImplementation(libs.ui.test.manifest)
 
+    androidTestImplementation(libs.runner)
+    androidTestImplementation(libs.mock.web.server)
+    androidTestImplementation(libs.hilt.test)
     kaptAndroidTest(libs.hilt.compiler)
+
 
 }

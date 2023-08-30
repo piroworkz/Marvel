@@ -2,7 +2,6 @@ package com.luna.marvel.app.ui.navigation.utils
 
 import androidx.navigation.NavHostController
 import androidx.navigation.NavOptionsBuilder
-import com.luna.marvel.app.ui.application.log
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 
 fun NavHostController.navigateTo(
@@ -15,7 +14,6 @@ fun NavHostController.navigateTo(
         launchSingleTop = true
     }
 ) {
-    destination.route.log("navigateTo")
     navigate(
         route = destination.createRoute(args),
         builder = { navOptionsBuilder() }

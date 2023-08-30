@@ -29,56 +29,57 @@ fun EventDetailScreen(
 
     AppScaffoldView(
         destination = EventsGraph.EventsDetail,
-        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) }
-    ) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(Dimens.Size.medium)
-        ) {
+        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) },
+        {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(Dimens.Size.medium)
+            ) {
 
-            state.event?.thumbnail?.path?.let(::image)
+                state.event?.thumbnail?.path?.let(::image)
 
-            state.event?.description?.let {
+                state.event?.description?.let {
+                    whiteDivider()
+                    descriptionJustifiedText(it)
+                    whiteDivider()
+                }
+
+                state.event?.title?.let(::title)
+
+                state.event?.characters?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_events)
+                    categoryListView(it)
+                }
+
+                state.event?.comics?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_comics)
+                    categoryListView(it)
+                }
+
+                state.event?.creators?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_series)
+                    categoryListView(it)
+                }
+
+                state.event?.series?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_series)
+                    categoryListView(it)
+                }
+
+                state.event?.stories?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_stories)
+                    categoryListView(it)
+                }
+
                 whiteDivider()
-                descriptionJustifiedText(it)
-                whiteDivider()
             }
+            LoadingView(loading = state.loading)
 
-            state.event?.title?.let(::title)
-
-            state.event?.characters?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_events)
-                categoryListView(it)
+            state.appError?.let {
+                AppDialogScreen(message = it.appError) { sendEvent(AppEvent.NavigateUp) }
             }
-
-            state.event?.comics?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_comics)
-                categoryListView(it)
-            }
-
-            state.event?.creators?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_series)
-                categoryListView(it)
-            }
-
-            state.event?.series?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_series)
-                categoryListView(it)
-            }
-
-            state.event?.stories?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_stories)
-                categoryListView(it)
-            }
-
-            whiteDivider()
-        }
-        LoadingView(loading = state.loading)
-
-        state.appError?.let {
-            AppDialogScreen(message = it.appError) { sendEvent(AppEvent.NavigateUp) }
-        }
-    }
+        },
+    )
 }

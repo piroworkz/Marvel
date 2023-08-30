@@ -1,0 +1,139 @@
+{
+  "code": 200,
+  "status": "Ok",
+  "copyright": "© 2023 MARVEL",
+  "attributionText": "Data provided by Marvel. © 2023 MARVEL",
+  "attributionHTML": "<a href=\"http://marvel.com\">Data provided by Marvel. © 2023 MARVEL</a>",
+  "etag": "774e3182d09a1ddbf8307dcdb60e51c1b9bbf398",
+  "data": {
+    "offset": 0,
+    "limit": 5,
+    "total": 2,
+    "count": 2,
+    "results": [
+      {
+        "id": 1891,
+        "title": "Cover #1891",
+        "description": "",
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/1891",
+        "type": "cover",
+        "modified": "1969-12-31T19:00:00-0500",
+        "thumbnail": null,
+        "creators": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/1891/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/6291",
+              "name": "Peter Bagge",
+              "role": "penciller (cover)"
+            }
+          ],
+          "returned": 1
+        },
+        "characters": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/1891/characters",
+          "items": [],
+          "returned": 0
+        },
+        "series": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/1891/series",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/565",
+              "name": "Startling Stories: The Incorrigible Hulk (2004)"
+            }
+          ],
+          "returned": 1
+        },
+        "comics": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/1891/comics",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/183",
+              "name": "Startling Stories: The Incorrigible Hulk (2004) #1"
+            }
+          ],
+          "returned": 1
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/1891/events",
+          "items": [],
+          "returned": 0
+        },
+        "originalIssue": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/comics/183",
+          "name": "Startling Stories: The Incorrigible Hulk (2004) #1"
+        }
+      },
+      {
+        "id": 1892,
+        "title": "Interior #1892",
+        "description": "",
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/1892",
+        "type": "story",
+        "modified": "1969-12-31T19:00:00-0500",
+        "thumbnail": null,
+        "creators": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/1892/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/6291",
+              "name": "Peter Bagge",
+              "role": "writer"
+            }
+          ],
+          "returned": 1
+        },
+        "characters": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/1892/characters",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009351",
+              "name": "Hulk"
+            }
+          ],
+          "returned": 1
+        },
+        "series": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/1892/series",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/565",
+              "name": "Startling Stories: The Incorrigible Hulk (2004)"
+            }
+          ],
+          "returned": 1
+        },
+        "comics": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/1892/comics",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/183",
+              "name": "Startling Stories: The Incorrigible Hulk (2004) #1"
+            }
+          ],
+          "returned": 1
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/1892/events",
+          "items": [],
+          "returned": 0
+        },
+        "originalIssue": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/comics/183",
+          "name": "Startling Stories: The Incorrigible Hulk (2004) #1"
+        }
+      }
+    ]
+  }
+}

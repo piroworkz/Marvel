@@ -28,48 +28,49 @@ fun ComicDetailScreen(
 
     AppScaffoldView(
         destination = ComicsGraph.ComicsDetail,
-        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) }
-    ) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(Dimens.Size.medium)
-        ) {
+        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) },
+        {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(Dimens.Size.medium)
+            ) {
 
-            state.comic?.images.ifNotEmpty { images ->
-                images(images)
+                state.comic?.images.ifNotEmpty { images ->
+                    images(images)
+                }
+
+                state.comic?.description?.let {
+                    val tagRegex = "<(.*?)>".toRegex()
+                    descriptionJustifiedText(it.replace(tagRegex, ""))
+
+                }
+
+
+                state.comic?.characters?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_characters)
+                    categoryListView(it)
+                }
+
+                state.comic?.events?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_events)
+                    categoryListView(it)
+                }
+
+
+                state.comic?.stories?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_stories)
+                    categoryListView(it)
+                }
+
+                whiteDivider()
             }
+            LoadingView(loading = state.loading)
 
-            state.comic?.description?.let {
-                val tagRegex = "<(.*?)>".toRegex()
-                descriptionJustifiedText(it.replace(tagRegex, ""))
-
+            state.appError?.let {
+                AppDialogScreen(message = it.appError) { sendEvent(AppEvent.NavigateUp) }
             }
-
-
-            state.comic?.characters?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_characters)
-                categoryListView(it)
-            }
-
-            state.comic?.events?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_events)
-                categoryListView(it)
-            }
-
-
-            state.comic?.stories?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_stories)
-                categoryListView(it)
-            }
-
-            whiteDivider()
-        }
-        LoadingView(loading = state.loading)
-
-        state.appError?.let {
-            AppDialogScreen(message = it.appError) { sendEvent(AppEvent.NavigateUp) }
-        }
-    }
+        },
+    )
 }

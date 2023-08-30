@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -24,6 +25,14 @@ import com.luna.marvel.app.ui.navigation.graphs.EventsGraph
 import com.luna.marvel.app.ui.navigation.graphs.SeriesGraph
 import com.luna.marvel.app.ui.navigation.graphs.StoriesGraph
 import com.luna.marvel.app.ui.screens.composables.ComicStripeBackgroundView
+import com.luna.marvel.app.ui.screens.menu.MenuTags.CHARACTER_BUTTON
+import com.luna.marvel.app.ui.screens.menu.MenuTags.COMIC_BUTTON
+import com.luna.marvel.app.ui.screens.menu.MenuTags.CREATOR_BUTTON
+import com.luna.marvel.app.ui.screens.menu.MenuTags.EVENT_BUTTON
+import com.luna.marvel.app.ui.screens.menu.MenuTags.MARVEL_MENU_BUTTON
+import com.luna.marvel.app.ui.screens.menu.MenuTags.MENU_SCREEN
+import com.luna.marvel.app.ui.screens.menu.MenuTags.SERIES_BUTTON
+import com.luna.marvel.app.ui.screens.menu.MenuTags.STORY_BUTTON
 import com.luna.marvel.app.ui.screens.utils.AnimState.START
 import com.luna.marvel.app.ui.screens.utils.AnimationEffects
 import com.luna.marvel.app.ui.screens.utils.rememberAnimationState
@@ -38,7 +47,9 @@ fun MenuScreen(
     AnimationEffects(menuAnimation)
 
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .testTag(MENU_SCREEN),
         contentAlignment = Alignment.Center
     ) {
 
@@ -59,42 +70,48 @@ fun MenuScreen(
 
             CircleButtonView(
                 modifier = Modifier
-                    .constrainAs(character) { characterConstraints(guideline50, comic) },
+                    .constrainAs(character) { characterConstraints(guideline50, comic) }
+                    .testTag(CHARACTER_BUTTON),
                 image = R.drawable.btn_characters,
                 onClick = { navigate(CharsGraph.Init) }
             )
 
             CircleButtonView(
                 modifier = Modifier
-                    .constrainAs(comic) { comicsConstraints(guideline25, verticalCenter) },
+                    .constrainAs(comic) { comicsConstraints(guideline25, verticalCenter) }
+                    .testTag(COMIC_BUTTON),
                 image = R.drawable.btn_comics,
                 onClick = { navigate(ComicsGraph.Comics) }
             )
 
             CircleButtonView(
                 modifier = Modifier
-                    .constrainAs(creator) { creatorsConstraints(guideline50, comic) },
+                    .constrainAs(creator) { creatorsConstraints(guideline50, comic) }
+                    .testTag(CREATOR_BUTTON),
                 image = R.drawable.btn_creators,
                 onClick = { navigate(CreatorsGraph.Creators) }
             )
 
             CircleButtonView(
                 modifier = Modifier
-                    .constrainAs(event) { eventConstraints(guideline64, series) },
+                    .constrainAs(event) { eventConstraints(guideline64, series) }
+                    .testTag(EVENT_BUTTON),
                 image = R.drawable.btn_events,
                 onClick = { navigate(EventsGraph.Events) }
             )
 
             CircleButtonView(
                 modifier = Modifier
-                    .constrainAs(series) { seriesConstraints(guideline75, verticalCenter) },
+                    .constrainAs(series) { seriesConstraints(guideline75, verticalCenter) }
+                    .testTag(SERIES_BUTTON),
                 image = R.drawable.btn_series,
                 onClick = { navigate(SeriesGraph.Series) }
             )
 
             CircleButtonView(
                 modifier = Modifier
-                    .constrainAs(story) { storiesConstraints(guideline64, series) },
+                    .constrainAs(story) { storiesConstraints(guideline64, series) }
+                    .testTag(STORY_BUTTON),
                 image = R.drawable.btn_stories,
                 onClick = { navigate(StoriesGraph.Stories) }
             )
@@ -113,6 +130,7 @@ fun MenuScreen(
                         menuAnimation.start()
                     }
                 }
+                .testTag(MARVEL_MENU_BUTTON)
         )
     }
 }

@@ -5,10 +5,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
 import com.luna.marvel.R
 
-val marvelFamily = FontFamily(Font(R.font.marvel))
 val oswaldFamily = FontFamily(
     listOf(
         Font(R.font.oswald_extra_light),
@@ -20,31 +18,9 @@ val oswaldFamily = FontFamily(
     )
 )
 
-val titleMarvel = TextStyle(
-    fontFamily = marvelFamily,
-    fontWeight = FontWeight.Black,
-    fontSize = 32.sp,
-    color = secondary
-)
-
-val subTitleMarvel = TextStyle(
-    fontFamily = marvelFamily,
-    fontWeight = FontWeight.Bold,
-    fontSize = 28.sp,
-    color = secondary
-)
-
-val bodyMarvel = TextStyle(
-    fontFamily = marvelFamily,
-    fontWeight = FontWeight.Normal,
-    fontSize = 20.sp,
-    color = secondary
-)
-
-
 val Typography = Typography(
     bodyLarge = TextStyle(
-        fontWeight = FontWeight.Normal
+        fontWeight = FontWeight.Bold
     ),
 ).defaultFonFamily(oswaldFamily)
 

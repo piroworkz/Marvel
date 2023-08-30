@@ -1,12 +1,11 @@
 package com.luna.usecases.comics
 
 import arrow.core.Either
-import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import com.luna.data.repositories.ComicsRepository
 import com.luna.testshared.fakeCharacters
 import com.luna.testshared.fakeError
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -29,7 +28,7 @@ class GetComicCharactersByIdUseCaseTest {
 
             val actual = getComicCharactersByIdUseCase(1)
 
-            Truth.assertThat(actual).isEqualTo(expected)
+            assertThat(actual).isEqualTo(expected)
         }
 
     @Test
@@ -40,6 +39,6 @@ class GetComicCharactersByIdUseCaseTest {
 
             val actual = getComicCharactersByIdUseCase(1)
 
-            Truth.assertThat(actual).isEqualTo(expected)
+            assertThat(actual).isEqualTo(expected)
         }
 }

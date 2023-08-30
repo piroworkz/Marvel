@@ -1,0 +1,111 @@
+{
+  "code": 200,
+  "status": "Ok",
+  "copyright": "© 2023 MARVEL",
+  "attributionText": "Data provided by Marvel. © 2023 MARVEL",
+  "attributionHTML": "<a href=\"http://marvel.com\">Data provided by Marvel. © 2023 MARVEL</a>",
+  "etag": "61dc0bc69f7f4cb1544dcfb45dc1a1ad44f3768e",
+  "data": {
+    "offset": 0,
+    "limit": 5,
+    "total": 1,
+    "count": 1,
+    "results": [
+      {
+        "id": 9,
+        "title": "Captain America: Red, White & Blue (1999)",
+        "description": null,
+        "resourceURI": "http://gateway.marvel.com/v1/public/series/9",
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/series/9/captain_america_red_white_blue_1999?utm_campaign=apiRef&utm_source=ed9dd6272880a478484c6af82cf068a8"
+          }
+        ],
+        "startYear": 1999,
+        "endYear": 1999,
+        "rating": "Marvel Psr",
+        "type": "collection",
+        "modified": "2018-02-16T09:52:04-0500",
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/f/80/5a86efed60da4",
+          "extension": "jpg"
+        },
+        "creators": {
+          "available": 5,
+          "collectionURI": "http://gateway.marvel.com/v1/public/series/9/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/9181",
+              "name": "Nick Bertozzi",
+              "role": "colorist"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13055",
+              "name": "Richard Isanove",
+              "role": "colorist"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/421",
+              "name": "Karl Bollers",
+              "role": "writer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/312",
+              "name": "Mike Deodato",
+              "role": "inker"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/365",
+              "name": "Pasqual Ferry",
+              "role": "inker"
+            }
+          ],
+          "returned": 5
+        },
+        "characters": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/series/9/characters",
+          "items": [],
+          "returned": 0
+        },
+        "stories": {
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/series/9/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/10",
+              "name": "In this thought-provoking anthology, a world-class collection of top comic-book creators from around the globe presents a series",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/65087",
+              "name": "CAPTAIN AMERICA: RED, WHITE & BLUE HC 0 cover",
+              "type": "cover"
+            }
+          ],
+          "returned": 2
+        },
+        "comics": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/series/9/comics",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/944",
+              "name": "Captain America: Red, White & Blue (Hardcover)"
+            }
+          ],
+          "returned": 1
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/series/9/events",
+          "items": [],
+          "returned": 0
+        },
+        "next": null,
+        "previous": null
+      }
+    ]
+  }
+}
