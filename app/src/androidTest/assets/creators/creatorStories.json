@@ -1,0 +1,386 @@
+{
+  "code": 200,
+  "status": "Ok",
+  "copyright": "© 2023 MARVEL",
+  "attributionText": "Data provided by Marvel. © 2023 MARVEL",
+  "attributionHTML": "<a href=\"http://marvel.com\">Data provided by Marvel. © 2023 MARVEL</a>",
+  "etag": "d7694e702c6fa409af298e87cbef48246e3dd300",
+  "data": {
+    "offset": 0,
+    "limit": 5,
+    "total": 20,
+    "count": 5,
+    "results": [
+      {
+        "id": 47950,
+        "title": "Amazing Spider-Man 88-99",
+        "description": "",
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/47950",
+        "type": "story",
+        "modified": "1969-12-31T19:00:00-0500",
+        "thumbnail": null,
+        "creators": {
+          "available": 4,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/47950/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/1168",
+              "name": "All Thumbs Creative",
+              "role": "colorist"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/148",
+              "name": "Gil Kane",
+              "role": "artist"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13196",
+              "name": "John Romita Jr.",
+              "role": "artist"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/30",
+              "name": "Stan Lee",
+              "role": "writer"
+            }
+          ],
+          "returned": 4
+        },
+        "characters": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/47950/characters",
+          "items": [],
+          "returned": 0
+        },
+        "series": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/47950/series",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/5398",
+              "name": "Marvel Masterworks: The Amazing Spider-Man Vol. 10 (2008)"
+            }
+          ],
+          "returned": 1
+        },
+        "comics": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/47950/comics",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/21816",
+              "name": "Marvel Masterworks: The Amazing Spider-Man Vol. 10 (Trade Paperback)"
+            }
+          ],
+          "returned": 1
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/47950/events",
+          "items": [],
+          "returned": 0
+        },
+        "originalIssue": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/comics/21816",
+          "name": "Marvel Masterworks: The Amazing Spider-Man Vol. 10 (Trade Paperback)"
+        }
+      },
+      {
+        "id": 53831,
+        "title": "Avengers 80-88; Hulk 140",
+        "description": "",
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/53831",
+        "type": "story",
+        "modified": "1969-12-31T19:00:00-0500",
+        "thumbnail": null,
+        "creators": {
+          "available": 5,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/53831/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/1168",
+              "name": "All Thumbs Creative",
+              "role": "other"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/586",
+              "name": "Michael Kelleher",
+              "role": "other"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/4412",
+              "name": "Cory Sedlmeier",
+              "role": "other"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/10363",
+              "name": "John Rhett Thomas",
+              "role": "other"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/2909",
+              "name": "Roy Thomas",
+              "role": "writer"
+            }
+          ],
+          "returned": 5
+        },
+        "characters": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/53831/characters",
+          "items": [],
+          "returned": 0
+        },
+        "series": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/53831/series",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/7494",
+              "name": "Marvel Masterworks: The Avengers Vol. 9 (2009 - Present)"
+            }
+          ],
+          "returned": 1
+        },
+        "comics": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/53831/comics",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/24297",
+              "name": "Marvel Masterworks: The Avengers Vol. 9 (Trade Paperback)"
+            }
+          ],
+          "returned": 1
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/53831/events",
+          "items": [],
+          "returned": 0
+        },
+        "originalIssue": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/comics/24297",
+          "name": "Marvel Masterworks: The Avengers Vol. 9 (Trade Paperback)"
+        }
+      },
+      {
+        "id": 56854,
+        "title": "Interior #56854",
+        "description": "",
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/56854",
+        "type": "story",
+        "modified": "1969-12-31T19:00:00-0500",
+        "thumbnail": null,
+        "creators": {
+          "available": 4,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/56854/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/1168",
+              "name": "All Thumbs Creative",
+              "role": "other"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/1216",
+              "name": "Rich Buckler",
+              "role": "other"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/4412",
+              "name": "Cory Sedlmeier",
+              "role": "other"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/10363",
+              "name": "John Rhett Thomas",
+              "role": "other"
+            }
+          ],
+          "returned": 4
+        },
+        "characters": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/56854/characters",
+          "items": [],
+          "returned": 0
+        },
+        "series": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/56854/series",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/8031",
+              "name": "Marvel Masterworks: Deathlok Vol. 1 (2009 - Present)"
+            }
+          ],
+          "returned": 1
+        },
+        "comics": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/56854/comics",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/25797",
+              "name": "Marvel Masterworks: Deathlok Vol. 1 (Trade Paperback)"
+            }
+          ],
+          "returned": 1
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/56854/events",
+          "items": [],
+          "returned": 0
+        },
+        "originalIssue": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/comics/25797",
+          "name": "Marvel Masterworks: Deathlok Vol. 1 (Trade Paperback)"
+        }
+      },
+      {
+        "id": 61249,
+        "title": "Interior #61249",
+        "description": "",
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/61249",
+        "type": "story",
+        "modified": "1969-12-31T19:00:00-0500",
+        "thumbnail": null,
+        "creators": {
+          "available": 3,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/61249/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/1168",
+              "name": "All Thumbs Creative",
+              "role": "other"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/270",
+              "name": "Gene Colan",
+              "role": "penciler"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/30",
+              "name": "Stan Lee",
+              "role": "writer"
+            }
+          ],
+          "returned": 3
+        },
+        "characters": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/61249/characters",
+          "items": [],
+          "returned": 0
+        },
+        "series": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/61249/series",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/8967",
+              "name": "Marvel Masterworks: Captain America Vol. 5 (2010 - Present)"
+            }
+          ],
+          "returned": 1
+        },
+        "comics": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/61249/comics",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/28003",
+              "name": "Marvel Masterworks: Captain America Vol. 5 (Trade Paperback)"
+            }
+          ],
+          "returned": 1
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/61249/events",
+          "items": [],
+          "returned": 0
+        },
+        "originalIssue": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/comics/28003",
+          "name": "Marvel Masterworks: Captain America Vol. 5 (Trade Paperback)"
+        }
+      },
+      {
+        "id": 61285,
+        "title": "Interior #61285",
+        "description": "",
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/61285",
+        "type": "story",
+        "modified": "1969-12-31T19:00:00-0500",
+        "thumbnail": null,
+        "creators": {
+          "available": 4,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/61285/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/1168",
+              "name": "All Thumbs Creative",
+              "role": "other"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/30",
+              "name": "Stan Lee",
+              "role": "other"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/4412",
+              "name": "Cory Sedlmeier",
+              "role": "other"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/2909",
+              "name": "Roy Thomas",
+              "role": "writer"
+            }
+          ],
+          "returned": 4
+        },
+        "characters": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/61285/characters",
+          "items": [],
+          "returned": 0
+        },
+        "series": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/61285/series",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/8985",
+              "name": "Marvel Masterworks: The Fantastic Four Vol. 12 (2010 - Present)"
+            }
+          ],
+          "returned": 1
+        },
+        "comics": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/61285/comics",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/28021",
+              "name": "Marvel Masterworks: The Fantastic Four Vol. 12 (Trade Paperback)"
+            }
+          ],
+          "returned": 1
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/61285/events",
+          "items": [],
+          "returned": 0
+        },
+        "originalIssue": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/comics/28021",
+          "name": "Marvel Masterworks: The Fantastic Four Vol. 12 (Trade Paperback)"
+        }
+      }
+    ]
+  }
+}

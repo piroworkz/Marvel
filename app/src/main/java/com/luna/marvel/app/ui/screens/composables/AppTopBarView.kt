@@ -12,12 +12,16 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
 import com.luna.marvel.app.ui.navigation.graphs.Destination
+import com.luna.marvel.app.ui.screens.composables.MasterTags.APP_BAR
+import com.luna.marvel.app.ui.screens.composables.MasterTags.APP_BAR_TITLE
+import com.luna.marvel.app.ui.screens.composables.MasterTags.NAV_ICON
 import com.luna.marvel.app.ui.theme.Dimens
 import com.luna.marvel.app.ui.theme.MarvelTheme
 import com.luna.marvel.app.ui.theme.primary
@@ -38,7 +42,8 @@ fun AppTopBarView(
                 text = stringResource(id = destination.title ?: 0),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = Dimens.Size.medium),
+                    .padding(horizontal = Dimens.Size.medium)
+                    .testTag(APP_BAR_TITLE),
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 1,
                 style = MaterialTheme.typography.titleLarge.copy(
@@ -49,9 +54,14 @@ fun AppTopBarView(
         },
         modifier = Modifier
             .fillMaxWidth()
-            .wrapContentHeight(),
+            .wrapContentHeight()
+            .testTag(APP_BAR),
         navigationIcon = {
-            IconButton(onClick = onClick) {
+            IconButton(
+                onClick = onClick,
+                modifier = Modifier
+                    .testTag(NAV_ICON)
+            ) {
                 destination.icon?.let {
                     Icon(
                         imageVector = it,

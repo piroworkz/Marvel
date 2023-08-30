@@ -6,7 +6,6 @@ import com.luna.data.repositories.CharactersRepository
 import com.luna.testshared.fakeError
 import com.luna.testshared.fakeEvents
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock

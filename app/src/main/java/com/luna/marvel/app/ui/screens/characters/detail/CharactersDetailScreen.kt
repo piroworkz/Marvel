@@ -30,49 +30,50 @@ fun CharactersDetailScreen(
 
     AppScaffoldView(
         destination = CharsGraph.CharacterDetail,
-        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) }
-    ) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(Dimens.Size.medium)
-        ) {
+        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) },
+        {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(Dimens.Size.medium)
+            ) {
 
-            state.character?.thumbnail?.path?.let { image(it) }
+                state.character?.thumbnail?.path?.let { image(it) }
 
-            state.character?.description?.let {
-                descriptionJustifiedText(it)
+                state.character?.description?.let {
+                    descriptionJustifiedText(it)
+                }
+
+                state.character?.comics?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_comics)
+                    categoryListView(it)
+                }
+
+                state.character?.events?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_events)
+                    categoryListView(it)
+                }
+
+                state.character?.series?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_series)
+                    categoryListView(it)
+                }
+
+                state.character?.stories?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_stories)
+                    categoryListView(it)
+                }
+
+                whiteDivider()
             }
+            LoadingView(loading = state.loading)
 
-            state.character?.comics?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_comics)
-                categoryListView(it)
+            state.appError?.let {
+                AppDialogScreen(message = it.appError) { sendEvent(AppEvent.NavigateUp) }
             }
-
-            state.character?.events?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_events)
-                categoryListView(it)
-            }
-
-            state.character?.series?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_series)
-                categoryListView(it)
-            }
-
-            state.character?.stories?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_stories)
-                categoryListView(it)
-            }
-
-            whiteDivider()
-        }
-        LoadingView(loading = state.loading)
-
-        state.appError?.let {
-            AppDialogScreen(message = it.appError) { sendEvent(AppEvent.NavigateUp) }
-        }
-    }
+        },
+    )
 }
 
 @Preview

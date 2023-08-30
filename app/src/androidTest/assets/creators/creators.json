@@ -1,0 +1,426 @@
+{
+  "code": 200,
+  "status": "Ok",
+  "copyright": "© 2023 MARVEL",
+  "attributionText": "Data provided by Marvel. © 2023 MARVEL",
+  "attributionHTML": "<a href=\"http://marvel.com\">Data provided by Marvel. © 2023 MARVEL</a>",
+  "etag": "b3e5d1ca7fb41e669ecea82b57db6bf938faef12",
+  "data": {
+    "offset": 0,
+    "limit": 20,
+    "total": 5895,
+    "count": 20,
+    "results": [
+      {
+        "id": 9716,
+        "firstName": "Benjamin",
+        "middleName": "",
+        "lastName": "",
+        "suffix": "",
+        "fullName": "Benjamin",
+        "modified": "2018-07-23T15:12:00-0400",
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/c/40/4bb52c198ff2a",
+          "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/creators/9716",
+        "comics": {
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/9716/comics",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/27398",
+              "name": "New Mutants (2009) #1 (BENJAMIN VARIANT)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/27465",
+              "name": "New Mutants (2009) #4 (BENJAMIN VARIANT)"
+            }
+          ],
+          "returned": 2
+        },
+        "series": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/9716/series",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/7455",
+              "name": "New Mutants (2009 - 2012)"
+            }
+          ],
+          "returned": 1
+        },
+        "stories": {
+          "available": 3,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/9716/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/53754",
+              "name": "Cover #53754",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/60236",
+              "name": "Cover #60236",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/81864",
+              "name": "Sky Doll Space Ship #1",
+              "type": "cover"
+            }
+          ],
+          "returned": 3
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/9716/events",
+          "items": [],
+          "returned": 0
+        },
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/creators/9716/benjamin?utm_campaign=apiRef&utm_source=ed9dd6272880a478484c6af82cf068a8"
+          }
+        ]
+      },
+      {
+        "id": 3178,
+        "firstName": "Bernet",
+        "middleName": "",
+        "lastName": "",
+        "suffix": "",
+        "fullName": "Bernet",
+        "modified": "2007-01-02T00:00:00-0500",
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available",
+          "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/creators/3178",
+        "comics": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/3178/comics",
+          "items": [],
+          "returned": 0
+        },
+        "series": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/3178/series",
+          "items": [],
+          "returned": 0
+        },
+        "stories": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/3178/stories",
+          "items": [],
+          "returned": 0
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/3178/events",
+          "items": [],
+          "returned": 0
+        },
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/creators/3178/bernet?utm_campaign=apiRef&utm_source=ed9dd6272880a478484c6af82cf068a8"
+          }
+        ]
+      },
+      {
+        "id": 12701,
+        "firstName": "BIT",
+        "middleName": "",
+        "lastName": "",
+        "suffix": "",
+        "fullName": "BIT",
+        "modified": "2015-03-16T15:59:58-0400",
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available",
+          "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/creators/12701",
+        "comics": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/12701/comics",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/29754",
+              "name": "Black Widow (2010) #7"
+            }
+          ],
+          "returned": 1
+        },
+        "series": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/12701/series",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/9706",
+              "name": "Black Widow (2010 - 2011)"
+            }
+          ],
+          "returned": 1
+        },
+        "stories": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/12701/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/64654",
+              "name": "BLACK WIDOW (2010) #7",
+              "type": "cover"
+            }
+          ],
+          "returned": 1
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/12701/events",
+          "items": [],
+          "returned": 0
+        },
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/creators/12701/bit?utm_campaign=apiRef&utm_source=ed9dd6272880a478484c6af82cf068a8"
+          }
+        ]
+      },
+      {
+        "id": 3095,
+        "firstName": "Blank",
+        "middleName": "",
+        "lastName": "",
+        "suffix": "",
+        "fullName": "Blank",
+        "modified": "2007-01-01T00:00:00-0500",
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available",
+          "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/creators/3095",
+        "comics": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/3095/comics",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/21594",
+              "name": "Skrulls! (2008) #1"
+            }
+          ],
+          "returned": 1
+        },
+        "series": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/3095/series",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/5211",
+              "name": "Skrulls! (2008)"
+            }
+          ],
+          "returned": 1
+        },
+        "stories": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/3095/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/47595",
+              "name": "1 of 1",
+              "type": "interiorStory"
+            }
+          ],
+          "returned": 1
+        },
+        "events": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/3095/events",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/events/269",
+              "name": "Secret Invasion"
+            }
+          ],
+          "returned": 1
+        },
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/creators/3095/blank?utm_campaign=apiRef&utm_source=ed9dd6272880a478484c6af82cf068a8"
+          }
+        ]
+      },
+      {
+        "id": 7646,
+        "firstName": "Blond",
+        "middleName": "",
+        "lastName": "",
+        "suffix": "",
+        "fullName": "Blond",
+        "modified": "2018-07-23T15:26:46-0400",
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available",
+          "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/creators/7646",
+        "comics": {
+          "available": 8,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/7646/comics",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/17592",
+              "name": "Ultimate Fantastic Four (2003) #50 (Variant A)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/21332",
+              "name": "Ultimate Fantastic Four (2003) #55"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/21510",
+              "name": "Ultimate Fantastic Four (2003) #56"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/21713",
+              "name": "Ultimate Fantastic Four (2003) #57"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/22478",
+              "name": "Ultimate Fantastic Four (2003) #58"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/22879",
+              "name": "Ultimate Fantastic Four (2003) #59"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/23581",
+              "name": "Ultimate Fantastic Four (2003) #60"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/23582",
+              "name": "Ultimate Fantastic Four (2003) #60 (WHITE VARIANT)"
+            }
+          ],
+          "returned": 8
+        },
+        "series": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/7646/series",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/702",
+              "name": "Ultimate Fantastic Four (2003 - 2009)"
+            }
+          ],
+          "returned": 1
+        },
+        "stories": {
+          "available": 8,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/7646/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/36816",
+              "name": "Cosmic Cube 1 of 4",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/47113",
+              "name": "Namor War 2 of 4",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/47426",
+              "name": "3 of 4 - Salem Seven",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/47734",
+              "name": "4 of 4 - Salem Seven",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/49832",
+              "name": "Ultimatum",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/50805",
+              "name": "Ultimatum",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/52224",
+              "name": "Ultimatum",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/52226",
+              "name": "Ultimatum",
+              "type": "interiorStory"
+            }
+          ],
+          "returned": 8
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/7646/events",
+          "items": [],
+          "returned": 0
+        },
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/creators/7646/blond?utm_campaign=apiRef&utm_source=ed9dd6272880a478484c6af82cf068a8"
+          }
+        ]
+      },
+      {
+        "id": 7596,
+        "firstName": "Brown",
+        "middleName": "",
+        "lastName": "",
+        "suffix": "",
+        "fullName": "Brown",
+        "modified": "2007-01-02T00:00:00-0500",
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available",
+          "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/creators/7596",
+        "comics": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/7596/comics",
+          "items": [],
+          "returned": 0
+        },
+        "series": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/7596/series",
+          "items": [],
+          "returned": 0
+        },
+        "stories": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/7596/stories",
+          "items": [],
+          "returned": 0
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/creators/7596/events",
+          "items": [],
+          "returned": 0
+        },
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/creators/7596/brown?utm_campaign=apiRef&utm_source=ed9dd6272880a478484c6af82cf068a8"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -5,18 +5,15 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.pager.PagerState
-import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowDropDown
 import androidx.compose.material.icons.outlined.KeyboardArrowDown
@@ -40,20 +37,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.luna.marvel.R
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.navigation.menus.AppMenu
-import com.luna.marvel.app.ui.navigation.menus.characterMenu
-import com.luna.marvel.app.ui.screens.composables.master.fakeChars
+import com.luna.marvel.app.ui.screens.composables.MasterTags.MENU_BUTTON_TEXT
+import com.luna.marvel.app.ui.screens.composables.MasterTags.MENU_COLUMN
+import com.luna.marvel.app.ui.screens.composables.MasterTags.TOGGLE_ICON
 import com.luna.marvel.app.ui.theme.Dimens
-import com.luna.marvel.app.ui.theme.MarvelTheme
 import com.luna.marvel.app.ui.theme.background
 import com.luna.marvel.app.ui.theme.onBackground
 import com.luna.marvel.app.ui.theme.onPrimary
@@ -87,7 +86,7 @@ fun PagerCardView(
         contentAlignment = Alignment.Center
     ) {
         AsyncImage(
-            model = if (imagePath.isNullOrEmpty())  R.drawable.placeholder else imagePath,
+            model = if (imagePath.isNullOrEmpty()) R.drawable.placeholder else imagePath,
             modifier = Modifier
                 .fillMaxSize(),
             contentDescription = null,
@@ -99,7 +98,8 @@ fun PagerCardView(
                 .fillMaxWidth()
                 .wrapContentHeight()
                 .background(Color.Transparent)
-                .align(Alignment.BottomCenter),
+                .align(Alignment.BottomCenter)
+                .semantics { contentDescription = "PAGE# $page" },
             shape = Dimens.Shape.menuCard,
             elevation = CardDefaults.cardElevation(Dimens.Size.small)
         ) {
@@ -124,11 +124,14 @@ fun PagerCardView(
                     )
                 )
 
-                IconButton(onClick = { showButtons = !showButtons }) {
+                IconButton(
+                    onClick = { showButtons = !showButtons },
+                    modifier = Modifier
+                        .testTag(TOGGLE_ICON)
+                ) {
                     Icon(
                         imageVector = if (showButtons) Icons.Outlined.KeyboardArrowDown else Icons.Outlined.KeyboardArrowUp,
                         contentDescription = Icons.Outlined.ArrowDropDown.name,
-                        modifier = Modifier,
                         tint = onPrimary
                     )
                 }
@@ -139,28 +142,31 @@ fun PagerCardView(
                 label = "Buttons",
             ) {
                 if (it) {
-                    Column(
+                    LazyColumn(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .verticalScroll(rememberScrollState()),
+                            .testTag(MENU_COLUMN),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Text(
-                            text = "More About $title".uppercase(),
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .background(onBackground)
-                                .padding(Dimens.Size.small),
-                            overflow = TextOverflow.Ellipsis,
-                            maxLines = 1,
-                            style = MaterialTheme.typography.titleLarge.copy(
-                                fontWeight = FontWeight.Black,
-                                textAlign = TextAlign.Center,
-                                color = background
+                        item {
+                            Text(
+                                text = "More About $title".uppercase(),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .background(onBackground)
+                                    .padding(Dimens.Size.small),
+                                overflow = TextOverflow.Ellipsis,
+                                maxLines = 1,
+                                style = MaterialTheme.typography.titleLarge.copy(
+                                    fontWeight = FontWeight.Black,
+                                    textAlign = TextAlign.Center,
+                                    color = background
+                                )
                             )
-                        )
-                        menu.forEach { menu: AppMenu ->
-                            TextButton(menu, onClick)
+                        }
+                        items(menu.size) { index: Int ->
+                            val item = menu[index]
+                            TextButton(item, onClick)
                         }
                     }
                 }
@@ -174,38 +180,21 @@ private fun TextButton(
     menu: AppMenu,
     onClick: (Destination?) -> Unit
 ) {
-    TextButton(onClick = {
-        onClick(menu.destination)
-    }) {
+    TextButton(
+        onClick = { onClick(menu.destination) },
+        modifier = Modifier
+            .testTag(MENU_BUTTON_TEXT)
+    ) {
         Text(
             text = stringResource(menu.title).uppercase(),
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth(),
             fontWeight = FontWeight.Black,
             textAlign = TextAlign.Center,
             overflow = TextOverflow.Ellipsis,
             style = MaterialTheme.typography.titleLarge.copy(
                 color = onBackground
             )
-        )
-    }
-}
-
-@OptIn(ExperimentalFoundationApi::class)
-@Preview(
-    showSystemUi = true
-)
-@Composable
-fun PagePreview() {
-    val item = fakeChars.first()
-    val pagerState: PagerState = rememberPagerState(pageCount = fakeChars::count)
-    MarvelTheme {
-        PagerCardView(
-            title = item.name,
-            characterMenu,
-            imagePath = item.thumbnail.path,
-            pagerState = pagerState,
-            page = 0,
-            onClick = {}
         )
     }
 }

@@ -20,12 +20,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import com.luna.marvel.R
+import com.luna.marvel.app.ui.screens.composables.dialog.DialogTags.GO_BACK_BUTTON
 import com.luna.marvel.app.ui.theme.Dimens
 import com.luna.marvel.app.ui.theme.MarvelTheme
 import com.luna.marvel.app.ui.theme.background
@@ -95,7 +98,10 @@ fun AppDialogScreen(
                         .fillMaxWidth()
                         .wrapContentHeight()
                         .padding(Dimens.Size.medium)
-                        .clickable { onDismissRequest() },
+                        .clickable { onDismissRequest() }
+                        .semantics {
+                            contentDescription = GO_BACK_BUTTON
+                        },
                     style = MaterialTheme.typography.titleMedium.copy(
                         color = onBackground,
                         fontWeight = FontWeight.Black,

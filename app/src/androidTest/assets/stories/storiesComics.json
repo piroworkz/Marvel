@@ -1,0 +1,140 @@
+{
+  "code": 200,
+  "status": "Ok",
+  "copyright": "© 2023 MARVEL",
+  "attributionText": "Data provided by Marvel. © 2023 MARVEL",
+  "attributionHTML": "<a href=\"http://marvel.com\">Data provided by Marvel. © 2023 MARVEL</a>",
+  "etag": "8d9d5b001da29464b0aea280ee5f144749777e2c",
+  "data": {
+    "offset": 0,
+    "limit": 5,
+    "total": 1,
+    "count": 1,
+    "results": [
+      {
+        "id": 944,
+        "digitalId": 0,
+        "title": "Captain America: Red, White & Blue (Hardcover)",
+        "issueNumber": 0,
+        "variantDescription": "",
+        "description": "In this thought-provoking anthology, a world-class collection of top comic-book creators from around the globe presents a series of uniquely personal visions of the heroic icon that is Captain America.",
+        "modified": "2014-01-27T16:05:48-0500",
+        "isbn": "0-7851-1033-X",
+        "upc": "",
+        "diamondCode": "",
+        "ean": "",
+        "issn": "",
+        "format": "Hardcover",
+        "pageCount": 192,
+        "textObjects": [
+          {
+            "type": "issue_solicit_text",
+            "language": "en-us",
+            "text": "In this thought-provoking anthology, a world-class collection of top comic-book creators from around the globe presents a series of uniquely personal visions of the heroic icon that is Captain America."
+          }
+        ],
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/944",
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/collection/944/captain_america_red_white_blue_hardcover?utm_campaign=apiRef&utm_source=ed9dd6272880a478484c6af82cf068a8"
+          }
+        ],
+        "series": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/series/9",
+          "name": "Captain America: Red, White & Blue (1999)"
+        },
+        "variants": [],
+        "collections": [],
+        "collectedIssues": [],
+        "dates": [
+          {
+            "type": "onsaleDate",
+            "date": "1999-11-30T00:00:00-0500"
+          },
+          {
+            "type": "focDate",
+            "date": "-0001-11-30T00:00:00-0500"
+          }
+        ],
+        "prices": [
+          {
+            "type": "printPrice",
+            "price": 9.99
+          }
+        ],
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/6/50/4bc670e08564b",
+          "extension": "jpg"
+        },
+        "images": [
+          {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/6/50/4bc670e08564b",
+            "extension": "jpg"
+          }
+        ],
+        "creators": {
+          "available": 5,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/944/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/9181",
+              "name": "Nick Bertozzi",
+              "role": "colorist"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13055",
+              "name": "Richard Isanove",
+              "role": "colorist"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/421",
+              "name": "Karl Bollers",
+              "role": "writer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/312",
+              "name": "Mike Deodato",
+              "role": "inker"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/365",
+              "name": "Pasqual Ferry",
+              "role": "inker"
+            }
+          ],
+          "returned": 5
+        },
+        "characters": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/944/characters",
+          "items": [],
+          "returned": 0
+        },
+        "stories": {
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/944/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/10",
+              "name": "In this thought-provoking anthology, a world-class collection of top comic-book creators from around the globe presents a series",
+              "type": "interiorStory"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/65087",
+              "name": "CAPTAIN AMERICA: RED, WHITE & BLUE HC 0 cover",
+              "type": "cover"
+            }
+          ],
+          "returned": 2
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/944/events",
+          "items": [],
+          "returned": 0
+        }
+      }
+    ]
+  }
+}

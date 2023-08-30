@@ -1,12 +1,11 @@
 package com.luna.usecases.series
 
 import arrow.core.Either
-import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import com.luna.data.repositories.SeriesRepository
 import com.luna.testshared.fakeError
 import com.luna.testshared.fakeSeries
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -29,7 +28,7 @@ class GetSeriesByIdUseCaseTest {
 
             val actual = getSeriesByIdUseCase(1)
 
-            Truth.assertThat(actual).isEqualTo(expected)
+            assertThat(actual).isEqualTo(expected)
         }
 
     @Test
@@ -40,6 +39,6 @@ class GetSeriesByIdUseCaseTest {
 
             val actual = getSeriesByIdUseCase(1)
 
-            Truth.assertThat(actual).isEqualTo(expected)
+            assertThat(actual).isEqualTo(expected)
         }
 }

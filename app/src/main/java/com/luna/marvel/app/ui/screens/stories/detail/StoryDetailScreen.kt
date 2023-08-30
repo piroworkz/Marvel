@@ -28,52 +28,53 @@ fun StoryDetailScreen(
 
     AppScaffoldView(
         destination = StoriesGraph.StoriesDetail,
-        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) }
-    ) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(Dimens.Size.medium)
-        ) {
+        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) },
+        {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(Dimens.Size.medium)
+            ) {
 
-            state.story?.thumbnail?.path?.let { image(it) }
+                state.story?.thumbnail?.path?.let { image(it) }
 
-            state.story?.description?.let {
-                descriptionJustifiedText(it)
+                state.story?.description?.let {
+                    descriptionJustifiedText(it)
+                }
+
+                state.story?.characters?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_characters)
+                    categoryListView(it)
+                }
+
+                state.story?.comics?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_comics)
+                    categoryListView(it)
+                }
+
+                state.story?.creators?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_creators)
+                    categoryListView(it)
+                }
+
+                state.story?.events?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_events)
+                    categoryListView(it)
+                }
+
+                state.story?.series?.items.ifNotEmpty {
+                    categorySubTitle(R.string.title_series)
+                    categoryListView(it)
+                }
+
+                whiteDivider()
             }
+            LoadingView(loading = state.loading)
 
-            state.story?.characters?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_characters)
-                categoryListView(it)
+            state.appError?.let {
+                AppDialogScreen(message = it.appError) { sendEvent(AppEvent.NavigateUp) }
             }
-
-            state.story?.comics?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_comics)
-                categoryListView(it)
-            }
-
-            state.story?.creators?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_creators)
-                categoryListView(it)
-            }
-
-            state.story?.events?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_events)
-                categoryListView(it)
-            }
-
-            state.story?.series?.items.ifNotEmpty {
-                categorySubTitle(R.string.title_series)
-                categoryListView(it)
-            }
-
-            whiteDivider()
-        }
-        LoadingView(loading = state.loading)
-
-        state.appError?.let {
-            AppDialogScreen(message = it.appError) { sendEvent(AppEvent.NavigateUp) }
-        }
-    }
+        },
+    )
 }
