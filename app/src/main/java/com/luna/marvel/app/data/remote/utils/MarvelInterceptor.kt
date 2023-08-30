@@ -18,7 +18,7 @@ class MarvelInterceptor @Inject constructor(
         val originalHttpUrl = original.url
         return try {
             val url = originalHttpUrl.newBuilder()
-                .addQueryParameter(LIMIT, "50")
+                .addQueryParameter(LIMIT, "100")
                 .addQueryParameter(API_KEY, publicKey)
                 .addQueryParameter(TS, System.currentTimeMillis().toString())
                 .addQueryParameter(HASH, getHash())

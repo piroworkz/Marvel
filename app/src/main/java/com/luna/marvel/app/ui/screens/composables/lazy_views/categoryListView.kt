@@ -68,13 +68,16 @@ fun LazyGridScope.images(images: List<Image>) {
         return
 
     items(images.size, span = { GridItemSpan(2) }) {
-        val image = images[it]
+        val path = images[it].path
+        val model =
+            if (path.contains("image_not_available") || path.isEmpty()) R.drawable.placeholder else path
         AsyncImage(
-            model = image.path,
-            contentDescription = image.path,
+            model = model,
+            contentDescription = path,
             modifier = Modifier
                 .padding(Dimens.Size.small)
                 .fillMaxSize(),
+            placeholder = painterResource(id = R.drawable.placeholder),
             contentScale = ContentScale.FillWidth
         )
     }
@@ -104,13 +107,13 @@ fun LazyGridScope.title(title: String) {
 
 
 fun LazyGridScope.image(path: String) {
-    if (path.isEmpty())
-        return
 
     item(span = { GridItemSpan(2) }) {
+        val model =
+            if (path.contains("image_not_available") || path.isEmpty()) R.drawable.placeholder else path
         val size = (LocalConfiguration.current.screenWidthDp.dp - Dimens.Size.xxLarge)
         AsyncImage(
-            model = path,
+            model = model,
             contentDescription = null,
             modifier = Modifier
                 .fillMaxSize()
@@ -122,7 +125,7 @@ fun LazyGridScope.image(path: String) {
                 )
                 .size(size = size)
                 .clip(CircleShape),
-            placeholder = painterResource(id = R.drawable.btn_bkg_a),
+            placeholder = painterResource(id = R.drawable.placeholder),
             contentScale = ContentScale.Crop
         )
     }

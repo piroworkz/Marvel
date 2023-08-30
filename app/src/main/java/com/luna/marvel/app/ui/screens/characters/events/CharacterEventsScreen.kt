@@ -29,54 +29,55 @@ fun CharacterEventsScreen(
 ) {
     AppScaffoldView(
         destination = CharsGraph.CharacterEvents,
-        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) }
-    ) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(Dimens.Size.medium)
-        ) {
-            if (state.events.isNotEmpty()) {
-                state.events.forEach { event: Event ->
+        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) },
+        {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(Dimens.Size.medium)
+            ) {
+                if (state.events.isNotEmpty()) {
+                    state.events.forEach { event: Event ->
 
-                    image(event.thumbnail.path)
-                    title(event.title)
-                    descriptionJustifiedText(event.description)
+                        image(event.thumbnail.path)
+                        title(event.title)
+                        descriptionJustifiedText(event.description)
 
-                    event.characters.items.ifNotEmpty {
-                        categorySubTitle(R.string.title_characters)
-                        categoryListView(it)
+                        event.characters.items.ifNotEmpty {
+                            categorySubTitle(R.string.title_characters)
+                            categoryListView(it)
+                        }
+
+                        event.comics.items.ifNotEmpty {
+                            categorySubTitle(R.string.title_comics)
+                            categoryListView(it)
+                        }
+
+                        event.creators.items.ifNotEmpty {
+                            categorySubTitle(R.string.title_creators)
+                            categoryListView(it)
+                        }
+
+                        event.series.items.ifNotEmpty {
+                            categorySubTitle(R.string.title_stories)
+                            categoryListView(it)
+                        }
+
+                        event.stories.items.ifNotEmpty {
+                            categorySubTitle(R.string.title_stories)
+                            categoryListView(it)
+                        }
+
+                        whiteDivider()
                     }
-
-                    event.comics.items.ifNotEmpty {
-                        categorySubTitle(R.string.title_comics)
-                        categoryListView(it)
-                    }
-
-                    event.creators.items.ifNotEmpty {
-                        categorySubTitle(R.string.title_creators)
-                        categoryListView(it)
-                    }
-
-                    event.series.items.ifNotEmpty {
-                        categorySubTitle(R.string.title_stories)
-                        categoryListView(it)
-                    }
-
-                    event.stories.items.ifNotEmpty {
-                        categorySubTitle(R.string.title_stories)
-                        categoryListView(it)
-                    }
-
-                    whiteDivider()
                 }
             }
-        }
-        LoadingView(loading = state.loading)
+            LoadingView(loading = state.loading)
 
-        state.appError?.let {
-            AppDialogScreen(message = it.appError) { sendEvent(AppEvent.NavigateUp) }
-        }
-    }
+            state.appError?.let {
+                AppDialogScreen(message = it.appError) { sendEvent(AppEvent.NavigateUp) }
+            }
+        },
+    )
 }

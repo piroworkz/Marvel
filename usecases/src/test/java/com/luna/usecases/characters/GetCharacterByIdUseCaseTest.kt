@@ -1,12 +1,11 @@
 package com.luna.usecases.characters
 
 import arrow.core.Either
-import com.google.common.truth.Truth.*
+import com.google.common.truth.Truth.assertThat
 import com.luna.data.repositories.CharactersRepository
 import com.luna.testshared.fakeCharacters
 import com.luna.testshared.fakeError
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock

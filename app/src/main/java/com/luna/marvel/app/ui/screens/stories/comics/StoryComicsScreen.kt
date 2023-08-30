@@ -29,49 +29,50 @@ fun StoryComicsScreen(
 
     AppScaffoldView(
         destination = StoriesGraph.StoriesComics,
-        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) }
-    ) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(Dimens.Size.medium)
-        ) {
-            state.comics.ifNotEmpty { comics: List<Comic> ->
+        onNavIconClicked = { sendEvent(AppEvent.NavigateUp) },
+        {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(Dimens.Size.medium)
+            ) {
+                state.comics.ifNotEmpty { comics: List<Comic> ->
 
-                comics.forEach { comic: Comic ->
+                    comics.forEach { comic: Comic ->
 
-                    images(comic.images)
-                    title(comic.title)
+                        images(comic.images)
+                        title(comic.title)
 
-                    comic.characters.items.ifNotEmpty {
-                        categorySubTitle(R.string.title_characters)
-                        categoryListView(it)
+                        comic.characters.items.ifNotEmpty {
+                            categorySubTitle(R.string.title_characters)
+                            categoryListView(it)
+                        }
+
+                        comic.creators.items.ifNotEmpty {
+                            categorySubTitle(R.string.title_creators)
+                            categoryListView(it)
+                        }
+
+                        comic.events.items.ifNotEmpty {
+                            categorySubTitle(R.string.title_events)
+                            categoryListView(it)
+                        }
+
+                        comic.stories.items.ifNotEmpty {
+                            categorySubTitle(R.string.title_stories)
+                            categoryListView(it)
+                        }
+
+                        whiteDivider()
                     }
-
-                    comic.creators.items.ifNotEmpty {
-                        categorySubTitle(R.string.title_creators)
-                        categoryListView(it)
-                    }
-
-                    comic.events.items.ifNotEmpty {
-                        categorySubTitle(R.string.title_events)
-                        categoryListView(it)
-                    }
-
-                    comic.stories.items.ifNotEmpty {
-                        categorySubTitle(R.string.title_stories)
-                        categoryListView(it)
-                    }
-
-                    whiteDivider()
                 }
             }
-        }
-        LoadingView(loading = state.loading)
+            LoadingView(loading = state.loading)
 
-        state.appError?.let {
-            AppDialogScreen(message = it.appError) { sendEvent(AppEvent.NavigateUp) }
-        }
-    }
+            state.appError?.let {
+                AppDialogScreen(message = it.appError) { sendEvent(AppEvent.NavigateUp) }
+            }
+        },
+    )
 }

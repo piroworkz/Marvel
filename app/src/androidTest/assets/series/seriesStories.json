@@ -1,0 +1,122 @@
+{
+  "code": 200,
+  "status": "Ok",
+  "copyright": "© 2023 MARVEL",
+  "attributionText": "Data provided by Marvel. © 2023 MARVEL",
+  "attributionHTML": "<a href=\"http://marvel.com\">Data provided by Marvel. © 2023 MARVEL</a>",
+  "etag": "9be673b87bca5bcaf41118a23a77ad663d150a6f",
+  "data": {
+    "offset": 0,
+    "limit": 5,
+    "total": 2,
+    "count": 2,
+    "results": [
+      {
+        "id": 82482,
+        "title": "15-Love GN-TPB (2013) #1",
+        "description": "",
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/82482",
+        "type": "cover",
+        "modified": "2011-07-20T15:27:12-0400",
+        "thumbnail": null,
+        "creators": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/82482/creators",
+          "items": [],
+          "returned": 0
+        },
+        "characters": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/82482/characters",
+          "items": [],
+          "returned": 0
+        },
+        "series": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/82482/series",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/13380",
+              "name": "15-Love GN-TPB (2013 - Present)"
+            }
+          ],
+          "returned": 1
+        },
+        "comics": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/82482/comics",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/37252",
+              "name": "15-Love GN-TPB (Graphic Novel)"
+            }
+          ],
+          "returned": 1
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/82482/events",
+          "items": [],
+          "returned": 0
+        },
+        "originalIssue": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/comics/37252",
+          "name": "15-Love GN-TPB (Graphic Novel)"
+        }
+      },
+      {
+        "id": 82483,
+        "title": "Interior #82483",
+        "description": "",
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/82483",
+        "type": "story",
+        "modified": "-0001-11-30T00:00:00-0500",
+        "thumbnail": null,
+        "creators": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/82483/creators",
+          "items": [],
+          "returned": 0
+        },
+        "characters": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/82483/characters",
+          "items": [],
+          "returned": 0
+        },
+        "series": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/82483/series",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/13380",
+              "name": "15-Love GN-TPB (2013 - Present)"
+            }
+          ],
+          "returned": 1
+        },
+        "comics": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/82483/comics",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/37252",
+              "name": "15-Love GN-TPB (Graphic Novel)"
+            }
+          ],
+          "returned": 1
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/stories/82483/events",
+          "items": [],
+          "returned": 0
+        },
+        "originalIssue": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/comics/37252",
+          "name": "15-Love GN-TPB (Graphic Novel)"
+        }
+      }
+    ]
+  }
+}
