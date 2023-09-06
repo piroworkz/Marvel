@@ -30,7 +30,7 @@ Check out the project introduction video on YouTube:
 
 1. Clone this repository to your local machine.
 2. Open the project in Android Studio.
-3. Add your api public and private keys to keys.c file
+3. Add your api public and private keys (create keys.c file in app/src/main/jni , check screenshots directory for referal)
 4. Build and run the application on a device or emulator.
 
 ## Credits
