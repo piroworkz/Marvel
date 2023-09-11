@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.luna.domain.AppError
 import com.luna.domain.Event
-import com.luna.marvel.app.data.isEmpty
+import com.luna.marvel.app.data.isNotAvailable
 import com.luna.marvel.app.data.toAppError
 import com.luna.marvel.app.ui.navigation.graphs.Args
 import com.luna.marvel.app.ui.screens.common.AppEvent
@@ -60,7 +60,7 @@ class EventDetailViewModel @Inject constructor(
                     _state.update { s ->
                         s.copy(
                             event = it.first(),
-                            appError = it.isEmpty
+                            appError = it.isNotAvailable
                         )
                     }
                 }

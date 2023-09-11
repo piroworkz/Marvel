@@ -30,4 +30,5 @@ class CharactersRepository @Inject constructor(private val remote: CharactersDat
 
     suspend fun getCharacterStoriesById(characterId: Int): Either<AppError, List<Story>> =
         remote.getCharacterStoriesById(characterId)
+
 }

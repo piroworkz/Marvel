@@ -38,19 +38,21 @@ fun AppTopBarView(
 
     TopAppBar(
         title = {
-            Text(
-                text = stringResource(id = destination.title ?: 0),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = Dimens.Size.medium)
-                    .testTag(APP_BAR_TITLE),
-                overflow = TextOverflow.Ellipsis,
-                maxLines = 1,
-                style = MaterialTheme.typography.titleLarge.copy(
-                    fontWeight = FontWeight.Bold,
-                    color = secondary
+            destination.title?.let {
+                Text(
+                    text = stringResource(id =it),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = Dimens.Size.medium)
+                        .testTag(APP_BAR_TITLE),
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1,
+                    style = MaterialTheme.typography.titleLarge.copy(
+                        fontWeight = FontWeight.Bold,
+                        color = secondary
+                    )
                 )
-            )
+            }
         },
         modifier = Modifier
             .fillMaxWidth()

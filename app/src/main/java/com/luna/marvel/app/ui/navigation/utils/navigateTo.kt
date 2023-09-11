@@ -23,4 +23,3 @@ fun NavHostController.navigateTo(
 private fun Destination.createRoute(args: List<Any>): String = listOf(route)
     .plus(args)
     .joinToString("/")
-
