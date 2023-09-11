@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.luna.domain.Comic
 import com.luna.marvel.R
-import com.luna.marvel.app.data.ifNotEmpty
+import com.luna.marvel.app.data.isAvailable
 import com.luna.marvel.app.ui.navigation.graphs.CreatorsGraph
 import com.luna.marvel.app.ui.screens.common.AppEvent
 import com.luna.marvel.app.ui.screens.composables.AppScaffoldView
@@ -37,29 +37,29 @@ fun CreatorComicsScreen(
                     .fillMaxSize()
                     .padding(Dimens.Size.medium)
             ) {
-                state.comics.ifNotEmpty { comics: List<Comic> ->
+                state.comics.isAvailable { comics: List<Comic> ->
 
                     comics.forEach { comic: Comic ->
 
                         images(comic.images)
                         title(comic.title)
 
-                        comic.characters.items.ifNotEmpty {
+                        comic.characters.items.isAvailable {
                             categorySubTitle(R.string.title_characters)
                             categoryListView(it)
                         }
 
-                        comic.creators.items.ifNotEmpty {
+                        comic.creators.items.isAvailable {
                             categorySubTitle(R.string.title_creators)
                             categoryListView(it)
                         }
 
-                        comic.events.items.ifNotEmpty {
+                        comic.events.items.isAvailable {
                             categorySubTitle(R.string.title_events)
                             categoryListView(it)
                         }
 
-                        comic.stories.items.ifNotEmpty {
+                        comic.stories.items.isAvailable {
                             categorySubTitle(R.string.title_stories)
                             categoryListView(it)
                         }

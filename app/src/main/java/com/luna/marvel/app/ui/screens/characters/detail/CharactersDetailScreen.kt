@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.luna.marvel.R
-import com.luna.marvel.app.data.ifNotEmpty
+import com.luna.marvel.app.data.isAvailable
 import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
 import com.luna.marvel.app.ui.screens.common.AppEvent
 import com.luna.marvel.app.ui.screens.composables.AppScaffoldView
@@ -45,22 +45,22 @@ fun CharactersDetailScreen(
                     descriptionJustifiedText(it)
                 }
 
-                state.character?.comics?.items.ifNotEmpty {
+                state.character?.comics?.items.isAvailable {
                     categorySubTitle(R.string.title_comics)
                     categoryListView(it)
                 }
 
-                state.character?.events?.items.ifNotEmpty {
+                state.character?.events?.items.isAvailable {
                     categorySubTitle(R.string.title_events)
                     categoryListView(it)
                 }
 
-                state.character?.series?.items.ifNotEmpty {
+                state.character?.series?.items.isAvailable {
                     categorySubTitle(R.string.title_series)
                     categoryListView(it)
                 }
 
-                state.character?.stories?.items.ifNotEmpty {
+                state.character?.stories?.items.isAvailable {
                     categorySubTitle(R.string.title_stories)
                     categoryListView(it)
                 }

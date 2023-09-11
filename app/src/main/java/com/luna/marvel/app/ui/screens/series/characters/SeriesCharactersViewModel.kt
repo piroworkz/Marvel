@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.luna.domain.AppError
 import com.luna.domain.Character
-import com.luna.marvel.app.data.isEmpty
+import com.luna.marvel.app.data.isNotAvailable
 import com.luna.marvel.app.data.toAppError
 import com.luna.marvel.app.ui.navigation.graphs.Args
 import com.luna.marvel.app.ui.screens.common.AppEvent
@@ -56,7 +56,7 @@ class SeriesCharactersViewModel @Inject constructor(
         dataDownload {
             getCharactersBySeriesIdUseCase(itemId).fold(
                 ifLeft = { _state.update { s -> s.copy(appError = it) } },
-                ifRight = { _state.update { s -> s.copy(characters = it, appError = it.isEmpty) } }
+                ifRight = { _state.update { s -> s.copy(characters = it, appError = it.isNotAvailable) } }
             )
         }
     }

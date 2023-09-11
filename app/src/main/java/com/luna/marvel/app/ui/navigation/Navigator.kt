@@ -22,7 +22,6 @@ fun Navigator(navController: NavHostController) {
         navController = navController,
         startDestination = SplashGraph.Init.route
     ) {
-
         splashGraph {
             navController.navigateTo(MainGraph.Menu) {
                 popUpTo(SplashGraph.Splash.route) { inclusive = true }

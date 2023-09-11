@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.luna.domain.AppError
 import com.luna.domain.MarvelItem
-import com.luna.marvel.app.data.isEmpty
+import com.luna.marvel.app.data.isNotAvailable
 import com.luna.marvel.app.data.toAppError
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.screens.common.MarvelEvent
@@ -58,7 +58,7 @@ class SeriesViewModel @Inject constructor(
         dataDownload {
             getSeriesUseCase().fold(
                 ifLeft = { _state.update { s -> s.copy(appError = it) } },
-                ifRight = { _state.update { s -> s.copy(series = it, appError = it.isEmpty) } }
+                ifRight = { _state.update { s -> s.copy(series = it, appError = it.isNotAvailable) } }
             )
         }
     }
