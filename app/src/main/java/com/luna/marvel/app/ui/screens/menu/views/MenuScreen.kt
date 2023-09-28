@@ -24,6 +24,9 @@ import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.navigation.graphs.EventsGraph
 import com.luna.marvel.app.ui.navigation.graphs.SeriesGraph
 import com.luna.marvel.app.ui.navigation.graphs.StoriesGraph
+import com.luna.marvel.app.ui.screens.anims.AnimState.START
+import com.luna.marvel.app.ui.screens.anims.AnimationEffects
+import com.luna.marvel.app.ui.screens.anims.rememberAnimationState
 import com.luna.marvel.app.ui.screens.composables.ComicStripeBackgroundView
 import com.luna.marvel.app.ui.screens.menu.MenuTags.CHARACTER_BUTTON
 import com.luna.marvel.app.ui.screens.menu.MenuTags.COMIC_BUTTON
@@ -33,9 +36,6 @@ import com.luna.marvel.app.ui.screens.menu.MenuTags.MARVEL_MENU_BUTTON
 import com.luna.marvel.app.ui.screens.menu.MenuTags.MENU_SCREEN
 import com.luna.marvel.app.ui.screens.menu.MenuTags.SERIES_BUTTON
 import com.luna.marvel.app.ui.screens.menu.MenuTags.STORY_BUTTON
-import com.luna.marvel.app.ui.screens.utils.AnimState.START
-import com.luna.marvel.app.ui.screens.utils.AnimationEffects
-import com.luna.marvel.app.ui.screens.utils.rememberAnimationState
 
 @Composable
 fun MenuScreen(

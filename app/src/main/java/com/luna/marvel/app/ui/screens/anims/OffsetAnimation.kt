@@ -1,12 +1,12 @@
-package com.luna.marvel.app.ui.screens.utils
+package com.luna.marvel.app.ui.screens.anims
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.MutableState
-import com.luna.marvel.app.ui.screens.utils.AnimState.FINISH
-import com.luna.marvel.app.ui.screens.utils.AnimState.IDLE
-import com.luna.marvel.app.ui.screens.utils.AnimState.START
+import com.luna.marvel.app.ui.screens.anims.AnimState.FINISH
+import com.luna.marvel.app.ui.screens.anims.AnimState.IDLE
+import com.luna.marvel.app.ui.screens.anims.AnimState.START
 
 class OffsetAnimation(
     val animStateState: MutableState<AnimState>,

@@ -60,7 +60,7 @@ fun CharacterEventsScreen(
                         }
 
                         event.series.items.isAvailable {
-                            categorySubTitle(R.string.title_stories)
+                            categorySubTitle(R.string.title_series)
                             categoryListView(it)
                         }
 

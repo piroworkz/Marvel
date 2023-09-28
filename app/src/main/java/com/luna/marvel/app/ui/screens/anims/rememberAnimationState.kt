@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.utils
+package com.luna.marvel.app.ui.screens.anims
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector1D

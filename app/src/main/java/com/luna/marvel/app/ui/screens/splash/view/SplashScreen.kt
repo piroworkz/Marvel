@@ -23,12 +23,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.luna.marvel.R
+import com.luna.marvel.app.ui.screens.anims.AnimState
+import com.luna.marvel.app.ui.screens.anims.rememberOffsetAnimation
+import com.luna.marvel.app.ui.screens.anims.shimmer
 import com.luna.marvel.app.ui.screens.composables.ComicStripeBackgroundView
 import com.luna.marvel.app.ui.screens.menu.views.CircleButtonView
 import com.luna.marvel.app.ui.screens.splash.SplashTags.SPLASH_SCREEN
-import com.luna.marvel.app.ui.screens.utils.AnimState
-import com.luna.marvel.app.ui.screens.utils.rememberOffsetAnimation
-import com.luna.marvel.app.ui.screens.utils.shimmer
 import com.luna.marvel.app.ui.theme.MarvelTheme
 import kotlinx.coroutines.delay
 

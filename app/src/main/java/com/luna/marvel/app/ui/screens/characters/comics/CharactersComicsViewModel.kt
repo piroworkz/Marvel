@@ -52,6 +52,8 @@ class CharactersComicsViewModel @Inject constructor(
         _state.update { s -> s.copy(navigateUp = !s.navigateUp) }
 
     private fun getComics() {
+
+
         dataDownload {
             getCharacterComicsByIdUseCase(characterId = characterId).fold(
                 ifLeft = { _state.update { s -> s.copy(appError = it) } },

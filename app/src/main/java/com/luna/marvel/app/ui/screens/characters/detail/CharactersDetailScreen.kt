@@ -32,6 +32,7 @@ fun CharactersDetailScreen(
         destination = CharsGraph.CharacterDetail,
         onNavIconClicked = { sendEvent(AppEvent.NavigateUp) },
         {
+
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
                 modifier = Modifier
@@ -39,7 +40,10 @@ fun CharactersDetailScreen(
                     .padding(Dimens.Size.medium)
             ) {
 
-                state.character?.thumbnail?.path?.let { image(it) }
+                state.character?.thumbnail?.path?.let {
+
+                    image(it)
+                }
 
                 state.character?.description?.let {
                     descriptionJustifiedText(it)
