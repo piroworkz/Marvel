@@ -41,9 +41,7 @@ import com.luna.marvel.app.ui.screens.menu.MenuTags.STORY_BUTTON
 fun MenuScreen(
     navigate: (Destination) -> Unit
 ) {
-
     val menuAnimation = rememberAnimationState()
-
     AnimationEffects(menuAnimation)
 
     Box(

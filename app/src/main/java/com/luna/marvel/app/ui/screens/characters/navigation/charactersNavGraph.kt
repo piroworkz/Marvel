@@ -2,7 +2,6 @@ package com.luna.marvel.app.ui.screens.characters.navigation
 
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.navigation
 import com.luna.marvel.app.ui.navigation.graphs.CharsGraph
@@ -30,8 +29,7 @@ fun NavGraphBuilder.charactersNavGraph(
         route = CharsGraph.Init.route, startDestination = CharsGraph.Characters.route
     ) {
 
-        navComposable(CharsGraph.Characters) {
-            val viewModel: CharactersViewModel = hiltViewModel()
+        navComposable(CharsGraph.Characters) { viewModel: CharactersViewModel ->
             val state by viewModel.state.collectAsState()
             navigateFromMaster(
                 state.navigateUp,
@@ -44,8 +42,7 @@ fun NavGraphBuilder.charactersNavGraph(
             CharactersScreen(state = state, sendEvent = viewModel::sendEvent)
         }
 
-        navComposable(CharsGraph.CharacterDetail) {
-            val viewModel: CharactersDetailViewModel = hiltViewModel()
+        navComposable(CharsGraph.CharacterDetail) { viewModel: CharactersDetailViewModel ->
             val state by viewModel.state.collectAsState()
             navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             CharactersDetailScreen(
@@ -53,8 +50,7 @@ fun NavGraphBuilder.charactersNavGraph(
             )
         }
 
-        navComposable(CharsGraph.CharacterComics) {
-            val viewModel: CharactersComicsViewModel = hiltViewModel()
+        navComposable(CharsGraph.CharacterComics) { viewModel: CharactersComicsViewModel ->
             val state by viewModel.state.collectAsState()
             navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             CharactersComicsScreen(
@@ -62,8 +58,7 @@ fun NavGraphBuilder.charactersNavGraph(
             )
         }
 
-        navComposable(CharsGraph.CharacterEvents) {
-            val viewModel: CharacterEventsViewModel = hiltViewModel()
+        navComposable(CharsGraph.CharacterEvents) { viewModel: CharacterEventsViewModel ->
             val state by viewModel.state.collectAsState()
             navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             CharacterEventsScreen(
@@ -71,8 +66,7 @@ fun NavGraphBuilder.charactersNavGraph(
             )
         }
 
-        navComposable(CharsGraph.CharacterSeries) {
-            val viewModel: CharacterSeriesViewModel = hiltViewModel()
+        navComposable(CharsGraph.CharacterSeries) { viewModel: CharacterSeriesViewModel ->
             val state by viewModel.state.collectAsState()
             navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             CharacterSeriesScreen(
@@ -80,8 +74,7 @@ fun NavGraphBuilder.charactersNavGraph(
             )
         }
 
-        navComposable(CharsGraph.CharacterStories) {
-            val viewModel: CharacterStoriesViewModel = hiltViewModel()
+        navComposable(CharsGraph.CharacterStories) { viewModel: CharacterStoriesViewModel ->
             val state by viewModel.state.collectAsState()
             navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             CharacterStoriesScreen(
