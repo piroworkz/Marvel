@@ -34,7 +34,7 @@ private fun Destination.createRoute(args: List<Any>): String = listOf(route)
     .plus(args)
     .joinToString("/")
 
-fun <VM> NavGraphBuilder.navComposable(
+fun <VM> NavGraphBuilder.navComposableVM(
     destination: Destination,
     enterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition? = { null },
     exitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition? = { null },

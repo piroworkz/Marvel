@@ -6,7 +6,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.navigation
 import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.navigation.graphs.SeriesGraph
-import com.luna.marvel.app.ui.navigation.utils.navComposable
+import com.luna.marvel.app.ui.navigation.utils.navComposableVM
 import com.luna.marvel.app.ui.navigation.utils.navigateFromMaster
 import com.luna.marvel.app.ui.navigation.utils.navigateUpFromGraph
 import com.luna.marvel.app.ui.screens.series.characters.SeriesCharactersScreen
@@ -31,7 +31,7 @@ fun NavGraphBuilder.seriesNavGraph(
         startDestination = SeriesGraph.Series.route, route = SeriesGraph.Init.route
     ) {
 
-        navComposable(SeriesGraph.Series) { viewModel: SeriesViewModel ->
+        navComposableVM(SeriesGraph.Series) { viewModel: SeriesViewModel ->
             val state by viewModel.state.collectAsState()
             navigateFromMaster(
                 isNavigateUp = state.navigateUp,
@@ -44,7 +44,7 @@ fun NavGraphBuilder.seriesNavGraph(
             SeriesScreens(state = state, sendEvent = viewModel::sendEvent)
         }
 
-        navComposable(SeriesGraph.SeriesDetail) { viewModel: SeriesDetailViewModel ->
+        navComposableVM(SeriesGraph.SeriesDetail) { viewModel: SeriesDetailViewModel ->
             val state by viewModel.state.collectAsState()
             navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             SeriesDetailScreen(
@@ -52,7 +52,7 @@ fun NavGraphBuilder.seriesNavGraph(
             )
         }
 
-        navComposable(SeriesGraph.SeriesCharacter) { viewModel: SeriesCharactersViewModel ->
+        navComposableVM(SeriesGraph.SeriesCharacter) { viewModel: SeriesCharactersViewModel ->
             val state by viewModel.state.collectAsState()
             navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             SeriesCharactersScreen(
@@ -60,7 +60,7 @@ fun NavGraphBuilder.seriesNavGraph(
             )
         }
 
-        navComposable(SeriesGraph.SeriesComics) { viewModel: SeriesComicsViewModel ->
+        navComposableVM(SeriesGraph.SeriesComics) { viewModel: SeriesComicsViewModel ->
             val state by viewModel.state.collectAsState()
             navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             SeriesComicsScreens(
@@ -68,7 +68,7 @@ fun NavGraphBuilder.seriesNavGraph(
             )
         }
 
-        navComposable(SeriesGraph.SeriesCreators) { viewModel: SeriesCreatorsViewModel ->
+        navComposableVM(SeriesGraph.SeriesCreators) { viewModel: SeriesCreatorsViewModel ->
             val state by viewModel.state.collectAsState()
             navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             SeriesCreatorsScreen(
@@ -76,7 +76,7 @@ fun NavGraphBuilder.seriesNavGraph(
             )
         }
 
-        navComposable(SeriesGraph.SeriesEvents) { viewModel: SeriesEventsViewModel ->
+        navComposableVM(SeriesGraph.SeriesEvents) { viewModel: SeriesEventsViewModel ->
             val state by viewModel.state.collectAsState()
             navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             SeriesEventsScreen(
@@ -84,7 +84,7 @@ fun NavGraphBuilder.seriesNavGraph(
             )
         }
 
-        navComposable(SeriesGraph.SeriesStories) { viewModel: SeriesStoriesViewModel ->
+        navComposableVM(SeriesGraph.SeriesStories) { viewModel: SeriesStoriesViewModel ->
             val state by viewModel.state.collectAsState()
             navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             SeriesStoriesScreen(
