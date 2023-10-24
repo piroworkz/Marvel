@@ -10,12 +10,12 @@ import androidx.compose.runtime.remember
 
 @Composable
 fun rememberAnimationState(
-    initialState: AnimState = AnimState.START,
-    animationState: MutableState<AnimState> = remember { mutableStateOf(initialState) },
+    initialState: AnimationState = AnimationState.START,
+    animationState: MutableState<AnimationState> = remember { mutableStateOf(initialState) },
     scale: Animatable<Float, AnimationVector1D> = remember { Animatable(0f) },
     rotation: Animatable<Float, AnimationVector1D> = remember { Animatable(0F) },
-): AnimationState = remember {
-    AnimationState(
+): RotatingScalingAnimation = remember {
+    RotatingScalingAnimation(
         animStateState = animationState,
         scale = scale,
         rotate = rotation,
@@ -24,14 +24,14 @@ fun rememberAnimationState(
 
 @Composable
 fun rememberOffsetAnimation(
-    initialState: AnimState = AnimState.FINISH,
-    animationState: MutableState<AnimState> = remember { mutableStateOf(initialState) },
+    initialState: AnimationState = AnimationState.FINISH,
+    animationState: MutableState<AnimationState> = remember { mutableStateOf(initialState) },
     heightOffset: Animatable<Float, AnimationVector1D> = remember { Animatable(0F) }
 ): OffsetAnimation = remember { OffsetAnimation(animationState, heightOffset) }
 
 @Composable
 fun AnimationEffects(
-    menuAnimation: AnimationState,
+    menuAnimation: RotatingScalingAnimation,
 ) {
     LaunchedEffect(key1 = menuAnimation.animStateState.value) {
         menuAnimation.animateScale(1000)

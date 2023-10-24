@@ -33,7 +33,7 @@ import com.luna.marvel.app.ui.screens.menu.MenuTags.MARVEL_MENU_BUTTON
 import com.luna.marvel.app.ui.screens.menu.MenuTags.MENU_SCREEN
 import com.luna.marvel.app.ui.screens.menu.MenuTags.SERIES_BUTTON
 import com.luna.marvel.app.ui.screens.menu.MenuTags.STORY_BUTTON
-import com.luna.marvel.app.ui.screens.utils.AnimState.START
+import com.luna.marvel.app.ui.screens.utils.AnimationState.START
 import com.luna.marvel.app.ui.screens.utils.AnimationEffects
 import com.luna.marvel.app.ui.screens.utils.rememberAnimationState
 

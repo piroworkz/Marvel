@@ -26,7 +26,7 @@ import com.luna.marvel.R
 import com.luna.marvel.app.ui.screens.composables.ComicStripeBackgroundView
 import com.luna.marvel.app.ui.screens.menu.views.CircleButtonView
 import com.luna.marvel.app.ui.screens.splash.SplashTags.SPLASH_SCREEN
-import com.luna.marvel.app.ui.screens.utils.AnimState
+import com.luna.marvel.app.ui.screens.utils.AnimationState
 import com.luna.marvel.app.ui.screens.utils.rememberOffsetAnimation
 import com.luna.marvel.app.ui.screens.utils.shimmer
 import com.luna.marvel.app.ui.theme.MarvelTheme
@@ -45,7 +45,7 @@ fun SplashScreen(navigate: () -> Unit) {
             height = screenHeight.toFloat()
         )
 
-        if (logoAnimation.animStateState.value == AnimState.IDLE) {
+        if (logoAnimation.animStateState.value == AnimationState.IDLE) {
             showShimmer = true
             delay(500)
             showShimmer = false

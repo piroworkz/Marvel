@@ -8,14 +8,11 @@ import com.luna.marvel.app.ui.screens.utils.AnimationState.FINISH
 import com.luna.marvel.app.ui.screens.utils.AnimationState.IDLE
 import com.luna.marvel.app.ui.screens.utils.AnimationState.START
 
-class OffsetAnimation(
+class RotatingScalingAnimation(
     val animStateState: MutableState<AnimationState>,
-    val heightOffset: Animatable<Float, AnimationVector1D>,
+    val scale: Animatable<Float, AnimationVector1D>,
+    val rotate: Animatable<Float, AnimationVector1D>,
 ) {
-
-    init {
-        finish()
-    }
 
     fun finish() {
         animStateState.value = FINISH
@@ -29,29 +26,41 @@ class OffsetAnimation(
         animStateState.value = IDLE
     }
 
-    suspend fun animateHeight(
-        durationMillis: Int = 1000,
-        height: Float
-    ) {
+    suspend fun animateRotation(durationMillis: Int = 1000) {
+        when (animStateState.value) {
+            IDLE -> rotate.snapTo(0F)
+            FINISH -> rotate.animateTo(
+                targetValue = 360F,
+                animationSpec = tween(durationMillis)
+            )
+
+            START -> rotate.animateTo(
+                targetValue = 0F,
+                animationSpec = tween(durationMillis)
+            )
+        }
+    }
+
+    suspend fun animateScale(durationMillis: Int = 1000) {
         when (animStateState.value) {
             IDLE -> {
-                heightOffset.snapTo(-height)
-            }
-
-            START -> {
-                heightOffset.animateTo(
-                    targetValue = -height,
-                    animationSpec = tween(durationMillis)
-                )
+                scale.snapTo(1F)
             }
 
             FINISH -> {
-                heightOffset.animateTo(
-                    targetValue = height,
+                scale.animateTo(
+                    targetValue = 1F,
                     animationSpec = tween(durationMillis)
                 )
-                idle()
+            }
+
+            START -> {
+                scale.animateTo(
+                    targetValue = 0F,
+                    animationSpec = tween(durationMillis)
+                )
             }
         }
     }
+
 }
