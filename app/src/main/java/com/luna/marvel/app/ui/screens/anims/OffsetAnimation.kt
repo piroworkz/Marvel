@@ -4,12 +4,12 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.MutableState
-import com.luna.marvel.app.ui.screens.anims.AnimState.FINISH
-import com.luna.marvel.app.ui.screens.anims.AnimState.IDLE
-import com.luna.marvel.app.ui.screens.anims.AnimState.START
+import com.luna.marvel.app.ui.screens.anims.AnimationState.FINISH
+import com.luna.marvel.app.ui.screens.anims.AnimationState.IDLE
+import com.luna.marvel.app.ui.screens.anims.AnimationState.START
 
 class OffsetAnimation(
-    val animStateState: MutableState<AnimState>,
+    val animationStateState: MutableState<AnimationState>,
     val heightOffset: Animatable<Float, AnimationVector1D>,
 ) {
 
@@ -18,22 +18,22 @@ class OffsetAnimation(
     }
 
     fun finish() {
-        animStateState.value = FINISH
+        animationStateState.value = FINISH
     }
 
     fun start() {
-        animStateState.value = START
+        animationStateState.value = START
     }
 
     fun idle() {
-        animStateState.value = IDLE
+        animationStateState.value = IDLE
     }
 
     suspend fun animateHeight(
         durationMillis: Int = 1000,
         height: Float
     ) {
-        when (animStateState.value) {
+        when (animationStateState.value) {
             IDLE -> {
                 heightOffset.snapTo(-height)
             }

@@ -24,7 +24,7 @@ import com.luna.marvel.app.ui.navigation.graphs.Destination
 import com.luna.marvel.app.ui.navigation.graphs.EventsGraph
 import com.luna.marvel.app.ui.navigation.graphs.SeriesGraph
 import com.luna.marvel.app.ui.navigation.graphs.StoriesGraph
-import com.luna.marvel.app.ui.screens.anims.AnimState.START
+import com.luna.marvel.app.ui.screens.anims.AnimationState.START
 import com.luna.marvel.app.ui.screens.anims.AnimationEffects
 import com.luna.marvel.app.ui.screens.anims.rememberAnimationState
 import com.luna.marvel.app.ui.screens.composables.ComicStripeBackgroundView
@@ -122,7 +122,7 @@ fun MenuScreen(
             modifier = Modifier
                 .size(128.dp)
                 .clickable {
-                    if (menuAnimation.animStateState.value == START) {
+                    if (menuAnimation.state.value == START) {
                         menuAnimation.finish()
                     } else {
                         menuAnimation.start()
