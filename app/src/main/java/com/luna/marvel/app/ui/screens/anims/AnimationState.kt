@@ -1,5 +1,5 @@
 package com.luna.marvel.app.ui.screens.anims
 
-enum class AnimationState {
+enum class AnimState {
     IDLE, FINISH, START
 }
