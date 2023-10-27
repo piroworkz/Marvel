@@ -39,13 +39,13 @@ fun SplashScreen(navigate: () -> Unit) {
     val logoAnimation = rememberOffsetAnimation()
     var showShimmer by remember { mutableStateOf(false) }
 
-    LaunchedEffect(key1 = logoAnimation.animationStateState.value, block = {
+    LaunchedEffect(key1 = logoAnimation.state.value, block = {
         logoAnimation.animateHeight(
             durationMillis = 1000,
             height = screenHeight.toFloat()
         )
 
-        if (logoAnimation.animationStateState.value == AnimationState.IDLE) {
+        if (logoAnimation.state.value == AnimationState.IDLE) {
             showShimmer = true
             delay(500)
             showShimmer = false

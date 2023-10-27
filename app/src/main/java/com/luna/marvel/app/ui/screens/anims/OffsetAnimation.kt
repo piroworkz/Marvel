@@ -9,7 +9,7 @@ import com.luna.marvel.app.ui.screens.anims.AnimationState.IDLE
 import com.luna.marvel.app.ui.screens.anims.AnimationState.START
 
 class OffsetAnimation(
-    val animationStateState: MutableState<AnimationState>,
+    val state: MutableState<AnimationState>,
     val heightOffset: Animatable<Float, AnimationVector1D>,
 ) {
 
@@ -18,22 +18,22 @@ class OffsetAnimation(
     }
 
     fun finish() {
-        animationStateState.value = FINISH
+        state.value = FINISH
     }
 
     fun start() {
-        animationStateState.value = START
+        state.value = START
     }
 
     fun idle() {
-        animationStateState.value = IDLE
+        state.value = IDLE
     }
 
     suspend fun animateHeight(
         durationMillis: Int = 1000,
         height: Float
     ) {
-        when (animationStateState.value) {
+        when (state.value) {
             IDLE -> {
                 heightOffset.snapTo(-height)
             }
