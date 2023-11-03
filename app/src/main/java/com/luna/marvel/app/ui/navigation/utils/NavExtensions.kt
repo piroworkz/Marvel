@@ -5,6 +5,7 @@ import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraphBuilder
@@ -34,11 +35,11 @@ private fun Destination.createRoute(args: List<Any>): String = listOf(route)
     .plus(args)
     .joinToString("/")
 
-fun <VM> NavGraphBuilder.navComposableVM(
+inline fun <reified VM: ViewModel> NavGraphBuilder.navComposableVM(
     destination: Destination,
-    enterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition? = { null },
-    exitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition? = { null },
-    content: @Composable (VM) -> Unit,
+    noinline enterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition? = { null },
+    noinline exitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition? = { null },
+    crossinline content: @Composable (VM) -> Unit,
 ) = composable(
     route = destination.getRoute(),
     arguments = destination.setArgs(),
@@ -67,11 +68,11 @@ fun NavGraphBuilder.navComposable(
     content(it)
 }
 
-private fun Destination.getRoute(): String {
+fun Destination.getRoute(): String {
     return listOf(route)
         .plus(args.map { "{${it.args.first}}" })
         .joinToString("/")
 }
 
-private fun Destination.setArgs(): List<NamedNavArgument> =
+fun Destination.setArgs(): List<NamedNavArgument> =
     args.map { navArgument(name = it.args.first) { type = it.args.second } }
