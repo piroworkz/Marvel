@@ -12,8 +12,6 @@ import com.luna.testshared.fakeMarvelItems
 import com.luna.testshared.fakeSeries
 import com.luna.testshared.fakeStories
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.*
-
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -35,8 +33,10 @@ class StoriesRepositoryTest {
     }
 
     @Test
+
     fun `on success getStories should return a list of stories on the right side of either result`() =
         runTest {
+
             val expected = Either.Right(fakeMarvelItems)
             whenever(remote.getStories()).thenReturn(expected)
 

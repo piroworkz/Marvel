@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.luna.domain.Series
 import com.luna.marvel.R
-import com.luna.marvel.app.data.ifNotEmpty
+import com.luna.marvel.app.data.isAvailable
 import com.luna.marvel.app.ui.navigation.graphs.StoriesGraph
 import com.luna.marvel.app.ui.screens.common.AppEvent
 import com.luna.marvel.app.ui.screens.composables.AppScaffoldView
@@ -40,7 +40,7 @@ fun StorySeriesScreen(
                     .fillMaxSize()
                     .padding(Dimens.Size.medium)
             ) {
-                state.series.ifNotEmpty { seriesList: List<Series> ->
+                state.series.isAvailable { seriesList: List<Series> ->
 
                     seriesList.forEach { series: Series ->
 
@@ -49,27 +49,27 @@ fun StorySeriesScreen(
 
                         series.description?.let(::descriptionJustifiedText)
 
-                        series.characters.items.ifNotEmpty {
+                        series.characters.items.isAvailable {
                             categorySubTitle(R.string.title_characters)
                             categoryListView(it)
                         }
 
-                        series.comics.items.ifNotEmpty {
+                        series.comics.items.isAvailable {
                             categorySubTitle(R.string.title_comics)
                             categoryListView(it)
                         }
 
-                        series.creators.items.ifNotEmpty {
+                        series.creators.items.isAvailable {
                             categorySubTitle(R.string.title_creators)
                             categoryListView(it)
                         }
 
-                        series.events.items.ifNotEmpty {
-                            categorySubTitle(R.string.title_stories)
+                        series.events.items.isAvailable {
+                            categorySubTitle(R.string.title_events)
                             categoryListView(it)
                         }
 
-                        series.stories.items.ifNotEmpty {
+                        series.stories.items.isAvailable {
                             categorySubTitle(R.string.title_stories)
                             categoryListView(it)
                         }

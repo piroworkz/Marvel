@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.utils
+package com.luna.marvel.app.ui.screens.anims
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector1D
@@ -16,7 +16,7 @@ fun rememberAnimationState(
     rotation: Animatable<Float, AnimationVector1D> = remember { Animatable(0F) },
 ): RotatingScalingAnimation = remember {
     RotatingScalingAnimation(
-        animStateState = animationState,
+        state = animationState,
         scale = scale,
         rotate = rotation,
     )
@@ -33,11 +33,11 @@ fun rememberOffsetAnimation(
 fun AnimationEffects(
     menuAnimation: RotatingScalingAnimation,
 ) {
-    LaunchedEffect(key1 = menuAnimation.animStateState.value) {
+    LaunchedEffect(key1 = menuAnimation.state.value) {
         menuAnimation.animateScale(1000)
     }
 
-    LaunchedEffect(key1 = menuAnimation.animStateState.value) {
+    LaunchedEffect(key1 = menuAnimation.state.value) {
         menuAnimation.animateRotation(1000)
     }
 }

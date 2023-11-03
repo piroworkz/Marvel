@@ -26,7 +26,7 @@ fun Throwable.toAppError(): AppError {
     }
 }
 
-fun <E> List<E>?.ifNotEmpty(block: (List<E>) -> Unit) {
+fun <E> List<E>?.isAvailable(block: (List<E>) -> Unit) {
     if (!this.isNullOrEmpty()) {
         block(this)
     } else {
@@ -34,7 +34,7 @@ fun <E> List<E>?.ifNotEmpty(block: (List<E>) -> Unit) {
     }
 }
 
-val <E> List<E>?.isEmpty: AppError?
+val <E> List<E>?.isNotAvailable: AppError?
     get() = if (this.isNullOrEmpty()) {
         AppError.NotAvailable
     } else {

@@ -12,7 +12,6 @@ import com.luna.testshared.fakeSeries
 import com.luna.testshared.fakeStories
 import com.luna.testshared.fakeUnknownError
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -34,7 +33,7 @@ class CharactersRepositoryUnitTest {
     }
 
     @Test
-    fun `getCharacters should return a list of characters on the right side of either result`() =
+    fun `given repository event when getCharacters is called then should return a list of characters on the right side of either result`() =
         runTest {
             val expected = Either.Right(fakeMarvelItems)
             whenever(remote.getCharacters()).thenReturn(expected)

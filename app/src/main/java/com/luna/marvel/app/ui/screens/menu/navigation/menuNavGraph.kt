@@ -1,7 +1,5 @@
 package com.luna.marvel.app.ui.screens.menu.navigation
 
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.ExitTransition
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.navigation
 import com.luna.marvel.app.ui.navigation.graphs.Destination
@@ -15,9 +13,7 @@ fun NavGraphBuilder.menuNavGraph(navigate: (Destination) -> Unit) {
         startDestination = MainGraph.Menu.route
     ) {
         navComposable(
-            destination = MainGraph.Menu,
-            enterTransition = { EnterTransition.None },
-            exitTransition = { ExitTransition.None }
+            destination = MainGraph.Menu
         ) {
             MenuScreen(navigate)
         }

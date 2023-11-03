@@ -1,33 +1,33 @@
-package com.luna.marvel.app.ui.screens.utils
+package com.luna.marvel.app.ui.screens.anims
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.MutableState
-import com.luna.marvel.app.ui.screens.utils.AnimationState.FINISH
-import com.luna.marvel.app.ui.screens.utils.AnimationState.IDLE
-import com.luna.marvel.app.ui.screens.utils.AnimationState.START
+import com.luna.marvel.app.ui.screens.anims.AnimationState.FINISH
+import com.luna.marvel.app.ui.screens.anims.AnimationState.IDLE
+import com.luna.marvel.app.ui.screens.anims.AnimationState.START
 
 class RotatingScalingAnimation(
-    val animStateState: MutableState<AnimationState>,
+    val state: MutableState<AnimationState>,
     val scale: Animatable<Float, AnimationVector1D>,
     val rotate: Animatable<Float, AnimationVector1D>,
 ) {
 
     fun finish() {
-        animStateState.value = FINISH
+        state.value = FINISH
     }
 
     fun start() {
-        animStateState.value = START
+        state.value = START
     }
 
     fun idle() {
-        animStateState.value = IDLE
+        state.value = IDLE
     }
 
     suspend fun animateRotation(durationMillis: Int = 1000) {
-        when (animStateState.value) {
+        when (state.value) {
             IDLE -> rotate.snapTo(0F)
             FINISH -> rotate.animateTo(
                 targetValue = 360F,
@@ -42,7 +42,7 @@ class RotatingScalingAnimation(
     }
 
     suspend fun animateScale(durationMillis: Int = 1000) {
-        when (animStateState.value) {
+        when (state.value) {
             IDLE -> {
                 scale.snapTo(1F)
             }

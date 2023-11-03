@@ -7,7 +7,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.luna.marvel.R
-import com.luna.marvel.app.data.ifNotEmpty
+import com.luna.marvel.app.data.isAvailable
 import com.luna.marvel.app.ui.navigation.graphs.EventsGraph
 import com.luna.marvel.app.ui.screens.common.AppEvent
 import com.luna.marvel.app.ui.screens.composables.AppScaffoldView
@@ -48,27 +48,27 @@ fun EventDetailScreen(
 
                 state.event?.title?.let(::title)
 
-                state.event?.characters?.items.ifNotEmpty {
+                state.event?.characters?.items.isAvailable {
                     categorySubTitle(R.string.title_events)
                     categoryListView(it)
                 }
 
-                state.event?.comics?.items.ifNotEmpty {
+                state.event?.comics?.items.isAvailable {
                     categorySubTitle(R.string.title_comics)
                     categoryListView(it)
                 }
 
-                state.event?.creators?.items.ifNotEmpty {
+                state.event?.creators?.items.isAvailable {
                     categorySubTitle(R.string.title_series)
                     categoryListView(it)
                 }
 
-                state.event?.series?.items.ifNotEmpty {
+                state.event?.series?.items.isAvailable {
                     categorySubTitle(R.string.title_series)
                     categoryListView(it)
                 }
 
-                state.event?.stories?.items.ifNotEmpty {
+                state.event?.stories?.items.isAvailable {
                     categorySubTitle(R.string.title_stories)
                     categoryListView(it)
                 }
