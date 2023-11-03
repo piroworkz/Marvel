@@ -23,12 +23,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.luna.marvel.R
+import com.luna.marvel.app.ui.screens.anims.AnimationState
+import com.luna.marvel.app.ui.screens.anims.rememberOffsetAnimation
+import com.luna.marvel.app.ui.screens.anims.shimmer
 import com.luna.marvel.app.ui.screens.composables.ComicStripeBackgroundView
 import com.luna.marvel.app.ui.screens.menu.views.CircleButtonView
 import com.luna.marvel.app.ui.screens.splash.SplashTags.SPLASH_SCREEN
-import com.luna.marvel.app.ui.screens.utils.AnimState
-import com.luna.marvel.app.ui.screens.utils.rememberOffsetAnimation
-import com.luna.marvel.app.ui.screens.utils.shimmer
 import com.luna.marvel.app.ui.theme.MarvelTheme
 import kotlinx.coroutines.delay
 
@@ -39,13 +39,13 @@ fun SplashScreen(navigate: () -> Unit) {
     val logoAnimation = rememberOffsetAnimation()
     var showShimmer by remember { mutableStateOf(false) }
 
-    LaunchedEffect(key1 = logoAnimation.animStateState.value, block = {
+    LaunchedEffect(key1 = logoAnimation.state.value, block = {
         logoAnimation.animateHeight(
             durationMillis = 1000,
             height = screenHeight.toFloat()
         )
 
-        if (logoAnimation.animStateState.value == AnimState.IDLE) {
+        if (logoAnimation.state.value == AnimationState.IDLE) {
             showShimmer = true
             delay(500)
             showShimmer = false

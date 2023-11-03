@@ -3,8 +3,6 @@ package com.luna.marvel.app.ui.application
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.luna.marvel.app.ui.navigation.Navigator
 import com.luna.marvel.app.ui.theme.MarvelTheme
@@ -21,19 +19,5 @@ class MainActivity : ComponentActivity() {
                 Navigator(navController = navController)
             }
         }
-    }
-}
-
-
-@Composable
-fun ShapeView() {
-
-}
-
-@Preview
-@Composable
-fun ShapePreview() {
-    MarvelTheme {
-        ShapeView()
     }
 }

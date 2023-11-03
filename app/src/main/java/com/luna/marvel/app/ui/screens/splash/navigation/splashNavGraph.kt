@@ -1,7 +1,5 @@
 package com.luna.marvel.app.ui.screens.splash.navigation
 
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.ExitTransition
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.navigation
 import com.luna.marvel.app.ui.navigation.graphs.SplashGraph
@@ -16,8 +14,6 @@ fun NavGraphBuilder.splashGraph(navigate: () -> Unit) {
     ) {
         navComposable(
             destination = SplashGraph.Splash,
-            enterTransition = { EnterTransition.None },
-            exitTransition = { ExitTransition.None }
         ) {
             SplashScreen(navigate = navigate)
         }

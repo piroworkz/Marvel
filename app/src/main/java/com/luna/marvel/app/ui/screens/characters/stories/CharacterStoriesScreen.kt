@@ -61,12 +61,12 @@ fun CharacterStoriesScreen(
                         }
 
                         story.events.items.isAvailable {
-                            categorySubTitle(R.string.title_stories)
+                            categorySubTitle(R.string.title_events)
                             categoryListView(it)
                         }
 
                         story.series.items.isAvailable {
-                            categorySubTitle(R.string.title_stories)
+                            categorySubTitle(R.string.title_series)
                             categoryListView(it)
                         }
 

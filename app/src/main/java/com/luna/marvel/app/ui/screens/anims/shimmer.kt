@@ -1,4 +1,4 @@
-package com.luna.marvel.app.ui.screens.utils
+package com.luna.marvel.app.ui.screens.anims
 
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode

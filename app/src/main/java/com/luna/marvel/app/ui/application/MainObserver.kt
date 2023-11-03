@@ -1,11 +1,13 @@
 package com.luna.marvel.app.ui.application
+
 import android.app.Activity
 import android.os.Build
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.Lifecycle.Event.*
+import androidx.lifecycle.Lifecycle.Event.ON_DESTROY
+import androidx.lifecycle.Lifecycle.Event.ON_RESUME
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 

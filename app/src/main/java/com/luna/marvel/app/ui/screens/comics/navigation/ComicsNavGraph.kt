@@ -2,12 +2,11 @@ package com.luna.marvel.app.ui.screens.comics.navigation
 
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.navigation
 import com.luna.marvel.app.ui.navigation.graphs.ComicsGraph
 import com.luna.marvel.app.ui.navigation.graphs.Destination
-import com.luna.marvel.app.ui.navigation.utils.navComposable
+import com.luna.marvel.app.ui.navigation.utils.navComposableVM
 import com.luna.marvel.app.ui.navigation.utils.navigateFromMaster
 import com.luna.marvel.app.ui.navigation.utils.navigateUpFromGraph
 import com.luna.marvel.app.ui.screens.comics.characters.ComicCharactersScreen
@@ -32,16 +31,15 @@ fun NavGraphBuilder.comicsNavGraph(
         startDestination = ComicsGraph.Comics.route
     ) {
 
-        navComposable(ComicsGraph.Comics) {
-            val viewModel: ComicsViewModel = hiltViewModel()
+        navComposableVM(ComicsGraph.Comics) { viewModel: ComicsViewModel ->
             val state by viewModel.state.collectAsState()
             navigateFromMaster(
-                state.navigateUp,
-                state.destination,
-                state.id,
-                navigateUp,
-                viewModel::sendEvent,
-                navigate
+                isNavigateUp = state.navigateUp,
+                destination = state.destination,
+                arg = state.id,
+                onNavigateUp = navigateUp,
+                sendEvent = viewModel::sendEvent,
+                navigate = navigate
             )
             ComicsScreen(
                 state = state,
@@ -49,8 +47,7 @@ fun NavGraphBuilder.comicsNavGraph(
             )
         }
 
-        navComposable(ComicsGraph.ComicsDetail) {
-            val viewModel: ComicDetailViewModel = hiltViewModel()
+        navComposableVM(ComicsGraph.ComicsDetail) { viewModel: ComicDetailViewModel ->
             val state by viewModel.state.collectAsState()
             navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             ComicDetailScreen(
@@ -59,8 +56,7 @@ fun NavGraphBuilder.comicsNavGraph(
             )
         }
 
-        navComposable(ComicsGraph.ComicsCharacters) {
-            val viewModel: ComicCharactersViewModel = hiltViewModel()
+        navComposableVM(ComicsGraph.ComicsCharacters) { viewModel: ComicCharactersViewModel ->
             val state by viewModel.state.collectAsState()
             navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             ComicCharactersScreen(
@@ -69,8 +65,7 @@ fun NavGraphBuilder.comicsNavGraph(
             )
         }
 
-        navComposable(ComicsGraph.ComicsCreators) {
-            val viewModel: ComicCreatorsViewModel = hiltViewModel()
+        navComposableVM(ComicsGraph.ComicsCreators) { viewModel: ComicCreatorsViewModel ->
             val state by viewModel.state.collectAsState()
             navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             ComicCreatorsScreen(
@@ -79,8 +74,7 @@ fun NavGraphBuilder.comicsNavGraph(
             )
         }
 
-        navComposable(ComicsGraph.ComicsEvents) {
-            val viewModel: ComicEventsViewModel = hiltViewModel()
+        navComposableVM(ComicsGraph.ComicsEvents) { viewModel: ComicEventsViewModel ->
             val state by viewModel.state.collectAsState()
             navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             ComicEventsScreen(
@@ -89,8 +83,7 @@ fun NavGraphBuilder.comicsNavGraph(
             )
         }
 
-        navComposable(ComicsGraph.ComicsStories) {
-            val viewModel: ComicStoriesViewModel = hiltViewModel()
+        navComposableVM(ComicsGraph.ComicsStories) { viewModel: ComicStoriesViewModel ->
             val state by viewModel.state.collectAsState()
             navigateUpFromGraph(state.navigateUp, navigateUp, viewModel::sendEvent)
             ComicStoriesScreen(
