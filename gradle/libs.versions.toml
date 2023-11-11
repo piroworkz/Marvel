@@ -1,5 +1,5 @@
 [versions]
-agp = "8.3.0-alpha12"
+agp = "8.1.2"
 kotlin = "1.9.0"
 #kotlin coroutines
 kotlin-coroutines = "1.7.3"
@@ -9,14 +9,14 @@ lifecycle-runtime-ktx = "2.6.2"
 activity-compose = "1.8.0"
 #noinspection GradleDependency
 compose-bom = "2023.03.00"
-compose-navigation = "2.7.4"
+compose-navigation = "2.7.5"
 compose-constraint-layout = "1.0.1"
 compose-material-3 = "1.1.2"
 retrofit = "2.9.0"
 okhttp = "4.11.0"
 room = "2.6.0"
 hilt = "2.47"
-hilt-nav-compose = "1.0.0"
+hilt-nav-compose = "1.1.0"
 arrow = "1.2.0"
 #testing
 junit = "4.13.2"

@@ -20,3 +20,4 @@ fun NavGraphBuilder.splashGraph(navigate: () -> Unit) {
     }
 
 }
+
